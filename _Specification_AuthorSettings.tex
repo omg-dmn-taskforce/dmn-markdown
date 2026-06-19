@@ -60,3 +60,41 @@
 %%% User added packages
 %%%
 %%% You may add any additional changes you like below this line
+
+%%% pandoc generates \tightlist for compact lists; define it if not already defined.
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%%% Unicode characters from pandoc-converted DMN markdown that pdflatex cannot
+%%% handle natively. newunicodechar declares explicit mappings.
+\usepackage{newunicodechar}
+\newunicodechar{‑}{-}                              % U+2011 non-breaking hyphen
+\newunicodechar{→}{\ensuremath{\rightarrow}}       % U+2192
+\newunicodechar{≤}{\ensuremath{\leq}}              % U+2264
+\newunicodechar{≡}{\ensuremath{\equiv}}            % U+2261
+\newunicodechar{ε}{\ensuremath{\varepsilon}}       % U+03B5
+\newunicodechar{≥}{\ensuremath{\geq}}              % U+2265
+\newunicodechar{−}{\ensuremath{-}}                 % U+2212 minus sign
+\newunicodechar{•}{\textbullet}                    % U+2022 bullet
+\newunicodechar{▪}{\ensuremath{\blacksquare}}      % U+25AA black small square
+\newunicodechar{🐎}{}                              % U+1F40E emoji (artifact)
+\newunicodechar{ὀ}{o}                              % U+1F40 Greek omicron (fallback)
+\newunicodechar{}{$\cdot$}               % U+F02E private use (Wingdings dot)
+
+
+%%% pandoc tables use \real{} (calc), table rules (booktabs), column specs (array), multirow cells.
+\usepackage{calc}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+
+%%% SVG images: inkscape is not available, so redefine \includesvg to emit a
+%%% placeholder box instead of attempting inkscape conversion.
+\AtBeginDocument{%
+  \renewcommand{\includesvg}[2][]{\fbox{\small[SVG: \detokenize{#2}]}}%
+}
+
+%%% pandoc wraps table captions in \href{url}{\phantomsection\label{...}text}.
+%%% \phantomsection calls \Hy@raisedlink which fails in longtable caption context.
+%%% Making \phantomsection robust prevents it from expanding in moving arguments.
+\robustify\phantomsection

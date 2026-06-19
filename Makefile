@@ -24,7 +24,19 @@ pdfnamebase = ${specacro}_${version}
 
 ###
 # Nothing below here is user settable or usable
+SHELL := /bin/bash
 doc := Specification
 all: spec
-.PHONY: all 
+.PHONY: all
 include ./mdsa-omg-core/_core.mk
+
+# Explicit rule overrides the pattern rule in _core.mk so the local omgLaTeX.yaml
+# (which strips options unsupported by the pandoc version in the build container) wins.
+build/omgLaTeX.yaml: omgLaTeX.yaml
+	cp $< $@
+
+# Copy media/ placeholder images into the build directory so pandoc-generated
+# \includegraphics{media/imageNN.ext} references resolve.
+spec: build/media
+build/media: media | build
+	cp -r $< build/

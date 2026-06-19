@@ -1,3 +1,0 @@
-```{=latex}
-\REPLACEME{REQUIRED: In file 0\_Relation\_To\_Existing.tex, discuss how does this proposal relate to existing specifications within the OMG, and within other standards bodies?}
-```

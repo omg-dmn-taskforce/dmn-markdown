@@ -1,0 +1,245 @@
+#!/usr/bin/env python3
+"""Split output.md into numbered chapter .md files matching the OMG template structure.
+
+The LaTeX template (Specification_Template.tex) hard-codes specific filenames:
+  1_Scope, 2_Basic_Conformance, 4_Terms, 5_Symbols, 6_Additional,
+  7+_Technical_Content, A_Annexes
+Content files should NOT repeat the top-level heading that the template
+already provides via \chapter{...}.
+"""
+
+import re
+import os
+import glob
+from pathlib import Path
+
+ROOT = Path(__file__).parent
+
+# Maps chapter index (order of `# ` headings in output.md) to:
+#   (output_filename_without_ext, strip_top_heading)
+# None means skip this chapter.
+# Multiple indices can share the same filename — content is APPENDED.
+CHAPTER_MAP = [
+    ("1_Scope",             True),   # 0: Scope         — template adds \chapter{Scope}
+    ("2_Basic_Conformance", True),   # 1: Conformance   — template adds \chapter{Conformance}
+    None,                            # 2: References    — auto-generated from bibliography
+    ("0_Additional",        False),  # 3: Preamble: Additional Info / Acknowledgements
+    ("0_Introduction",      False),  # 4: Preamble: Introduction to DMN
+    ("7+_Technical_Content",False),  # 5: Requirements (DRG and DRD)
+    ("7+_Technical_Content",False),  # 6: Relating Decision Logic to Decision Requirements
+    ("7+_Technical_Content",False),  # 7: Decision Table
+    ("7+_Technical_Content",False),  # 8: Simple Expression Language (S-FEEL)
+    ("7+_Technical_Content",False),  # 9: Expression Language (FEEL)
+    ("7+_Technical_Content",False),  # 10: B-FEEL
+    ("A_Annexes",           False),  # 11: DMN Examples
+    ("A_Annexes",           False),  # 12: Exchange Formats
+    ("A_Annexes",           False),  # 13: DMN Diagram Interchange (DMN DI)
+    ("A_Annexes",           False),  # 14: Annexes section
+]
+
+# Glob patterns for files to remove before writing new ones.
+OLD_FILE_GLOBS = [
+    "0_*.md",
+    "1_*.md",
+    "2_*.md",
+    "3_*.md",
+    "6_*.md",
+    "7+_Technical_Content.md",
+    "7a_*.md", "7b_*.md", "7c_*.md", "7d_*.md", "7e_*.md", "7f_*.md",
+    "A_Annexes.md",
+    "Aa_*.md", "Ab_*.md", "Ac_*.md", "Ad_*.md",
+    "MANUAL_ADJUSTMENTS.md",
+]
+
+
+def clean_heading(text: str) -> str:
+    """Strip pandoc anchor/link markup, returning plain heading text."""
+    # Replace []{...} empty anchor spans with a space to avoid word merging.
+    prev = None
+    while prev != text:
+        prev = text
+        text = re.sub(r"\[\]\{[^}]*\}", " ", text)
+    # Remove ]{...} span-attribute closings.
+    text = re.sub(r"\]\{[^}]*\}", "", text)
+    # Iteratively unwrap [text](url) links → text.
+    prev = None
+    while prev != text:
+        prev = text
+        text = re.sub(r"\[([^\[\]]*)\]\([^)]*\)", r"\1", text)
+    # Strip orphan brackets and collapse whitespace.
+    text = re.sub(r"[\[\]]", "", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
+
+
+def first_subheading(lines: list) -> str:
+    """Return cleaned text of the first ## sub-heading, or first non-empty line."""
+    for line in lines:
+        if line.startswith("## "):
+            return clean_heading(line[3:].strip())
+    for line in lines:
+        stripped = line.strip()
+        if stripped:
+            return clean_heading(stripped)[:60]
+    return "Unknown"
+
+
+def split_chapters(text: str):
+    """
+    Split text on top-level `# ` headings.
+    Yields (start_lineno, raw_heading_text, content_lines).
+    """
+    lines = text.splitlines(keepends=True)
+    current_start = None
+    current_heading = None
+    current_lines = []
+
+    for lineno, line in enumerate(lines, start=1):
+        if line.startswith("# ") or line.rstrip() == "#":
+            if current_heading is not None:
+                yield (current_start, current_heading, current_lines)
+            current_start = lineno
+            current_heading = line.rstrip()
+            current_lines = []
+        elif current_heading is not None:
+            current_lines.append(line)
+
+    if current_heading is not None:
+        yield (current_start, current_heading, current_lines)
+
+
+def delete_old_files():
+    removed = []
+    for pattern in OLD_FILE_GLOBS:
+        for path in glob.glob(str(ROOT / pattern)):
+            os.remove(path)
+            removed.append(Path(path).name)
+    return removed
+
+
+def main():
+    source = ROOT / "output.md"
+    if not source.exists():
+        raise SystemExit(f"ERROR: {source} not found.")
+
+    text = source.read_text(encoding="utf-8")
+    chapters = list(split_chapters(text))
+
+    if len(chapters) != len(CHAPTER_MAP):
+        print(
+            f"WARNING: found {len(chapters)} chapters but CHAPTER_MAP has "
+            f"{len(CHAPTER_MAP)} entries. Adjust CHAPTER_MAP."
+        )
+
+    removed = delete_old_files()
+    print(f"Removed old files: {removed}")
+
+    log_lines = [
+        "# MANUAL_ADJUSTMENTS.md",
+        "",
+        "Generated by `split_output.py`. Documents what was done and what may need review.",
+        "",
+        "## Chapter mapping",
+        "",
+        "| # | Target file | Strip heading | Source line | Reconstructed title |",
+        "|---|-------------|---------------|-------------|---------------------|",
+    ]
+
+    # Accumulate content per output file (to support appending multiple chapters).
+    file_contents: dict = {}  # filename -> list of str
+
+    for idx, (lineno, raw_heading, content_lines) in enumerate(chapters):
+        entry = CHAPTER_MAP[idx] if idx < len(CHAPTER_MAP) else None
+
+        if entry is None:
+            log_lines.append(
+                f"| {idx} | *(skipped)* | — | {lineno} | *(auto-generated by LaTeX)* |"
+            )
+            print(f"  [{idx}] SKIPPED  (lineno={lineno})")
+            continue
+
+        filename, strip_heading = entry
+
+        raw_title = raw_heading.lstrip("# ").strip()
+        is_empty = raw_title == ""
+
+        if is_empty:
+            title = first_subheading(content_lines)
+            title_source = "inferred from first sub-heading"
+        else:
+            title = clean_heading(raw_title)
+            title_source = "from # heading"
+
+        # Build content block for this chapter.
+        body = "".join(content_lines)
+        if strip_heading:
+            block = body
+        else:
+            block = f"# {title}\n\n{body}"
+
+        if filename not in file_contents:
+            file_contents[filename] = []
+        file_contents[filename].append(block)
+
+        log_lines.append(
+            f"| {idx} | `{filename}.md` | {strip_heading} | {lineno} "
+            f"| {title} ({title_source}) |"
+        )
+        print(f"  [{idx}] → {filename}.md  (lineno={lineno}, {title_source})")
+
+    # Write files.
+    written = []
+    for filename, blocks in file_contents.items():
+        outpath = ROOT / f"{filename}.md"
+        outpath.write_text("\n\n".join(blocks), encoding="utf-8")
+        written.append(outpath.name)
+        print(f"  Written: {outpath.name}")
+
+    # Delete output.md — content now lives in chapter files.
+    if source.exists():
+        source.unlink()
+        print("  Deleted: output.md")
+
+    log_lines += [
+        "",
+        "## Files written",
+        "",
+    ] + [f"- `{f}`" for f in written] + [
+        "",
+        "## Known issues to review",
+        "",
+        "- Body text contains `[text](https://www.omg.org/spec/SCE/1.0)` link spans "
+        "throughout — pandoc cross-reference artifacts from the docx. "
+        "These render as hyperlinks in LaTeX; may need stripping for final output.",
+        "",
+        "- Sub-headings (##, ###) also contain anchor markup in the original; "
+        "body text retains pandoc markdown (anchors in sub-headings are not stripped "
+        "by this script — they are handled by pandoc's LaTeX backend).",
+        "",
+        "- `initialsubmission` is `false` in `_Specification_Setup.tex`, so all `0_*` "
+        "preamble files are skipped by the template. Preamble content from the docx "
+        "(Acknowledgements, Introduction to DMN) is not shown in the output PDF.",
+        "",
+        "- `4_Terms.md` and `5_Symbols.md` have no corresponding chapter in output.md "
+        "and remain as empty stubs.",
+        "",
+        "- Images from the source docx are not included in this pass.",
+        "",
+        "- The top-level `# ` heading is stripped from `1_Scope.md` and "
+        "`2_Basic_Conformance.md` to avoid duplicating headings already provided by "
+        "the LaTeX template (`\\chapter{Scope}`, `\\chapter{Conformance}`).",
+        "",
+        "- Technical chapters (Requirements, Decision Table, FEEL, etc.) and annex "
+        "chapters are merged into `7+_Technical_Content.md` and `A_Annexes.md` "
+        "respectively. Each becomes a `\\section{}` in the output (not `\\chapter{}`), "
+        "since the template does not wrap `7+_Technical_Content` in an explicit chapter.",
+    ]
+
+    adj_path = ROOT / "MANUAL_ADJUSTMENTS.md"
+    adj_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
+    print(f"\nWrote {len(written)} chapter files.")
+    print(f"See {adj_path.name} for details.")
+
+
+if __name__ == "__main__":
+    main()
