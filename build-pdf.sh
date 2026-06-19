@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-IMAGE_NAME="dmn-markdown"
+IMAGE_NAME="omg-mdsa-build:latest"
 
 if ! docker image inspect "$IMAGE_NAME" &>/dev/null; then
   echo "Image '$IMAGE_NAME' not found, building..."
