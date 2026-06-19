@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag omg-mdsa-build:latest
+
+    - name: Run the Docker container
+      run: docker run --name omg-mdsa-build-container omg-mdsa-build:latest
+
+    - name: Copy PDF from container
+      run: docker cp omg-mdsa-build-container:/app/. ./output/
+
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: specification-pdf
+        path: output/*.pdf
