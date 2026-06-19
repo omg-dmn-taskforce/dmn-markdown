@@ -1,5 +1,6 @@
 All conformant products must comply with these conformance points:
 
+```{=latex}
 \REPLACEME{REQUIRED: In file 2\_Basic\_Conformance.tex, describe what conformance looks like for this specification.  List out the indidivual conformance points, and what is needed to satisfy them.  Be as clear as possible as to what testing, if any, will be performed.
 
 An example list might look like:
@@ -9,3 +10,4 @@ An example list might look like:
 \item {\em Implement the Extensions package}.  The Extensions package defines the additional needed pieces. 
 \end{itemize}
 }
+```

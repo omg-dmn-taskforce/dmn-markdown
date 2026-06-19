@@ -1,0 +1,3 @@
+```{=latex}
+\REPLACEME{OPTIONAL: Fill in file 0\_Resolutions\_Optional.tex to discuss how this submission addresses each of the satisfied optional requirements from the RFP.  Delete file (or make file empty) if not needed.}
+```

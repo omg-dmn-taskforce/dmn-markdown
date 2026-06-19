@@ -1,3 +1,4 @@
+```{=latex}
 \REPLACEME{OPTIONAL: Provide unofficial but polite acknowledgements, a suggested template:
 \begin{itemize}
 \item John Smith and team members of Company X reviewed this submission
@@ -5,3 +6,4 @@
 \item Mikhail Jones and Michelle Johannsen of Company Z provided valuable input
 \end{itemize}
 If you have none to provide, make 0\_Acknowledgements.tex an empty file, or delete it.}
+```

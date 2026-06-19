@@ -1,12 +1,19 @@
+```{=latex}
 \REPLACEME{OPTIONAL: Fill in the file 4\_Terms.tex with a description environment, filled with definition items: }
-
-{\color{red}
-\begin{lstlisting}[language={[LaTeX]TeX}]
+```
+```{=latex}
+\color{red}
+```
+``` {.[LaTeX]TeX language="[LaTeX]TeX"}
 \begin{description}[style=nextline]
 \item[term] Definition
 \item[term2] Definition
 \end{description}
-\end{lstlisting}
-}
+```
+
+```{=latex}
 \color{black}
+```
+```{=latex}
 \REPLACEME{If no terms are needed, delete the file 4\_Terms.tex, or leave it empty.}
+```
