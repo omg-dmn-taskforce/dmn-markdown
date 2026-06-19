@@ -6,6 +6,7 @@ main.*
 *.bcf
 *.cb
 *.cb2
+*.docx
 *.fls
 *.log
 *.out
