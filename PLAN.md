@@ -77,3 +77,51 @@ Write `split_output.py` in the project root:
 1. Run `./split_output.py` → check files created, review `MANUAL_ADJUSTMENTS.md`.
 2. Run `./build-pdf.sh` → confirm `output.pdf` produced without errors.
 3. Open `output.pdf` and `DMN_1.7_SOURCE.pdf` side by side; verify chapter structure and headings match.
+
+---
+
+## Phase 2: Real images
+
+### Goal
+
+Replace placeholder 1×1 pixel stubs in `media/` with the actual images extracted from `DMN_1.7_SOURCE.docx`.
+
+### Steps
+
+#### 1. Extract images from DOCX
+
+Run pandoc (inside Docker, so the same version is used) to extract all embedded media without regenerating the markdown:
+
+```bash
+docker run --rm -v "$(pwd):/app" dmn-markdown \
+  sh -c 'cd /app && pandoc DMN_1.7_SOURCE.docx --extract-media=media -o /tmp/discard.md'
+```
+
+This writes real images to `media/` and discards the markdown output. The existing chapter `.md` files reference the same image filenames, so no re-split is needed.
+
+#### 2. Handle SVG images
+
+The OMG template loads the `svg` package which calls inkscape to convert SVGs to PDF. Inkscape is not installed. Instead:
+
+- Add `librsvg2-bin` to the Dockerfile (provides `rsvg-convert`, a lightweight SVG renderer).
+- Add a Makefile target that converts each `build/media/*.svg` to `build/media/*.png` using `rsvg-convert`.
+- Redefine `\includesvg` in `_Specification_AuthorSettings.tex` to call `\includegraphics` with the PNG version of the file:
+  ```latex
+  \renewcommand{\includesvg}[2][]{%
+    \makeatletter\filename@parse{#2}\makeatother
+    \includegraphics[#1]{\filename@area\filename@base.png}%
+  }
+  ```
+
+#### 3. Rebuild Docker image
+
+Since the Dockerfile changes, force a rebuild:
+
+```bash
+docker rmi dmn-markdown
+./build-pdf.sh   # rebuilds image then runs make
+```
+
+### Expected result
+
+`output.pdf` should now include real figures and diagrams, closing the gap from 184 to closer to 270 pages.

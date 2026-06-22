@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
   texlive-bibtex-extra \
   texlive-pictures \
   texlive-xetex \
+  librsvg2-bin \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

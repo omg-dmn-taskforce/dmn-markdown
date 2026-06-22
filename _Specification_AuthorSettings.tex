@@ -88,13 +88,46 @@
 \usepackage{multirow}
 \usepackage{amssymb}
 
-%%% SVG images: inkscape is not available, so redefine \includesvg to emit a
-%%% placeholder box instead of attempting inkscape conversion.
+%%% SVG images: inkscape is not available; instead, build/media/*.svg are pre-rasterised
+%%% to PNG by rsvg-convert in the Makefile. Redefine \includesvg to call \includegraphics
+%%% with the PNG version (same path, .png extension) via \filename@parse.
+%%% \makeatletter must wrap the \renewcommand definition so \filename@parse is tokenised
+%%% as a single control sequence while @ is a letter.
+\makeatletter
 \AtBeginDocument{%
-  \renewcommand{\includesvg}[2][]{\fbox{\small[SVG: \detokenize{#2}]}}%
+  \renewcommand{\includesvg}[2][]{%
+    \filename@parse{#2}%
+    \includegraphics[#1]{\filename@area\filename@base.png}%
+  }%
 }
+\makeatother
 
-%%% pandoc wraps table captions in \href{url}{\phantomsection\label{...}text}.
-%%% \phantomsection calls \Hy@raisedlink which fails in longtable caption context.
-%%% Making \phantomsection robust prevents it from expanding in moving arguments.
+%%% pandoc wraps section headings and table captions in \href{url}{text}.
+%%% These URLs are cross-reference artifacts from the Word→pandoc conversion and
+%%% serve no purpose in the produced PDF.  They cause "Illegal parameter number in
+%%% definition of \Hy@tempa" because:
+%%%
+%%%   • The headings/captions are written into .toc/.lot files verbatim (with \href).
+%%%   • On the next pdflatex pass those files are read and \contentsline is called.
+%%%   • Hyperref's \contentsline defines \Hy@tempa with the entry text; any literal #
+%%%     in the URL (from \# or ##) causes the "Illegal parameter number" error.
+%%%
+%%% Fix 1 (preamble): make \phantomsection robust so it survives moving arguments.
+%%% Fix 2 (\contentsline): when any toc/lot entry is processed, locally bind \href
+%%%   to \@secondoftwo (\href{url}{text} → text) so the URL never reaches \Hy@tempa.
+%%% Fix 3 (longtable body): also strip \href inside longtable environments so the
+%%%   typeset caption body does not carry the URL either.
 \robustify\phantomsection
+\makeatletter
+\AtBeginDocument{%
+  \let\dmn@orig@contentsline\contentsline
+  \renewcommand{\contentsline}[4]{%
+    \begingroup
+    \let\href\@secondoftwo
+    \dmn@orig@contentsline{#1}{#2}{#3}{#4}%
+    \endgroup
+  }%
+}
+\makeatother
+\pdfstringdefDisableCommands{\let\href\@secondoftwo}
+\AtBeginEnvironment{longtable}{\renewcommand{\href}[2]{#2}}
