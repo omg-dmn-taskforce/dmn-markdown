@@ -60,3 +60,60 @@
 %%% User added packages
 %%%
 %%% You may add any additional changes you like below this line
+
+%%% pandoc generates \tightlist for compact lists; define it if not already defined.
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%%% Unicode characters from pandoc-converted DMN markdown that pdflatex cannot
+%%% handle natively. newunicodechar declares explicit mappings.
+\usepackage{newunicodechar}
+\newunicodechar{‑}{-}                              % U+2011 non-breaking hyphen
+\newunicodechar{→}{\ensuremath{\rightarrow}}       % U+2192
+\newunicodechar{≤}{\ensuremath{\leq}}              % U+2264
+\newunicodechar{≡}{\ensuremath{\equiv}}            % U+2261
+\newunicodechar{ε}{\ensuremath{\varepsilon}}       % U+03B5
+\newunicodechar{≥}{\ensuremath{\geq}}              % U+2265
+\newunicodechar{−}{\ensuremath{-}}                 % U+2212 minus sign
+\newunicodechar{•}{\textbullet}                    % U+2022 bullet
+\newunicodechar{▪}{\ensuremath{\blacksquare}}      % U+25AA black small square
+\newunicodechar{🐎}{}                              % U+1F40E emoji (artifact)
+\newunicodechar{ὀ}{o}                              % U+1F40 Greek omicron (fallback)
+\newunicodechar{}{$\cdot$}               % U+F02E private use (Wingdings dot)
+
+
+%%% pandoc tables use \real{} (calc), table rules (booktabs), column specs (array), multirow cells.
+\usepackage{calc}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+
+%%% pandoc wraps section headings and table captions in \href{url}{text}.
+%%% These URLs are cross-reference artifacts from the Word→pandoc conversion and
+%%% serve no purpose in the produced PDF.  They cause "Illegal parameter number in
+%%% definition of \Hy@tempa" because:
+%%%
+%%%   • The headings/captions are written into .toc/.lot files verbatim (with \href).
+%%%   • On the next pdflatex pass those files are read and \contentsline is called.
+%%%   • Hyperref's \contentsline defines \Hy@tempa with the entry text; any literal #
+%%%     in the URL (from \# or ##) causes the "Illegal parameter number" error.
+%%%
+%%% Fix 1 (preamble): make \phantomsection robust so it survives moving arguments.
+%%% Fix 2 (\contentsline): when any toc/lot entry is processed, locally bind \href
+%%%   to \@secondoftwo (\href{url}{text} → text) so the URL never reaches \Hy@tempa.
+%%% Fix 3 (longtable body): also strip \href inside longtable environments so the
+%%%   typeset caption body does not carry the URL either.
+\robustify\phantomsection
+\makeatletter
+\AtBeginDocument{%
+  \let\dmn@orig@contentsline\contentsline
+  \renewcommand{\contentsline}[4]{%
+    \begingroup
+    \let\href\@secondoftwo
+    \dmn@orig@contentsline{#1}{#2}{#3}{#4}%
+    \endgroup
+  }%
+}
+\makeatother
+\pdfstringdefDisableCommands{\let\href\@secondoftwo}
+\AtBeginEnvironment{longtable}{\renewcommand{\href}[2]{#2}}

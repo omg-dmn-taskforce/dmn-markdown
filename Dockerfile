@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
   texlive-bibtex-extra \
   texlive-pictures \
   texlive-xetex \
+  inkscape \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

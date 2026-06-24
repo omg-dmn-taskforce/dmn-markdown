@@ -1,3 +1,0 @@
-```{=latex}
-\REPLACEME{OPTIONAL: File 2\_Extended\_Conformance.tex is optional.  If you have optional conformance points that you need to discuss, place them in that file.  If you have none, leave the file empty or delete it.}
-```

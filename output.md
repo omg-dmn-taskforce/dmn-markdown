@@ -1,5 +1,1894 @@
-# Requirements (DRG and DRD) Introduction
+**A****n OMG^®^ Decision Model and Notation^TM^ Publication**
 
+![Text Description automatically
+generated](media/image1.png){width="3.509015748031496in"
+height="1.3680555555555556in"}
+
+**Decision Model and Notation**
+
+Version 1.7 Beta 1
+
+OMG Document Number: dtc/2026-06-01
+
+Release Date: June 2026
+
+Standard Document URL: <https://www.omg.org/spec/DMN>
+
+> Copyright © 2019-2021, 88solutions
+>
+> Copyright © 2019-2026, BOC Products & Services AG
+>
+> Copyright © 2021-2024, BPM Advantage Consulting
+>
+> Copyright © 2015-2026, Camunda Services GmbH
+>
+> Copyright © 2013-2026, Blue Polaris Inc, formerly Decision Management
+> Solutions
+>
+> Copyright © 2019-2021, Department of Veterans Affairs
+>
+> Copyright © 2013-2019, Escape Velocity LLC
+>
+> Copyright © 2013-2026, Fair Isaac Corporation
+>
+> Copyright © 2019-2024, GfSE e.V.
+>
+> Copyright © 2013-2025, International Business Machines Corporation
+>
+> Copyright © 2013-2026, KU Leuven
+>
+> Copyright © 2013-2019, Model Systems Limited
+>
+> Copyright © 2015-2019, Oracle Incorporated
+>
+> Copyright © 2019-2024, PNA Group
+>
+> Copyright © 2020-2026, processCentric GmbH
+>
+> Copyright © 2013-2023, Red Hat Inc
+>
+> Copyright © 2013-2026, Sapiens Decision NA
+>
+> Copyright © 2019-2021, Signavio GmbH
+>
+> Copyright © 2022-2026, Softeam
+>
+> Copyright © 2019-2026, Sparx Systems Pty Ltd
+>
+> Copyright © 2019-2026, Thematix Partners LLC
+>
+> Copyright © 2014-2019, TIBCO Software Inc.
+>
+> Copyright © 2015-2026, Trisotech
+>
+> Copyright © 2015-2025, Object Management Group, Inc.
+
+USE OF SPECIFICATION -- TERMS, CONDITIONS & NOTICES
+
+The material in this document details an Object Management Group
+specification in accordance with the terms, conditions and notices set
+forth below. This document does not represent a commitment to implement
+any portion of this specification in any company\'s products. The
+information contained in this document is subject to change without
+notice.
+
+LICENSES
+
+The companies listed above have granted to the Object Management Group,
+Inc. (OMG) a nonexclusive, royalty-free, paid up, worldwide license to
+copy and distribute this document and to modify this document and
+distribute copies of the modified version. Each of the copyright holders
+listed above has agreed that no person shall be deemed to have infringed
+the copyright in the included material of any such copyright holder by
+reason of having used the specification set forth herein or having
+conformed any computer software to the specification.
+
+Subject to all of the terms and conditions below, the owners of the
+copyright in this specification hereby grant you a fully-paid up,
+non-exclusive, nontransferable, perpetual, worldwide license (without
+the right to sublicense), to use this specification to create and
+distribute software and special purpose specifications that are based
+upon this specification, and to use, copy, and distribute this
+specification as provided under the Copyright Act; provided that: (1)
+both the copyright notice identified above and this permission notice
+appear on any copies of this specification; (2) the use of the
+specifications is for informational purposes and will not be copied or
+posted on any network computer or broadcast in any media and will not be
+otherwise resold or transferred for commercial purposes; and (3) no
+modifications are made to this specification. This limited permission
+automatically terminates without notice if you breach any of these terms
+or conditions. Upon termination, you will destroy immediately any copies
+of the specifications in your possession or control.
+
+PATENTS
+
+The attention of adopters is directed to the possibility that compliance
+with or adoption of OMG specifications may require use of an invention
+covered by patent rights. OMG shall not be responsible for identifying
+patents for which a license may be required by any OMG specification, or
+for conducting legal inquiries into the legal validity or scope of those
+patents that are brought to its attention. OMG specifications are
+prospective and advisory only. Prospective users are responsible for
+protecting themselves against liability for infringement of patents.
+
+GENERAL USE RESTRICTIONS
+
+Any unauthorized use of this specification may violate copyright laws,
+trademark laws, and communications regulations and statutes. This
+document contains information which is protected by copyright. All
+Rights Reserved. No part of this work covered by copyright herein may be
+reproduced or used in any form or by any means\--graphic, electronic, or
+mechanical, including photocopying, recording, taping, or information
+storage and retrieval systems\--without permission of the copyright
+owner.
+
+DISCLAIMER OF WARRANTY
+
+WHILE THIS PUBLICATION IS BELIEVED TO BE ACCURATE, IT IS PROVIDED \"AS
+IS\" AND MAY CONTAIN ERRORS OR MISPRINTS. THE OBJECT MANAGEMENT GROUP
+AND THE COMPANIES LISTED ABOVE MAKE NO WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, WITH REGARD TO THIS PUBLICATION, INCLUDING BUT NOT LIMITED TO
+ANY WARRANTY OF TITLE OR OWNERSHIP, IMPLIED WARRANTY OF MERCHANTABILITY
+OR WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE OR USE. IN NO EVENT
+SHALL THE OBJECT MANAGEMENT GROUP OR ANY OF THE COMPANIES LISTED ABOVE
+BE LIABLE FOR ERRORS CONTAINED HEREIN OR FOR DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, CONSEQUENTIAL, RELIANCE OR COVER DAMAGES, INCLUDING
+LOSS OF PROFITS, REVENUE, DATA OR USE, INCURRED BY ANY USER OR ANY THIRD
+PARTY IN CONNECTION WITH THE FURNISHING, PERFORMANCE, OR USE OF THIS
+MATERIAL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+The entire risk as to the quality and performance of software developed
+using this specification is borne by you. This disclaimer of warranty
+constitutes an essential part of the license granted to you to use this
+specification.
+
+RESTRICTED RIGHTS LEGEND
+
+Use, duplication or disclosure by the U.S. Government is subject to the
+restrictions set forth in subparagraph (c) (1) (ii) of The Rights in
+Technical Data and Computer Software Clause at DFARS 252.227-7013 or in
+subparagraph (c)(1) and (2) of the Commercial Computer Software -
+Restricted Rights clauses at 48 C.F.R. 52.227-19 or as specified in 48
+C.F.R. 227-7202-2 of the DoD F.A.R. Supplement and its successors, or as
+specified in 48 C.F.R. 12.212 of the Federal Acquisition Regulations and
+its successors, as applicable. The specification copyright owners are as
+indicated above and may be contacted through the Object Management
+Group, 9C Medway Rd, PMB 274, Milford, MA 01757, U.S.A.
+
+TRADEMARKS
+
+CORBA^®^, CORBA logos^®^, FIBO^®^, Financial Industry Business
+Ontology^®^, FINANCIAL INSTRUMENT GLOBAL IDENTIFIER^®^, IIOP^®^, IMM^®^,
+Model Driven Architecture^®^, MDA^®^, Object Management Group^®^,
+OMG^®^, OMG Logo^®^, SoaML^®^, SOAML^®^, SysML^®^, UAF^®^, Unified
+Modeling Language^®^, UML^®^, UML Cube Logo^®^, VSIPL^®^, and XMI^®^ are
+registered trademarks of the Object Management Group, Inc.
+
+For a complete list of trademarks, see:
+https://www.omg.org/legal/tm_list.htm. All other products or company
+names mentioned are used for identification purposes only and may be
+trademarks of their respective owners.
+
+COMPLIANCE
+
+The copyright holders listed above acknowledge that the Object
+Management Group (acting itself or through its designees) is and shall
+at all times be the sole entity that may authorize developers, suppliers
+and sellers of computer software to use certification marks, trademarks
+or other special designations to indicate compliance with these
+materials.
+
+Software developed under the terms of this license may claim compliance
+or conformance with this specification if and only if the software
+compliance is of a nature fully matching the applicable compliance
+points as stated in the specification. Software developed only partially
+matching the applicable compliance points may claim only that the
+software was based on this specification, but may not claim compliance
+or conformance with this specification. In the event that testing suites
+are implemented or approved by Object Management Group, Inc., software
+developed using this specification may claim compliance or conformance
+with the specification only if the software satisfactorily completes the
+testing suites.
+
+**OMG\'s Issue Reporting Procedure**
+
+All OMG specifications are subject to continuous review and improvement.
+As part of this process, we encourage readers to report any ambiguities,
+inconsistencies, or inaccuracies they may find by completing the Issue
+Reporting Form listed on the main web page https://www.omg.org, under
+Specifications, Report a Bug/Issue.
+
+Table of Contents
+
+[Preface [x](#_Toc231385105)](#_Toc231385105)
+
+[1 Scope [1](#scope)](#scope)
+
+[2 Conformance [1](#conformance)](#conformance)
+
+[2.1 Conformance levels [1](#conformance-levels)](#conformance-levels)
+
+[2.2 General conformance requirement
+[2](#general-conformance-requirement)](#general-conformance-requirement)
+
+[2.2.1 Visual appearance [2](#visual-appearance)](#visual-appearance)
+
+[2.2.2 Decision semantics [2](#decision-semantics)](#decision-semantics)
+
+[2.2.3 Attributes and model associations
+[2](#attributes-and-model-associations)](#attributes-and-model-associations)
+
+[3 References [3](#references)](#references)
+
+[3.1 Normative [3](#normative)](#normative)
+
+[3.2 Non-normative [4](#_Toc231385115)](#_Toc231385115)
+
+[4 Additional information [5](#_Toc231385116)](#_Toc231385116)
+
+[4.1 Acknowledgements [5](#_Toc231385117)](#_Toc231385117)
+
+[4.2 IPR and Patents [7](#_Toc231385118)](#_Toc231385118)
+
+[4.3 Guide to the Specification [7](#_Toc231385119)](#_Toc231385119)
+
+[5 Introduction to DMN [10](#_Toc231385120)](#_Toc231385120)
+
+[5.1 Context [10](#_Toc231385121)](#_Toc231385121)
+
+[5.2 Scope and uses of DMN [12](#_Toc231385122)](#_Toc231385122)
+
+[5.2.1 Modeling human decision-making
+[12](#_Toc231385123)](#_Toc231385123)
+
+[5.2.2 Modeling requirements for automated decision-making
+[13](#_Toc231385124)](#_Toc231385124)
+
+[5.2.3 Implementing automated decision-making
+[14](#_Toc231385125)](#_Toc231385125)
+
+[5.2.4 Combining applications of modelling
+[14](#_Toc231385126)](#_Toc231385126)
+
+[5.3 Basic concepts [15](#_Toc231385127)](#_Toc231385127)
+
+[5.3.1 Decision requirements level [15](#_Toc231385128)](#_Toc231385128)
+
+[5.3.2 Decision logic level [16](#_Toc231385129)](#_Toc231385129)
+
+[5.3.3 Decision services [18](#_Toc231385130)](#_Toc231385130)
+
+[6 Requirements (DRG and DRD) [22](#_Toc231385131)](#_Toc231385131)
+
+[6.1 Introduction [22](#_Toc231385132)](#_Toc231385132)
+
+[6.2 Notation [22](#_Toc231385133)](#_Toc231385133)
+
+[6.2.1 DRD Elements [24](#_Toc231385134)](#_Toc231385134)
+
+[6.2.2 DRD Requirements [25](#_Toc231385135)](#_Toc231385135)
+
+[6.2.3 Connection rules [27](#_Toc231385136)](#_Toc231385136)
+
+[6.2.4 Partial views and hidden information
+[28](#_Toc231385137)](#_Toc231385137)
+
+[6.2.5 Decision service [29](#_Toc231385138)](#_Toc231385138)
+
+[6.2.6 Identifying Collections [31](#_Toc231385139)](#_Toc231385139)
+
+[6.3 Metamodel [32](#_Toc231385140)](#_Toc231385140)
+
+[6.3.1 DMN Element metamodel [32](#_Toc231385141)](#_Toc231385141)
+
+[6.3.2 Definitions metamodel [34](#_Toc231385142)](#_Toc231385142)
+
+[6.3.3 Import metamodel [36](#_Toc231385143)](#_Toc231385143)
+
+[6.3.4 Element Collection metamodel
+[37](#_Toc231385144)](#_Toc231385144)
+
+[6.3.5 DRG Element metamodel [37](#_Toc231385145)](#_Toc231385145)
+
+[6.3.6 Artifact metamodel [38](#_Toc231385146)](#_Toc231385146)
+
+[6.3.7 Decision metamodel [39](#_Toc231385147)](#_Toc231385147)
+
+[6.3.8 Business Context Element metamodel
+[41](#_Toc231385148)](#_Toc231385148)
+
+[6.3.9 Business Knowledge Model metamodel
+[43](#_Toc231385149)](#_Toc231385149)
+
+[6.3.10 Decision service metamodel [44](#_Toc231385150)](#_Toc231385150)
+
+[6.3.11 Input Data metamodel [46](#_Toc231385151)](#_Toc231385151)
+
+[6.3.12 Knowledge Source metamodel [47](#_Toc231385152)](#_Toc231385152)
+
+[6.3.13 Information Requirement metamodel
+[47](#_Toc231385153)](#_Toc231385153)
+
+[6.3.14 Knowledge Requirement metamodel
+[48](#_Toc231385154)](#_Toc231385154)
+
+[6.3.15 Authority Requirement metamodel
+[49](#_Toc231385155)](#_Toc231385155)
+
+[6.3.16 Extensibility [50](#_Toc231385156)](#_Toc231385156)
+
+[6.4 Examples [51](#_Toc231385157)](#_Toc231385157)
+
+[7 Relating Decision Logic to Decision Requirements
+[53](#_Toc231385158)](#_Toc231385158)
+
+[7.1 Introduction [53](#_Toc231385159)](#_Toc231385159)
+
+[7.2 Notation [55](#_Toc231385160)](#_Toc231385160)
+
+[7.2.1 Expressions [55](#_Toc231385161)](#_Toc231385161)
+
+[7.2.2 Boxed literal expression [55](#_Toc231385162)](#_Toc231385162)
+
+[7.2.3 Boxed invocation [56](#_Toc231385163)](#_Toc231385163)
+
+[7.3 Metamodel [57](#_Toc231385164)](#_Toc231385164)
+
+[7.3.1 Expression metamodel [58](#_Toc231385165)](#_Toc231385165)
+
+[7.3.2 UnaryTests Metamodel [59](#_Toc231385166)](#_Toc231385166)
+
+[7.3.3 ItemDefinition metamodel [59](#_Toc231385167)](#_Toc231385167)
+
+[7.3.4 InformationItem metamodel [62](#_Toc231385168)](#_Toc231385168)
+
+[7.3.5 Literal expression metamodel
+[63](#_Toc231385169)](#_Toc231385169)
+
+[7.3.6 Invocation metamodel [64](#_Toc231385170)](#_Toc231385170)
+
+[7.3.7 Binding metamodel [65](#_Toc231385171)](#_Toc231385171)
+
+[7.3.8 Error Handling [65](#_Toc231385172)](#_Toc231385172)
+
+[8 Decision Table [67](#_Toc231385173)](#_Toc231385173)
+
+[8.1 Introduction [67](#_Toc231385174)](#_Toc231385174)
+
+[8.2 Notation [70](#_Toc231385175)](#_Toc231385175)
+
+[8.2.1 Line style and color [70](#_Toc231385176)](#_Toc231385176)
+
+[8.2.2 Table orientation [70](#_Toc231385177)](#_Toc231385177)
+
+[8.2.3 Input expressions [72](#_Toc231385178)](#_Toc231385178)
+
+[8.2.4 Input values [72](#_Toc231385179)](#_Toc231385179)
+
+[8.2.5 Information Item names, output labels, and output component names
+[73](#_Toc231385180)](#_Toc231385180)
+
+[8.2.6 Output values [73](#_Toc231385181)](#_Toc231385181)
+
+[8.2.7 Multiple outputs [73](#_Toc231385182)](#_Toc231385182)
+
+[8.2.8 Input entries [74](#_Toc231385183)](#_Toc231385183)
+
+[8.2.9 Merged input entry cells [74](#_Toc231385184)](#_Toc231385184)
+
+[8.2.10 Output entry [75](#_Toc231385185)](#_Toc231385185)
+
+[8.2.11 Hit policy [75](#_Toc231385186)](#_Toc231385186)
+
+[8.2.12 Default output values [77](#_Toc231385187)](#_Toc231385187)
+
+[8.3 Metamodel [78](#_Toc231385188)](#_Toc231385188)
+
+[8.3.1 Decision Table metamodel [78](#_Toc231385189)](#_Toc231385189)
+
+[8.3.2 Decision Table Input and Output metamodel
+[79](#_Toc231385190)](#_Toc231385190)
+
+[8.3.3 Decision Rule metamodel [81](#_Toc231385191)](#_Toc231385191)
+
+[8.4 Examples [82](#_Toc231385192)](#_Toc231385192)
+
+[9 Simple Expression Language (S-FEEL)
+[85](#_Toc231385193)](#_Toc231385193)
+
+[9.1 Introduction [85](#_Toc231385194)](#_Toc231385194)
+
+[9.2 S-FEEL syntax [85](#_Toc231385195)](#_Toc231385195)
+
+[9.3 S-FEEL data types [87](#_Toc231385196)](#_Toc231385196)
+
+[9.4 S-FEEL semantics [87](#_Toc231385197)](#_Toc231385197)
+
+[9.5 Use of S-FEEL expressions [88](#_Toc231385198)](#_Toc231385198)
+
+[9.5.1 Item definitions [88](#_Toc231385199)](#_Toc231385199)
+
+[9.5.2 Invocations [88](#_Toc231385200)](#_Toc231385200)
+
+[9.5.3 Decision tables [88](#_Toc231385201)](#_Toc231385201)
+
+[10 Expression Language (FEEL) [91](#_Toc231385202)](#_Toc231385202)
+
+[10.1 Introduction [91](#_Toc231385203)](#_Toc231385203)
+
+[10.2 Notation [91](#_Toc231385204)](#_Toc231385204)
+
+[10.2.1 Boxed Expressions [91](#_Toc231385205)](#_Toc231385205)
+
+[10.2.2 FEEL [102](#_Toc231385206)](#_Toc231385206)
+
+[10.3 Full FEEL Syntax and Semantics
+[104](#_Toc231385207)](#_Toc231385207)
+
+[10.3.1 Syntax [104](#_Toc231385208)](#_Toc231385208)
+
+[10.3.2 Semantics [110](#_Toc231385209)](#_Toc231385209)
+
+[10.3.3 XML Data [140](#xml-data)](#xml-data)
+
+[10.3.4 Built-in functions
+[143](#built-in-functions-1)](#built-in-functions-1)
+
+[10.3.5 FEEL Libraries [162](#feel-libraries)](#feel-libraries)
+
+[10.4 Execution Semantics of Decision Services
+[163](#execution-semantics-of-decision-services)](#execution-semantics-of-decision-services)
+
+[10.5 Metamodel [164](#metamodel-3)](#metamodel-3)
+
+[10.5.1 Context metamodel [165](#context-metamodel)](#context-metamodel)
+
+[10.5.2 ContextEntry metamodel
+[165](#contextentry-metamodel)](#contextentry-metamodel)
+
+[10.5.3 FunctionDefinition metamodel
+[165](#functiondefinition-metamodel)](#functiondefinition-metamodel)
+
+[10.5.4 List metamodel [166](#list-metamodel)](#list-metamodel)
+
+[10.5.5 Relation metamodel
+[166](#relation-metamodel)](#relation-metamodel)
+
+[10.5.6 Conditional metamodel
+[167](#conditional-metamodel)](#conditional-metamodel)
+
+[10.5.7 ChildExpression metamodel
+[167](#childexpression-metamodel)](#childexpression-metamodel)
+
+[10.5.8 Filter metamodel [167](#filter-metamodel)](#filter-metamodel)
+
+[10.5.9 Iterator metamodel
+[168](#iterator-metamodel)](#iterator-metamodel)
+
+[10.5.10 For metamodel [168](#for-metamodel)](#for-metamodel)
+
+[10.5.11 Quantified metamodel
+[168](#quantified-metamodel)](#quantified-metamodel)
+
+[10.5.12 Every metamodel [168](#every-metamodel)](#every-metamodel)
+
+[10.5.13 Some metamodel [169](#some-metamodel)](#some-metamodel)
+
+[10.6 Examples [169](#examples-3)](#examples-3)
+
+[10.6.1 Context [169](#context-1)](#context-1)
+
+[10.6.2 Calculation [170](#calculation)](#calculation)
+
+[10.6.3 If, In [170](#if-in)](#if-in)
+
+[10.6.4 Sum entries of a list
+[170](#sum-entries-of-a-list)](#sum-entries-of-a-list)
+
+[10.6.5 Invocation of user-defined PMT function
+[170](#invocation-of-user-defined-pmt-function)](#invocation-of-user-defined-pmt-function)
+
+[10.6.6 Sum weights of a recent credit history
+[170](#sum-weights-of-a-recent-credit-history)](#sum-weights-of-a-recent-credit-history)
+
+[10.6.7 Determine if credit history contain a bankruptcy event
+[171](#determine-if-credit-history-contain-a-bankruptcy-event)](#determine-if-credit-history-contain-a-bankruptcy-event)
+
+[11 B-FEEL [173](#b-feel)](#b-feel)
+
+[11.1 Introduction [173](#introduction-4)](#introduction-4)
+
+[11.2 Operator and built-in functions returning a Boolean
+[173](#operator-and-built-in-functions-returning-a-boolean)](#operator-and-built-in-functions-returning-a-boolean)
+
+[11.3 Built-in functions returning a number
+[174](#built-in-functions-returning-a-number)](#built-in-functions-returning-a-number)
+
+[11.4 Built-in functions returning a string
+[175](#built-in-functions-returning-a-string)](#built-in-functions-returning-a-string)
+
+[11.5 Built-in functions returning a date and time, date and time
+[175](#built-in-functions-returning-a-date-and-time-date-and-time)](#built-in-functions-returning-a-date-and-time-date-and-time)
+
+[11.6 Built-in functions returning a duration
+[175](#built-in-functions-returning-a-duration)](#built-in-functions-returning-a-duration)
+
+[11.7 Built-in functions returning a collection and expressions using a
+collection
+[176](#built-in-functions-returning-a-collection-and-expressions-using-a-collection)](#built-in-functions-returning-a-collection-and-expressions-using-a-collection)
+
+[11.8 Built-in functions returning a range
+[176](#built-in-functions-returning-a-range)](#built-in-functions-returning-a-range)
+
+[11.9 Semantics of addition and subtraction
+[176](#semantics-of-addition-and-subtraction)](#semantics-of-addition-and-subtraction)
+
+[11.10 Semantics of multiplication and division
+[177](#semantics-of-multiplication-and-division)](#semantics-of-multiplication-and-division)
+
+[11.11 Semantics of exponentiation
+[178](#semantics-of-exponentiation)](#semantics-of-exponentiation)
+
+[12 DMN Examples [180](#dmn-examples)](#dmn-examples)
+
+[12.1 Example 1: Originations
+[180](#example-1-originations)](#example-1-originations)
+
+[12.1.1 Introduction [180](#introduction-5)](#introduction-5)
+
+[12.1.2 The business process model
+[180](#the-business-process-model)](#the-business-process-model)
+
+[12.1.3 The decision requirements level
+[181](#the-decision-requirements-level)](#the-decision-requirements-level)
+
+[12.1.4 The decision logic level
+[192](#the-decision-logic-level)](#the-decision-logic-level)
+
+[12.1.5 Executing the Decision Model
+[204](#executing-the-decision-model)](#executing-the-decision-model)
+
+[12.2 Example 2: Ranked Loan Products
+[205](#example-2-ranked-loan-products)](#example-2-ranked-loan-products)
+
+[13 Exchange Formats [224](#exchange-formats)](#exchange-formats)
+
+[13.1 Interchanging Incomplete Models
+[224](#interchanging-incomplete-models)](#interchanging-incomplete-models)
+
+[13.2 Machine Readable Files
+[224](#machine-readable-files)](#machine-readable-files)
+
+[13.3 XSD [224](#xsd)](#xsd)
+
+[13.3.1 Document Structure
+[224](#document-structure)](#document-structure)
+
+[13.3.2 References within the DMN XSD
+[225](#references-within-the-dmn-xsd)](#references-within-the-dmn-xsd)
+
+[14 DMN Diagram Interchange (DMN DI)
+[227](#_Toc231385262)](#_Toc231385262)
+
+[14.1 Scope [227](#_Toc231385263)](#_Toc231385263)
+
+[14.2 Diagram Definition and Interchange
+[227](#_Toc231385264)](#_Toc231385264)
+
+[14.3 How to read this chapter [227](#_Toc231385265)](#_Toc231385265)
+
+[14.4 DMN Diagram Interchange Meta-Model
+[227](#_Toc231385266)](#_Toc231385266)
+
+[14.4.1 Overview [227](#_Toc231385267)](#_Toc231385267)
+
+[14.4.2 DMNDI \[Class\] [228](#_Toc231385268)](#_Toc231385268)
+
+[14.4.3 DMNDiagram \[Class\] [229](#_Toc231385269)](#_Toc231385269)
+
+[14.4.4 DMNDiagramElement \[Class\]
+[230](#_Toc231385270)](#_Toc231385270)
+
+[14.4.5 DMNShape \[Class\] [231](#_Toc231385271)](#_Toc231385271)
+
+[14.4.6 DMNEdge \[Class\] [232](#_Toc231385272)](#_Toc231385272)
+
+[14.4.7 DMNLabel \[Class\] [233](#_Toc231385273)](#_Toc231385273)
+
+[14.4.8 DMNStyle \[Class\] [234](#_Toc231385274)](#_Toc231385274)
+
+[14.5 Notation Depiction Library and Abstract Element Resolutions
+[235](#_Toc231385275)](#_Toc231385275)
+
+[14.5.1 Labels [236](#_Toc231385276)](#_Toc231385276)
+
+[14.5.2 DMNShape Resolution [236](#_Toc231385277)](#_Toc231385277)
+
+[14.5.3 DMNEdge Resolution [239](#_Toc231385278)](#_Toc231385278)
+
+[ANNEXES [241](#_Toc231385279)](#_Toc231385279)
+
+[Annex A Relation to BPMN (informative)
+[243](#_Toc231385280)](#_Toc231385280)
+
+[A.1 Goals of BPMN and DMN [243](#_Toc231385281)](#_Toc231385281)
+
+[A.2 BPMN Tasks and DMN Decisions [243](#_Toc231385282)](#_Toc231385282)
+
+[A.3 Types of BPMN Tasks relevant to DMN
+[244](#_Toc231385283)](#_Toc231385283)
+
+[A.4 Process gateways and Decisions
+[245](#_Toc231385284)](#_Toc231385284)
+
+[A.5 Linking BPMN and DMN Models [245](#_Toc231385285)](#_Toc231385285)
+
+[a) Associating Decisions with Tasks and Processes
+[246](#_Toc231385286)](#_Toc231385286)
+
+[b) Decision Services [246](#_Toc231385287)](#_Toc231385287)
+
+[Annex B Glossary [248](#_Toc231385288)](#_Toc231385288)
+
+[]{#_Toc231385105 .anchor}Preface
+
+**About the Object Management Group**
+
+Founded in 1989, the Object Management Group, Inc. (OMG) is an open
+membership, not-for-profit computer industry standards consortium that
+produces and maintains computer industry specifications for
+interoperable, portable and reusable enterprise applications in
+distributed, heterogeneous environments. Membership includes Information
+Technology vendors, end users, government agencies and academia.
+
+OMG member companies write, adopt, and maintain its specifications
+following a mature, open process. OMG\'s specifications implement the
+Model Driven Architecture® (MDA®), maximizing ROI through a
+full-lifecycle approach to enterprise integration that covers multiple
+operating systems, programming languages, middleware and networking
+infrastructures, and software development environments. OMG's
+specifications include: UML® (Unified Modeling Language™); CORBA®
+(Common Object Request Broker Architecture); CWM™ (Common Warehouse
+Meta-model); and industry-specific standards for dozens of vertical
+markets.
+
+More information on the OMG is available at
+[*https://www.omg.org/*](https://www.omg.org/).
+
+**OMG Specifications**
+
+As noted, OMG specifications address middleware, modeling and vertical
+domain frameworks. All OMG Formal Specifications are available from this
+URL: *https://www.omg.org/spec*
+
+All of OMG‟s formal specifications may be downloaded without charge from
+our website. (Products implementing OMG specifications are available
+from individual suppliers.) Copies of specifications, available in
+PostScript and PDF format, may be obtained from the Specifications
+Catalog cited above or by contacting the Object Management Group, Inc.
+at:
+
+OMG Headquarters\
+9C Medway Road, PMB 274\
+Milford, MA 01757\
+USA
+
+Tel: +1-781-444-0404\
+Fax: +1-781-444-0320
+
+Email: [*pubs@omg.org*](mailto:pubs@omg.org)
+
+Certain OMG specifications are also available as ISO/IEC standards.
+Please consult: <http://www.iso.org>
+
+**Issues**
+
+The reader is encouraged to report and technical or editing
+issues/problems with this specification to:
+<https://www.omg.org/report_issue.htm>
+
+# Scope
+
+The primary goal of **DMN** is to provide a common notation that is
+readily understandable by all business users, from the business analysts
+needing to create initial decision requirements and then more detailed
+decision models, to the technical developers responsible for automating
+the decisions in processes, and finally, to the businesspeople who will
+manage and monitor those decisions. **DMN** creates a standardized
+bridge for the gap between the business decision design and decision
+implementation. **DMN** notation is designed to be usable alongside the
+standard **BPMN** business process notation.
+
+Another goal is to ensure that decision models are interchangeable
+across organizations via an XML representation.
+
+The authors have brought forth expertise and experience from the
+existing decision modeling community and have sought to consolidate the
+common ideas from these divergent notations into a single standard
+notation.
+
+# Conformance 
+
+## Conformance levels
+
+Software may claim compliance or conformance with **DMN** if and only if
+the software fully matches the applicable compliance points as stated in
+the specification. Software developed only partially matching the
+applicable compliance points may claim that the software was based on
+this specification but may not claim compliance or conformance with this
+specification.
+
+The specification defines three levels of conformance, namely
+**Conformance Level 1**, **Conformance Level 2**, and **Conformance
+Level 3**.
+
+An implementation claiming conformance to Conformance Level 1 is not
+required to support Conformance Level 2 or Conformance Level 3. An
+implementation claiming conformance to Conformance Level 2 is not
+required to support Conformance Level 3.
+
+An implementation claiming conformance to **Conformance Level 1** SHALL
+comply with all of the specifications set forth in clauses 6 (Decision
+Requirements), 7 (Decision Logic) and 8 (Decision Table) of this
+document. An implementation claiming conformance to Conformance Level 1
+is never required to interpret expressions (modeled as an Expression
+elements) in decision models. However, to the extent that an
+implementation claiming conformance to Conformance Level 1 provides an
+interpretation to an expression, that interpretation SHALL be consistent
+with the semantics of expressions as specified in clause 7.
+
+An implementation claiming conformance to **Conformance Level 2** SHALL
+comply with all of the specifications set forth in clauses
+[6](#_Ref152655601) (Decision Requirements), [7](#_Ref194300068)
+(Decision Logic) and [8](#_Ref122607333) (Decision Table) of this
+document. In addition, it is required to interpret expressions in the
+simple expression language (S-FEEL) specified in clause
+[9](#_Ref194300096).
+
+An implementation claiming conformance to **Conformance Level 3** SHALL
+comply with all of the specifications set forth in clauses
+[6](#_Ref152655601) (Decision Requirements), [7](#_Ref194300129)
+(Decision Logic), [8](#_Ref122607333) (Decision Table) and
+[10](#_Ref122607316) (Expression language) of this document. An
+implementation does NOT need to support any Function Kind other than
+FEEL to claim conformance to Level 3, i.e. support for Java, PMML, and
+ONNX is optional. Notice that the simple expression language that is
+specified in clause [9](#_Ref194300194) is a subset of FEEL, and that,
+therefore, an implementation claiming conformance to Conformance Level 3
+can also claim conformance to Conformance Level 2 (and to Conformance
+Level 1).
+
+In addition, an implementation claiming conformance to any of the three
+**DMN** conformance levels SHALL comply with all of the requirements set
+forth in Clause [2.2](#general-conformance-requirement).
+
+## General conformance requirement
+
+### Visual appearance
+
+A key element of **DMN** is the choice of shapes and icons used for the
+graphical elements identified in this specification. The intent is to
+create a standard visual language that all decision modelers will
+recognize and understand. An implementation that creates and displays
+decision model diagrams SHALL use the graphical elements, shapes, and
+markers illustrated in this specification.
+
+There is flexibility in the size, color, line style, and text positions
+of the defined graphical elements, except where otherwise specified.
+
+The following extensions to a **DMN** Diagram are permitted:
+
+- New markers or indicators MAY be added to the specified graphical
+  elements. These markers or indicators could be used to highlight a
+  specific attribute of a DMN element or to represent a new subtype of
+  the corresponding concept.
+
+- A new shape representing a new kind of artifact MAY be added to a
+  Diagram, but the new shape SHALL NOT conflict with the shape specified
+  for any other DMN element or marker.
+
+- Graphical elements MAY be colored, and the coloring may have specified
+  semantics that extend the information conveyed by the element as
+  specified in this standard.
+
+- The line style of a graphical element MAY be changed, but that change
+  SHALL NOT conflict with any other line style required by this
+  specification.
+
+### Decision semantics
+
+This specification defines many semantic concepts used in defining
+decisions and associates them with graphical elements, markers, and
+connections.
+
+To the extent that an implementation provides an interpretation of some
+**DMN** diagram element as a semantic specification of the associated
+concept, the interpretation SHALL be consistent with the semantic
+interpretation herein specified.
+
+### Attributes and model associations
+
+This specification defines a number of attributes and properties of the
+semantic elements represented by the graphical elements, markers, and
+connections. Some attributes are specified as mandatory but have no
+representation or only optional representation. And some attributes are
+specified as optional.
+
+For every attribute or property that is specified as mandatory, a
+conforming implementation SHALL provide some mechanism by which values
+of that attribute or property can be created and displayed. This
+mechanism SHALL permit the user to create or view these values for each
+**DMN** element specified to have that attribute or property.
+
+Where a graphical representation for that attribute or property is
+specified as required, that graphical representation SHALL be used.
+Where a graphical representation for that attribute or property is
+specified as optional, the implementation MAY use either a graphical
+representation or some other mechanism.
+
+If a graphical representation is used, it SHALL be the representation
+specified. Where no graphical representation for that attribute or
+property is specified, the implementation MAY use either a graphical
+representation or some other mechanism. If a graphical representation is
+used, it SHALL NOT conflict with the specified graphical representation
+of any other **DMN** element.
+
+# References 
+
+## Normative 
+
+BMM
+
+- *Business Motivation Model (BMM), Version 1.2*, OMG Document number:
+  formal/2014-05-01, May 2014
+  [[https://www.omg.org/spec/BMM/1.2]{.underline}](https://www.omg.org/spec/BMM/1.2)
+
+BPMN 2.0
+
+- *Business Process Model and Notation, version 2.0*, OMG Document
+  Number: formal/2011-01-03, January 2011
+  [[https://www.omg.org/spec/BPMN/2.0]{.underline}](https://www.omg.org/spec/BPMN/2.0)
+
+CQL
+
+- *Clinical Quality Language*, V1.4, HL7
+  [[https://cql.hl7.org/09-b-cqlreference.html#interval-operators-3]{.underline}](https://cql.hl7.org/09-b-cqlreference.html#interval-operators-3)
+
+IEEE 754
+
+- *IEEE 754-2008, IEEE Standard for Floating-Point Arithmetic*,
+  International Electrical and Electronics Engineering Society,
+  December, 2008
+
+> <https://www.techstreet.com/ieee/searches/5835853>
+
+ISO 8601
+
+- *ISO 8601:2004, Data elements and interchange formats \-- Information
+  interchange \-- Representation of dates and times*, International
+  Organization for Standardization, 2004
+
+> <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=40874>
+
+*\*
+ISO EBNF
+
+- *ISO/IEC 14977:1996, Information technology \-- Syntactic metalanguage
+  \-- Extended BNF, International Organization for Standardization*,
+  1996
+
+> <https://standards.iso.org/ittf/PubliclyAvailableStandards/s026153_ISO_IEC_14977_1996(E).zip>
+
+Java
+
+- *The Java Language Specification, Java SE 7 Edition*, Oracle
+  Corporation, February 2013
+  <https://docs.oracle.com/javase/specs/jls/se7/jls7.pdf>
+
+ONNX
+
+- <https://onnx.ai/>
+
+PMML
+
+- *Predictive Model Markup Language (PMML)*, Data Mining Group, May,
+  2014
+  <https://www.dmg.org/v4>[[-2-1/GeneralStructure.html]{.underline}](http://www.dmg.org/v4-2-1/GeneralStructure.html)
+
+RFC 3986
+
+- *RFC 3986: Uniform Resource Identifier (URI): Generic Syntax*.
+  Berners-Lee, T., Fielding, R., and Masinter, L, editors. Internet
+  Engineering Task Force, 2005.
+  [https://www.ietf.org/rfc/rfc3986.txt](https://www.ietf.org/rfc/rfc3986.txt%20)
+
+SCE
+
+- *Specification Common Elements (SCE), version 1.0*
+
+[https://www.omg.org/spec/SCE/1.0UML](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*Unified Modeling Language (UML), v2.4.1*, OMG Document Number
+formal/2011-08-05, August 2011
+[[https://www.omg.org/spec/UML/2.4.1]{.underline}](https://www.omg.org/spec/UML/2.4.1)\
+XBASE](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+> [*XML Base (Second Edition)*. Jonathan Marsh and Richard Tobin,
+> editors. World Wide Web Consortium, 2009.
+> <https://www.w3.org/TR/xmlbase/>](https://www.omg.org/spec/SCE/1.0)
+
+[XML](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*Extensible Markup Language (XML) 1.0 (Fifth Edition)*, W3C
+Recommendation 26 November 2008
+[https://www.w3.org/TR/xml/](https://www.w3.org/TR/xml/%20)\
+XML Schema](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*XML Schema Part 2: Datatypes Second Edition*, W3C Recommendation 28
+October 2004
+<https://www.w3.org/TR/xmlschema>[[-2/]{.underline}](http://www.w3.org/TR/xmlschema-2/)
+XPath Data Model](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*XQuery 3.1 and XPath 3.1* *Data Model (XDM) (Second Edition)*, W3C
+Recommendation 14 December 2010
+[https://www.w3.org/TR/xpath-datamodel/](https://www.w3.org/TR/xpath-datamodel/%20)\
+XQuery and XPath Functions and
+Operators](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+> [*XQuery 3.1 and XPath 3.1* *Functions and Operators (Second
+> Edition)*, W3C Recommendation 14 December 2010
+> <https://www.w3.org/TR/xpath>[[-functions/XQuery]{.underline}](http://www.w3.org/TR/xpath-functions/XQuery)](https://www.omg.org/spec/SCE/1.0)
+
+## [[]{#_Toc231385115 .anchor}Non-normative](https://www.omg.org/spec/SCE/1.0) 
+
+[JSON](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*ECMA-404 The JSON Data Interchange Standard*, European Computer
+Manufacturers Association, October, 2013
+<https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf>PRR](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*Production Rule Representation (PRR), Version 1.0*, December 2009, OMG
+document number formal/2009-12 01 <https://www.omg.org/spec/PRR/1.0/>
+RIF](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*RIF production rule dialect*, Ch. de Sainte Marie et al. (Eds.) , W3C
+Recommendation, 22 June 2010.
+<https://www.w3.org/TR/rif-prd/>](https://www.omg.org/spec/SCE/1.0)
+
+[SBVR](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*Semantics of Business Vocabulary and Business Rules (SBVR)*, V1.2, OMG
+document number formal/2013-11- 04, November 2013
+[https://www.omg.org/spec/SBVR/1.2/](https://www.omg.org/spec/SBVR/1.2/%20)
+SQL](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[ISO/IEC 9075-11:2011, Information technology \-- Database languages \--
+SQL \-- Part 11: Information and Definition Schemas (SQL/Schemata),
+International Organization for Standardization, 2011
+<https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=5368>
+XPath](https://www.omg.org/spec/SCE/1.0)
+
+- 
+
+[*XML Path Language (XPath) Version 1.0*, W3C Recommendation 16 November
+1999 <https://www.w3.org/TR/xpath>](https://www.omg.org/spec/SCE/1.0)
+
+# 
+
+## [[[]{#_Toc231385116 .anchor}]{#_Ref193707321 .anchor}Additional information []{#_Toc231385117 .anchor}Acknowledgements](https://www.omg.org/spec/SCE/1.0)
+
+[The following companies submitted version 1.0 of this
+specification:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+- 
+- 
+
+[Decision Management Solutions Escape Velocity FICO International
+Business Machines Oracle The following companies supported this
+specification:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+- 
+
+[KU Leuven Knowledge Partners International Model Systems TIBCO The
+following persons were members of the core team that contributed to the
+content specification: Martin Chapman, Bob Daniel, Alan Fish, Larry
+Goldberg, John Hall, Barbara von Halle, Gary Hallmark, Dave Ings,
+Christian de Sainte Marie, James Taylor, Jan Vanthienen, Paul Vincent.
+In addition, the following persons contributed valuable ideas and
+feedback that improved the content and the quality of this
+specification: Bas Janssen, Robert Lario, Pete
+Rivett.](https://www.omg.org/spec/SCE/1.0)
+
+[Version 1.1 was developed by the following persons and companies: Elie
+Abi-Lahoud, University College Cork;](https://www.omg.org/spec/SCE/1.0)
+
+[Justin Brunt, TIBCO; Alan Fish, FICO; John Hall, Rule ML Initiative;
+Denis Gagne, Trisotech; Gary Hallmark, Oracle; Elisa Kendall, Thematix
+Partners LLC; Manfred Koethe, 88solutions; Falko Menge, Camunda Services
+GmbH; Zbigniew Misiak, BOC Information Technologies Consulting; Sjir
+Nijssen, PNA Group; Mihail Popov, MITRE; Pete Rivett, Adaptive; Bruce
+Silver, Bruce Silver Associates; Bastian Steinert, Signavio GmbH; Tim
+Stephenson, Omny Link; James Taylor, Decision Management Solutions; Jan
+Vanthienen, K.U. Leuven; Paul Vincent, Knowledge Partners,
+Inc.](https://www.omg.org/spec/SCE/1.0)
+
+[Version 1.2 was developed by the following persons and companies: Alan
+Fish, FICO; Denis Gagne, Trisotech; Gary Hallmark, Oracle; Elisa
+Kendall, Thematix Partners LLC; Manfred Koethe, 88solutions; Falko
+Menge, Camunda Services GmbH; Zbigniew Misiak, BOC Products & Services
+AG; Sjir Nijssen, PNA Group; Octavian Patrascoiu, Goldman Sachs; Bruce
+Silver, Bruce Silver Associates; Gil Ronen, Sapiens DECISION; Caroline
+Scharf, Tom Sawyer Software; Bastian Steinert, Signavio GmbH; James
+Taylor, Decision Management Solutions; Edson Tirelli, Red Hat; Jan
+Vanthienen, K.U. Leuven; Stephen White, Department of Veterans
+Affairs.](https://www.omg.org/spec/SCE/1.0)
+
+[Version 1.3 was developed by the following persons and companies: Alan
+Fish, FICO; Denis Gagne, Trisotech; Gary Hallmark, Oracle; Uwe Kaufmann,
+GfSE e.V.; Elisa Kendall, Thematix Partners LLC; Manfred Koethe,
+88solutions; Robert Lario, Department of Veterans Affairs; Falko Menge,
+Camunda Services GmbH; Zbigniew Misiak, BOC Products & Services AG;
+Matteo Mortari, Red Hat; Sjir Nijssen, PNA Group; Octavian Patrascoiu,
+Goldman Sachs; Bruce Silver, Bruce Silver Associates; Gil Segal, Sapiens
+Decision NA; Bastian Steinert, Signavio GmbH; James Taylor, Decision
+Management Solutions; Edson Tirelli, Red Hat; Jan Vanthienen, K.U.
+Leuven; Stephen White, Department of Veterans
+Affairs.](https://www.omg.org/spec/SCE/1.0)
+
+[Version 1.4 was developed from December 2019 to December 2021 by the
+following persons and companies:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
+[(chair) Falko Menge, Camunda Services GmbH(chair) Alan Fish,
+FICOBastian Steinert, Signavio GmbHDenis Gagne, TrisotechEdson Tirelli,
+Red HatElisa Kendall, Thematix Partners LLCGil Segal, Sapiens Decision
+NAJ.D. Baker, Sparx Systems Pty LtdJames Taylor, Decision Management
+SolutionsJan Vanthienen, K.U. LeuvenManfred Koethe, 88solutionsMatteo
+Mortari, Red HatPete Rivett, agnos.ai UK LtdSerge Schiltz,
+processCentric GmbHSjir Nijssen, PNA GroupStephen White, Department of
+Veterans AffairsUwe Kaufmann, GfSE e.V.Zbigniew Misiak, BOC Products &
+Services AGIn addition, the following persons contributed valuable ideas
+and feedback that improved the content and the quality of version 1.4 of
+this specification:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+- 
+- 
+
+[Daniel Tanner, ACTICO GmbHGreg McCreath, MonteraKeith Swenson,
+FujitsuPhilipp Ossler, Camunda Services GmbHSimon Ringuette,
+TrisotechVersion 1.5 was developed from December 2021 to March 2023 by
+the following persons and companies:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
+[(chair) Falko Menge, Camunda Services GmbH(chair) Alan Fish,
+FICOAlessandra Bagnato, SofteamDenis Gagne, TrisotechElisa Kendall,
+Thematix Partners LLCGil Segal, Sapiens Decision NAJ.D. Baker, Sparx
+Systems Pty LtdJames Taylor, Decision Management SolutionsJan
+Vanthienen, K.U. LeuvenMatteo Mortari, Red HatOctavian Patrascoiu,
+Goldman SachsPete Rivett, agnos.ai UK LtdSerge Schiltz, processCentric
+GmbHSjir Nijssen, PNA GroupStephen White, BPM Advantage ConsultingTibor
+Zimanyi, International Business MachinesUwe Kaufmann, GfSE e.V.Zbigniew
+Misiak, BOC Products & Services AGIn addition, the following persons
+contributed valuable ideas and feedback that improved the content and
+the quality of version 1.5 of this
+specification:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+
+[Maciej Barelkowski, Camunda Services GmbHPhilipp Ossler, Camunda
+Services GmbHSimon Ringuette, TrisotechVersion 1.6 was developed from
+March 2023 to May 2024 by the following persons and
+companies:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
+[(chair) Falko Menge, Camunda Services GmbH(chair) Alan Fish,
+FICOAlessandra Bagnato, SofteamDenis Gagne, TrisotechElisa Kendall,
+Thematix Partners LLCGil Segal, Sapiens Decision NAJ.D. Baker, Sparx
+Systems Pty LtdJames Taylor, Decision Management SolutionsJan
+Vanthienen, K.U. LeuvenOctavian Patrascoiu, Goldman SachsSerge Schiltz,
+processCentric GmbHSjir Nijssen, PNA GroupStephen White, BPM Advantage
+ConsultingTibor Zimanyi, International Business MachinesUwe Kaufmann,
+GfSE e.V.Zbigniew Misiak, BOC Products & Services AGIn addition, the
+following persons contributed valuable ideas and feedback that improved
+the content and the quality of version 1.6 of this
+specification:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+
+[Maciej Barelkowski, Camunda Services GmbHPhilipp Ossler, Camunda
+Services GmbHSimon Ringuette, TrisotechVersion 1.7 was developed from
+February 2025 to June 2026 by the following persons and
+companies:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
+[(chair) Falko Menge, Camunda Services GmbH(chair) Alan Fish,
+FICOAlessandra Bagnato, SofteamDenis Gagne, TrisotechElisa Kendall,
+Thematix Partners LLCGil Segal, Sapiens Decision NAJ.D. Baker, Sparx
+Systems Pty LtdJames Taylor, Blue Polaris IncJan Vanthienen, K.U.
+LeuvenOctavian Patrascoiu, Goldman SachsSerge Schiltz, processCentric
+GmbHTibor Zimanyi, International Business MachinesZbigniew Misiak, BOC
+Products & Services AGIn addition, the following persons contributed
+valuable ideas and feedback that improved the content and the quality of
+version 1.7 of this specification:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+
+[Maciej Barelkowski, Camunda Services GmbHPhilipp Ossler, Camunda
+Services GmbHSimon Ringuette,
+Trisotech](https://www.omg.org/spec/SCE/1.0)
+
+## [[]{#_Toc231385118 .anchor}IPR and Patents](https://www.omg.org/spec/SCE/1.0)
+
+[The submitters contributed this work to OMG on a RF on RAND
+basis.](https://www.omg.org/spec/SCE/1.0)
+
+## [[]{#_Toc231385119 .anchor}Guide to the Specification](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [1](#scope) summarizes the goals of the
+specification.](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [2](#conformance) defines three levels of conformance with the
+specification: Conformance Level 1, Conformance Level 2, and Conformance
+Level 3.](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [3](#references) lists normative
+references.](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [4](#_Ref193707321) provides additional information useful in
+understanding the background to and structure of the
+specification.](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [5](#_Ref193707405) discusses the scope and uses of **DMN** and
+introduces the principal concepts, including the two levels of **DMN**:
+the decision requirements level and the decision logic
+level.](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [6](#_Ref152655601) defines the decision requirements level of
+**DMN**: the Decision Requirements Graph (DRG) and its notation as a
+Decision Requirements Diagram (DRD).](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [7](#_Ref193707477) introduces the principles by which decision
+logic may be associated with elements in a DRG: i.e., how the decision
+requirements level and decision logic level are related to each other.
+Clauses [8](#_Ref122607333), [9](#_Ref193708773) and
+[10](#_Ref122607316) then define the decision logic level of
+**DMN**:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+
+[Clause [8](#_Ref122607333) defines the notation and syntax of Decision
+Tables in **DMN**. Clause [9](#_Ref193708816) defines S-FEEL: a subset
+of FEEL to support decision tables. Clause [10](#_Ref122607316) defines
+the full syntax and semantics of FEEL: the default expression language
+used for the Decision Logic level of **DMN**. Clause [11](#b-feel)
+provides examples of **DMN** used to model human and automated
+decision-making.](https://www.omg.org/spec/SCE/1.0)
+
+[Clause [12](#dmn-examples) addresses exchange formats and provides
+references to machine-readable files (XSD and XMI). The Annexes provide
+non-normative background information:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+
+[[Annex A](#_Ref194300604). discusses the relationship between **DMN**
+and **BPMN**. [Annex B](#_Ref194300629). provides a glossary of terms.\
+](https://www.omg.org/spec/SCE/1.0)
+
+[This page intentionally left blank.](https://www.omg.org/spec/SCE/1.0)
+
+# 
+
+## [[[]{#_Toc231385120 .anchor}]{#_Ref193707405 .anchor}Introduction to DMN[]{#_Toc231385121 .anchor}Context](https://www.omg.org/spec/SCE/1.0)
+
+[The purpose of **DMN** is to provide the constructs that are needed to
+model decisions, so that organizational decision- making can be readily
+depicted in diagrams, accurately defined by business analysts, and
+(optionally) automated.](https://www.omg.org/spec/SCE/1.0)
+
+[Decision-making is addressed from two different perspectives by
+existing modeling standards:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+
+[Business process models (e.g., **BPMN**) can describe the coordination
+of decision-making within business processes by defining specific tasks
+or activities within which the decision-making takes place. Decision
+logic (e.g., PRR, PMML) can define the specific logic used to make
+individual decisions, for example as business rules, decision tables, or
+executable analytic models. However, a number of authors (including
+members of the submission team) have observed that decision-making has
+an internal structure which is not conveniently captured in either of
+these modeling perspectives. Our intention is that **DMN** will provide
+a third perspective -- the Decision Requirements Diagram -- forming a
+bridge between business process models and decision logic
+models:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+
+[Business process models will define tasks within business processes
+where decision-making is required to occur. Decision Requirements
+Diagrams will define the decisions to be made in those tasks, their
+interrelationships, and their requirements for decision logic. Decision
+logic will define the required decisions in sufficient detail to allow
+validation and/or automation. Taken together, Decision Requirements
+Diagrams and decision logic can provide a complete decision model which
+complements a business process model by specifying in detail the
+decision-making carried out in process tasks. The relationships between
+these three aspects of modeling are shown in [Figure
+5-1](#_Ref122600381).](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image2.jpg){width="6.4847222222222225in"
+height="5.388194444444444in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122600381 .anchor}Figure 5-1: Aspects of
+modeling](https://www.omg.org/spec/SCE/1.0)
+
+[The resulting connected set of models will allow detailed modeling of
+the role of business rules and analytic models in business processes,
+cross-validation of models, top-down process design and automation, and
+automatic execution of decision-making (e.g., by a business process
+management system calling a decision service deployed from a business
+rules management system).](https://www.omg.org/spec/SCE/1.0)
+
+[Although [Figure 5-1](#_Ref122600381) shows a linkage between a
+business process model and a decision model for the purposes of
+explaining the relationship between **DMN** and other standards, it must
+be stressed that **DMN** is not dependent on **BPMN**, and its two
+levels -- decision requirements and decision logic -- may be used
+independently or in conjunction to model a domain of decision-making
+without any reference to business processes (see [Figure
+5-2](#_Ref122600482)).](https://www.omg.org/spec/SCE/1.0)
+
+[**DMN** will provide constructs spanning both decision requirements and
+decision logic modeling. For decision requirements modeling, it defines
+the concept of a Decision Requirements Graph (DRG) comprising a set of
+elements and their connection rules, and a corresponding notation: The
+Decision Requirements Diagram (DRD). For decision logic modeling it
+provides a language called FEEL for defining and assembling decision
+tables, calculations, if/then/else logic, simple data structures, and
+externally defined logic from Java, ONNX and PMML into executable
+expressions with formally defined semantics. It also provides a notation
+for decision logic ("boxed expressions") allowing components of the
+decision logic level to be drawn graphically and associated with
+elements of a Decision Requirements Diagram. The relationship between
+these constructs is shown in [Figure
+5-2](#_Ref122600482).](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image3.jpg){width="5.500892388451444in"
+height="5.291813210848644in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122600482 .anchor}Figure 5-2: DMN
+Constructs](https://www.omg.org/spec/SCE/1.0)
+
+## [[]{#_Toc231385122 .anchor}Scope and uses of DMN](https://www.omg.org/spec/SCE/1.0)
+
+[Decision modeling is carried out by business analysts in order to
+understand and define the decisions used in a business or organization.
+Such decisions are typically operational decisions made in day-to-day
+business processes, rather than the strategic decision-making for which
+fewer rules and representations
+exist.](https://www.omg.org/spec/SCE/1.0)
+
+[Three uses of **DMN** can be discerned in this
+context:](https://www.omg.org/spec/SCE/1.0)
+
+1.  
+2.  
+3.  
+
+### [For modeling human decision-making. For modeling the requirements for automated decision-making. For implementing automated decision-making. []{#_Toc231385123 .anchor}Modeling human decision-making](https://www.omg.org/spec/SCE/1.0)
+
+[**DMN** may be used to model the decisions made by personnel within an
+organization. Human decision-making can be broken down into a network of
+interdependent constituent decisions and modeled using a DRD. The
+decisions in the DRD would probably be described at quite a high level,
+using natural language rather than decision
+logic.](https://www.omg.org/spec/SCE/1.0)
+
+[Knowledge sources may be defined to model governance of decision-making
+by people (e.g., a manager), regulatory bodies (e.g., an ombudsman),
+documents (e.g., a policy booklet) or bodies of legislation (e.g., a
+government statute). These knowledge sources may be linked together, for
+example to show that a decision is governed (a) by a set of regulations
+defined by a regulatory body, and (b) by a company policy document
+maintained by a manager.](https://www.omg.org/spec/SCE/1.0)
+
+[Business knowledge models may be used to represent specific areas of
+business knowledge drawn upon when making decisions. This will allow
+**DMN** to be used as a tool for formal definition of requirements for
+knowledge management. Business knowledge models may be linked together
+to show the interdependencies between areas of knowledge (in a manner
+similar to that used in the existing technique of Knowledge Structure
+Mapping). Knowledge sources may be linked to the business knowledge
+models to indicate how the business knowledge is governed or maintained,
+for example to show that a set of business policies (the business
+knowledge model) is defined in a company policy document (the knowledge
+source).](https://www.omg.org/spec/SCE/1.0)
+
+[In some cases, it may be possible to define specific rules or
+algorithms for the decision-making. These may be modeled using decision
+logic (e.g., business rules or decision tables) to specify business
+knowledge models in the DRD, either descriptively (to record how
+decisions are currently made, or how they were made during a particular
+period of observation) or prescriptively (to define how decisions should
+be made or will be made in the
+future).](https://www.omg.org/spec/SCE/1.0)
+
+[Decision-making modeled in **DMN** may be mapped to tasks or activities
+within a business process modeled using **BPMN**. At a high level, a
+collaborative decision-making task may be mapped to a subset of
+decisions in a DRD representing the overall decision-making behavior of
+a group or department. At a more detailed level, it is possible to model
+the interdependencies between decisions made by a number of individuals
+or groups using **BPMN** collaborations: each participant in the
+decision-making is represented by a separate pool in the collaboration
+and a separate DRD in the decision model. Decisions in those DRDs are
+then mapped to tasks in the pools, and input data in the DRDs are mapped
+to the content of messages passing between the
+pools.](https://www.omg.org/spec/SCE/1.0)
+
+[\
+The combined use of **BPMN** and **DMN** thus provides a graphical
+language for describing multiple levels of human decision-making within
+an organization, from activities in business processes down to a
+detailed definition of decision logic. Within this context **DMN**
+models will describe collaborative organizational decisions, their
+governance, and the business knowledge required for
+them.](https://www.omg.org/spec/SCE/1.0)
+
+### [[[]{#_Toc231385124 .anchor}]{#_Ref123200289 .anchor}Modeling requirements for automated decision-making](https://www.omg.org/spec/SCE/1.0)
+
+[The use of **DMN** for modeling the requirements for automated
+decision-making is similar to its use in modeling human decision-making,
+except that it is entirely prescriptive, rather than descriptive, and
+there is more emphasis on the detailed decision
+logic.](https://www.omg.org/spec/SCE/1.0)
+
+[For full automation of decisions, the decision logic must be complete,
+i.e., capable of providing a decision result for any possible set of
+values of the input data.](https://www.omg.org/spec/SCE/1.0)
+
+[However, partial automation is more common, where some decision-making
+remains the preserve of personnel. Interactions between human and
+automated decision-making may be modeled using collaborations as above,
+with separate pools for human and automated decision-makers, or more
+simply by allocating the decision-making to separate tasks in the
+business process model, with user tasks for human decision-making and
+business rule tasks for automated decision-making. So, for example, an
+automated business rules task might decide to refer some cases to a
+human reviewer; the decision logic for the automated task needs to be
+specified in full but the reviewer's decision-making could be left
+unspecified.](https://www.omg.org/spec/SCE/1.0)
+
+[Once decisions in a DRD are mapped to tasks in a **BPMN** business
+process flow, it is possible to validate across the two levels of
+models. For example, it is possible to verify that all input data in the
+DRDs are provided by previous tasks in the business process, and that
+the business process uses the results of decisions only in subsequent
+tasks or gateways. **DMN** models the relationships between Decisions
+and Business Processes so that the Decisions that must be made for a
+Business Process to complete can be identified and so that the specific
+decision-making tasks that perform or execute a Decision can be
+specified. No formal mapping of **DMN** ItemDefinition or **DMN**
+InputData to **BPMN** DataObject is proposed but an implementation could
+include such a check in a situation where such a mapping could be
+determined.](https://www.omg.org/spec/SCE/1.0)
+
+[\
+Together, **BPMN** and **DMN** therefore allow specification of the
+requirements for automated decision-making and its interaction with
+human decision making within business processes. These requirements may
+be specified at any level of detail, or at all levels. The three-tier
+mapping between business process models, DRDs and decision logic will
+allow the definition of these requirements to be supported by
+model-based computer-aided design
+tools.](https://www.omg.org/spec/SCE/1.0)
+
+### [[]{#_Toc231385125 .anchor}Implementing automated decision-making](https://www.omg.org/spec/SCE/1.0)
+
+[If all decisions and business knowledge models are fully specified
+using decision logic, it becomes possible to execute decision
+models.](https://www.omg.org/spec/SCE/1.0)
+
+[One possible scenario is the use of "decision services" deployed from a
+Business Rules Management System (BRMS) and called by a Business Process
+Management System (BPMS). A decision service encapsulates the decision
+logic supporting a DRD, providing interfaces that correspond to subsets
+of input data and decisions within the DRD. When called with a set of
+input data, the decision service will evaluate the specified decisions
+and return their results. The constraint in **DMN** that all decision
+logic is free of side-effects means that decision services will comply
+with SOA principles, simplifying system design. Note that decision
+services may also be invoked internal to the decision model, a trait
+that they share with business knowledge
+models.](https://www.omg.org/spec/SCE/1.0)
+
+[The structure of a decision model, as visualized in the DRD, may be
+used as a basis for planning an implementation project. Specific project
+tasks may be included to cover the definition of decision logic (e.g.,
+rule discovery using human experts, or creation of analytic models), and
+the implementation of components of the decision
+model.](https://www.omg.org/spec/SCE/1.0)
+
+[Some decision logic representing the business knowledge encapsulated in
+decision services needs to be maintained over time by personnel
+responsible for the decisions, using special "knowledge maintenance
+interfaces". **DMN** supports the effective design and implementation of
+knowledge maintenance interfaces: any business knowledge requiring
+maintenance should be modeled as business knowledge models in the DRD,
+and the responsible personnel as knowledge sources. DRDs then provide a
+specification of the required knowledge maintenance interfaces and their
+users, and the decision logic specifies the initial configuration of the
+business knowledge to be maintained.](https://www.omg.org/spec/SCE/1.0)
+
+[Other decision logic needs to be refreshed by regular analytic
+modeling. The representation of business knowledge models as functions
+in **DMN** makes the use of analytic models in decision services very
+simple: any analytic model capable of representation as a function may
+be directly called by or imported into a decision
+service.](https://www.omg.org/spec/SCE/1.0)
+
+### [[]{#_Toc231385126 .anchor}Combining applications of modelling](https://www.omg.org/spec/SCE/1.0)
+
+[The three contexts described above are not mutually exclusive
+alternatives; a large process automation project might use **DMN** in
+all three ways.](https://www.omg.org/spec/SCE/1.0)
+
+[First, the decision-making within the existing process might be
+modeled, to identify the full extent of current decision making and the
+areas of business knowledge involved. This "as-is" analysis provides the
+baseline for process improvement.](https://www.omg.org/spec/SCE/1.0)
+
+[Next, the process might be redesigned to make the most effective use of
+both automated and human decision-making, often using collaboration
+between the two (e.g., using automated referrals to human
+decision-makers, or decision support systems which advise or constrain
+the user). Such a redesign involves modeling the requirements for the
+decision making to occur in each process task and the roles and
+responsibilities of individuals or groups in the organization. This
+model provides a "to-be" specification of the required process and the
+decision-making it coordinates.](https://www.omg.org/spec/SCE/1.0)
+
+[Comparison of the "as-is" and "to-be" models will indicate requirements
+not just for automation technology, but for change management: changes
+in the roles and responsibilities of personnel, and training to support
+new or modified business knowledge.](https://www.omg.org/spec/SCE/1.0)
+
+[Finally, the "to-be" model will be implemented as executable system
+software. Provided the decision logic is fully specified in FEEL and/or
+other external logic (e.g., externally defined Java methods or PMML
+models), components of the decision model may be implemented directly as
+software components.](https://www.omg.org/spec/SCE/1.0)
+
+[**DMN** does not prescribe any particular methodology for carrying out
+the above activities; it only supports the models used for
+them.](https://www.omg.org/spec/SCE/1.0)
+
+## [[]{#_Toc231385127 .anchor}Basic concepts](https://www.omg.org/spec/SCE/1.0)
+
+### [[]{#_Toc231385128 .anchor}Decision requirements level](https://www.omg.org/spec/SCE/1.0)
+
+[The word "decision" has two definitions in common use: it may denote
+the act of choosing among multiple possible options; or it may denote
+the option that is chosen. In this specification, we adopt the former
+usage: a **decision** is the act of determining an **output** value (the
+chosen option), from a number of **input** values, using logic defining
+how the output is determined from the inputs. This **decision logic**
+may include one or more **business knowledge models** which encapsulate
+business know-how in the form of business rules, analytic models, or
+other formalisms. This basic structure, from which all decision models
+are built, is shown in [Figure
+5-3](#_Ref122600611).](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image4.jpg){width="2.2465277777777777in"
+height="1.2729166666666667in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122600611 .anchor}Figure 5-3: Basic elements of a decision
+model](https://www.omg.org/spec/SCE/1.0)
+
+[For simplicity and generality, many of the figures in this
+specification show each decision as having a single associated business
+knowledge model, but it should be noted that **DMN** does not require
+this to be the case. The use of business knowledge models to encapsulate
+decision logic is a matter of style and methodology, and decisions may
+be modeled with no associated business knowledge models, or with
+several. Similar to business knowledge models, decision services may
+also be used to encapsulate decision logic for reuse inside the decision
+model, but for simplicity such examples will be presented starting in
+the section describing decision
+services.](https://www.omg.org/spec/SCE/1.0)
+
+[Authorities may be defined for decisions or business knowledge models,
+which might be (for example) domain experts responsible for defining or
+maintaining them, or source documents from which business knowledge
+models are derived or sets of test cases with which the decisions must
+be consistent. These are called **knowledge sources** (see [Figure
+5-4](#_Ref122600642)).](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image5.jpg){width="3.9625in"
+height="1.4777777777777779in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122600642 .anchor}Figure 5-4: Knowledge
+sources](https://www.omg.org/spec/SCE/1.0)
+
+[A decision is said to "require" its inputs in order to determine its
+output. The inputs may be **input data**, or the outputs of other
+decisions. (In either case they may be data structures, rather than just
+simple data items.) If the inputs of a decision Decision1 include the
+output of another decision Decision2, Decision1 "requires" Decision2.
+Decisions may therefore be connected in a network called a **Decision
+Requirements Graph (DRG)**, which may be drawn as a **Decision**
+**Requirements Diagram** (**DRD**). A DRD shows how a set of decisions
+depend on each other, on input data, and on business knowledge models. A
+simple example of a DRD with only two decisions is shown in [Figure
+5-5](#_Ref122600672).](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image6.jpg){width="3.5166666666666666in"
+height="1.7534722222222223in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122600672 .anchor}Figure 5-5: A simple Decision Requirements
+Diagram (DRD)](https://www.omg.org/spec/SCE/1.0)
+
+[A decision may require multiple business knowledge models, and a
+business knowledge model may require multiple other business knowledge
+models, as shown in [Figure
+5-6](#_Ref122600703).](https://www.omg.org/spec/SCE/1.0)
+
+[This will allow (for example) the modeling of complex decision logic by
+combining diverse areas of business knowledge, and the provision of
+alternative versions of decision logic for use in different
+situations.](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image7.jpg){width="3.4805555555555556in"
+height="1.2895833333333333in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122600703 .anchor}Figure 5-6: Combining business knowledge
+models](https://www.omg.org/spec/SCE/1.0)
+
+[DRGs and their notation as DRDs are specified in detail in clause
+[6](#_Ref152655601).](https://www.omg.org/spec/SCE/1.0)
+
+### [[]{#_Toc231385129 .anchor}Decision logic level](https://www.omg.org/spec/SCE/1.0)
+
+[The components of the decision requirements level of a decision model
+may be described, as they are above, using only business concepts. This
+level of description is often sufficient for business analysis of a
+domain of decision-making, to identify the business decisions involved,
+their interrelationships, the areas of business knowledge and data
+required by them, and the sources of the business knowledge. Using
+decision logic, the same components may be specified in greater detail,
+to capture a complete set of business rules and calculations, and (if
+desired) to allow the decision making to be fully
+automated.](https://www.omg.org/spec/SCE/1.0)
+
+[Decision logic may also provide additional information about how to
+display elements in the decision model. For example, the decision logic
+element for a decision table may specify whether to show the rules as
+rows or as columns. The decision logic element for a calculation may
+specify whether to line up terms vertically or
+horizontally.](https://www.omg.org/spec/SCE/1.0)
+
+[The correspondence between concepts at the decision requirements level
+and the decision logic level is described below. Please note that in the
+figures below, as in [Figure 5-1](#_Ref122600381) and [Figure
+5-2](#_Ref122600482), the grey ellipses and dotted lines are drawn only
+to indicate correspondences between concepts in different levels for the
+purposes of this introduction. They do *not* form part of the notation
+of **DMN**, which is formally defined in clauses [6.2](#_Ref122605755),
+[8.2](#_Ref122605768), and [10.2](#_Ref122605781). It is envisaged that
+implementations will provide facilities for moving between levels of
+modeling, such as "opening", "drilling down" or "zooming in", but
+**DMN** does not specify how this should be
+done.](https://www.omg.org/spec/SCE/1.0)
+
+[At the decision logic level, every decision in a DRG is defined using a
+**value expression** which specifies how the decision's output is
+determined from its inputs. At that level, the decision is considered to
+*be* the evaluation of the expression. The value expression may be
+notated using a **boxed expression**, as shown in [Figure
+5-7](#_Ref122605802).](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image8.jpg){width="6.206944444444445in"
+height="2.3868055555555556in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122605802 .anchor}Figure 5-7: Decision and corresponding value
+expression](https://www.omg.org/spec/SCE/1.0)
+
+[In the same way, at the decision logic level, a business knowledge
+model is defined using a value expression that specifies how an output
+is determined from a set of inputs. In a business knowledge model, the
+value expression is encapsulated as a function definition, which may be
+invoked from a decision\'s value
+expression.](https://www.omg.org/spec/SCE/1.0)
+
+[The interpretation of business knowledge models as functions in **DMN**
+means that the combination of business knowledge models as in [Figure
+5-6](#_Ref122600703) has the clear semantics of functional composition.
+The value expression of a business knowledge model may be notated using
+a **boxed function** definition, as shown in [Figure
+5-8](#_Ref122605872). Similar to a business knowledge model, the
+decision service element can also be invoked from a decision's value
+expression (see clause
+[5.3.3](#_Ref122605973)).](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image9.jpg){width="6.768055555555556in"
+height="1.8576388888888888in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122605872 .anchor}Figure 5-8: Business knowledge model and
+corresponding value expression](https://www.omg.org/spec/SCE/1.0)
+
+[A business knowledge model may contain any decision logic which is
+capable of being represented as a function. This will allow the import
+of many existing decision logic modeling standards (e.g., for business
+rules and analytic models) into **DMN**. An important format of business
+knowledge, specifically supported in **DMN**, is the Decision Table.
+Such a business knowledge model may be notated using a **Decision
+Table**, as shown in [Figure
+5-9](#_Ref122606004).](https://www.omg.org/spec/SCE/1.0)
+
+[![](media/image10.jpg){width="6.768055555555556in"
+height="2.589583333333333in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122606004 .anchor}Figure 5-9: Business knowledge model and
+corresponding decision table](https://www.omg.org/spec/SCE/1.0)
+
+[In most cases, the logic of a decision is encapsulated into business
+knowledge models, and the value expression associated with the decision
+specifies how the business knowledge models are invoked, and how the
+results of their invocations are combined to compute the output of the
+decision. The decision's value expression may also specify how the
+output is determined from its input entirely within itself, without
+invoking a business knowledge model: in that case, no business knowledge
+model is associated with the decision (neither at the decision
+requirements level nor at the decision logic
+level).](https://www.omg.org/spec/SCE/1.0)
+
+[An expression language for defining decision logic in **DMN**, covering
+all the above concepts, is specified fully in clause
+[10](#_Ref122607316). This is **FEEL**: The Friendly Enough Expression
+Language. The notation for Decision Tables is specified in detail in
+clause [8](#_Ref122607333).](https://www.omg.org/spec/SCE/1.0)
+
+### [[[]{#_Toc231385130 .anchor}]{#_Ref122605973 .anchor}Decision services](https://www.omg.org/spec/SCE/1.0)
+
+[A decision service defines reusable logic within the decision model. A
+decision service exposes one or more decisions from a decision model as
+a reusable element, a service, which might be consumed (for example)
+internally by another decision in the decision model, or externally by a
+task in a **BPMN** process model. When the service is called with the
+necessary input data and decision results, it returns the outputs of the
+exposed decisions. Any decision service encapsulating a **DMN** decision
+model will be stateless and have no side
+effects.](https://www.omg.org/spec/SCE/1.0)
+
+[One important use of **DMN** will be to define decision-making logic to
+be automated using decision services. When the decision service is
+invoked externally, it might be implemented, for example, as a web
+service. **DMN** does not specify how such services should be
+implemented, but it allows the functionality of a service to be defined
+against a decision model. The decision service therefore must be defined
+in a DRD. When invoked internally from a decision the decision service
+is invoked, similar to a BKM, by binding expressions in the logic of the
+calling decision to parameters in the invoked decision
+service.](https://www.omg.org/spec/SCE/1.0)
+
+[It is assumed that the client requires a certain set of decisions to be
+made, and that the service is created to meet that requirement. The sole
+function of the decision service is to return the results of evaluating
+that set of decisions (the](https://www.omg.org/spec/SCE/1.0)
+
+["output decisions"). The service may be provided with the results of
+decisions evaluated externally to the service (the "input decisions").
+The service must encapsulate not just the output decisions but also any
+decisions in the DRG directly or indirectly required by the output
+decisions which are not provided in the input decisions (the
+"encapsulated decisions").](https://www.omg.org/spec/SCE/1.0)
+
+[The interface to the decision service will consist
+of:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+- 
+
+[Input data: instances of all the input data required by the
+encapsulated decisions. Input decisions: instances of the results of all
+the input decisions. Output decisions: the results of evaluating (at
+least) all the output decisions, using the provided input decisions and
+input data. When the service is called, providing the input data and
+input decisions, it returns the output
+decisions.](https://www.omg.org/spec/SCE/1.0)
+
+[Note that to define a decision service it is only necessary to specify
+the output decisions and either the input decisions or the encapsulated
+decisions. The remaining attributes (the required input data, and
+whichever of the encapsulated or input decisions was not specified) may
+then be inferred from the decision model against which the service is
+defined. Alternatively, if more attributes are defined than are strictly
+necessary, they may be validated against the decision
+model.](https://www.omg.org/spec/SCE/1.0)
+
+[\
+[Figure 5-10](#_Ref122607362) shows a decision service defined against a
+decision model that includes three decisions. The output decisions for
+this service are {Decision 1}, and the input decisions are {}, that is,
+the service returns the result of Decision 1 and is not provided with
+the results of any external decisions. Since Decision 1 requires
+Decision 2, which is not provided to the service as input, the service
+must also encapsulate Decision 2. Decision 3 is not required to be
+encapsulated. The encapsulated decisions are therefore {Decision 1,
+Decision 2}. The service requires Input data 1 and Input data 2 but not
+Input data 3.](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image11.jpg){width="4.4709951881014875in"
+height="2.666732283464567in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122607362 .anchor}Figure 5-10: A decision
+service](https://www.omg.org/spec/SCE/1.0)
+
+[Multiple decision services may be defined against the same decision
+model. [Figure 5-11](#_Ref122607390) shows a decision service defined
+against the same decision model, whose output decisions are {Decision 1}
+and whose input decisions are {Decision 2}. The encapsulated decisions
+for this service are {Decision 1}. The service requires Input data 1 but
+not Input data 2 or Input data 3.](https://www.omg.org/spec/SCE/1.0)
+
+[![Diagram Description automatically
+generated](media/image12.jpg){width="4.7978685476815395in"
+height="2.4493471128608926in"}](https://www.omg.org/spec/SCE/1.0)
+
+[[]{#_Ref122607390 .anchor}Figure 5-11: A decision service taking a
+decision as input](https://www.omg.org/spec/SCE/1.0)
+
+[In its simplest form a decision service would always evaluate all the
+decisions in the output set, set and return all their
+results.](https://www.omg.org/spec/SCE/1.0)
+
+[For computational efficiency various improvements to this basic
+interpretation can be imagined, for
+example:](https://www.omg.org/spec/SCE/1.0)
+
+- 
+- 
+
+[An optional input parameter specifying a list of "requested decisions"
+(a subset of the minimal output set). Only the results of the requested
+decisions would be returned in the output context. An optional input
+parameter specifying a list of "known decisions" (a subset of the
+encapsulation set), with their results. The decision service would not
+evaluate these decisions but would use the provided input values
+directly. All such implementation details are left to the software
+provider.](https://www.omg.org/spec/SCE/1.0)
+
+[A decision service is "complete" if it contains decision logic for
+evaluating all the encapsulated decisions on all possible input data
+values. A request to the service is "valid" if instances are provided
+for all the input decisions and input data required by those decisions
+which need to be evaluated, i.e., (in the simple case) all the
+encapsulated decisions, or (assuming the optional parameters above) any
+requested decisions and any encapsulated decisions required by them
+which are not already known.](https://www.omg.org/spec/SCE/1.0)
+
+[This page intentionally left blank.](https://www.omg.org/spec/SCE/1.0)
+
+# 
 
 ## [[[[]{#_Toc231385131 .anchor}]{#_Ref152655951 .anchor}]{#_Ref152655601 .anchor}Requirements (DRG and DRD)[]{#_Toc231385132 .anchor}Introduction](https://www.omg.org/spec/SCE/1.0)
 
@@ -1837,10 +3726,7 @@ model associations](https://www.omg.org/spec/SCE/1.0)
 [\
 ](https://www.omg.org/spec/SCE/1.0)
 
-
-
-# Relating Decision Logic to Decision Requirements
-
+# [[[[[]{#_Toc231385158 .anchor}]{#_Ref194300129 .anchor}]{#_Ref194300068 .anchor}]{#_Ref193707477 .anchor}Relating Decision Logic to Decision Requirements](https://www.omg.org/spec/SCE/1.0)
 
 ## [[]{#_Toc231385159 .anchor}Introduction](https://www.omg.org/spec/SCE/1.0)
 
@@ -2772,10 +4658,7 @@ expressions).](https://www.omg.org/spec/SCE/1.0)
 [\
 ](https://www.omg.org/spec/SCE/1.0)
 
-
-
-# Decision Table
-
+# [[[[[]{#_Toc231385173 .anchor}]{#_Ref123042464 .anchor}]{#_Ref123036114 .anchor}]{#_Ref122607333 .anchor}Decision Table](https://www.omg.org/spec/SCE/1.0)
 
 ## [[[]{#_Toc231385174 .anchor}]{#_Ref193111248 .anchor}Introduction](https://www.omg.org/spec/SCE/1.0)
 
@@ -3773,10 +5656,7 @@ tables](https://www.omg.org/spec/SCE/1.0)
 [\
 ](https://www.omg.org/spec/SCE/1.0)
 
-
-
-# Simple Expression Language (S-FEEL)
-
+# [[[[[[[[[[]{#_Toc231385193 .anchor}]{#_Ref194560247 .anchor}]{#_Ref194300194 .anchor}]{#_Ref194300096 .anchor}]{#_Ref193797978 .anchor}]{#_Ref193708816 .anchor}]{#_Ref193708773 .anchor}]{#_Ref193191158 .anchor}]{#_Ref192843996 .anchor}Simple Expression Language (S-FEEL)](https://www.omg.org/spec/SCE/1.0)
 
 ## [[]{#_Toc231385194 .anchor}Introduction](https://www.omg.org/spec/SCE/1.0)
 
@@ -4049,10 +5929,7 @@ tests* (grammar rule 12). Each **input entry** SHALL be an instance of
 
 [This page intentionally left blank.](https://www.omg.org/spec/SCE/1.0)
 
-
-
-# Expression Language (FEEL)
-
+# [[[[]{#_Toc231385202 .anchor}]{#_Ref123035677 .anchor}]{#_Ref122607316 .anchor}Expression Language (FEEL)](https://www.omg.org/spec/SCE/1.0)
 
 ## [[]{#_Toc231385203 .anchor}Introduction](https://www.omg.org/spec/SCE/1.0)
 
@@ -9914,10 +11791,7 @@ history in the context.
 
 This page intentionally left blank.
 
-
-
 # B-FEEL
-
 
 ## Introduction
 
@@ -10273,3 +12147,2784 @@ using the number B-FEEL function.
 
 This page intentionally left blank.
 
+# DMN Examples
+
+## Example 1: Originations
+
+### Introduction
+
+In this clause we present an example of the use of **DMN** to model and
+execute decision-making in a simple business process modeled in
+**BPMN**, including decisions to be automated in decision services
+called from the business process management system.
+
+### The business process model
+
+[Figure 12‑1](#_Ref231381481) shows a simple process for loan
+originations, modeled in **BPMN 2.0**. The process handles as
+application for a loan, obtaining data from a credit bureau only if
+required for the case, and automatically deciding whether the
+application should be accepted, declined, or referred for human review.
+If referred, documents are collected from the applicant and a credit
+officer adjudicates the case. It consists of the following components:
+
+- The **Collect application data** task collects data describing the
+  Requested product and the Applicant (e.g., through an on-line
+  application form).
+
+- The Decide **bureau Strategy** task calls a decision service, passing
+  Requested product and Applicant data. The service returns two
+  decisions: Strategy and Bureau call type.
+
+- A **gateway** uses the value of Strategy to route the case to Decline
+  application, Collect bureau data or Decide routing.
+
+- The **Collect bureau data** task collects data from a credit bureau
+  according to the Bureau call type decision, then the case is passed to
+  Decide routing.
+
+- The **Decide routing** task calls a decision service, passing
+  Requested product, Applicant data and Bureau data (if the Collect
+  bureau data task was not performed, the Bureau data are set to null).
+  The service returns a single decision: Routing.
+
+- A **gateway** uses the value of Routing to route the case to Accept
+  application, Review application or Decline application.
+
+- The **Collect documents** task requests and uploads documents from the
+  applicant in support of their application.
+
+- The **Review application** task allows a credit officer to review the
+  case and decide whether it should be accepted or declined.
+
+- A **gateway** uses the credit officer's Adjudication to route the case
+  to Accept application or Decline application.
+
+- The **Accept application** task informs the applicant that their
+  application is accepted and initiates the product.
+
+- The **Decline application** task informs the applicant that their
+  application is declined.
+
+Note that in this example two decision points (automated as calls to
+decision services) are represented in **BPMN 2.0** as business rule
+tasks; the third decision point (which is human decision-making) is
+represented as a user task.
+
+![[]{#_Ref231381481 .anchor}Figure 12‑1: Example business
+process](media/image113.jpg){alt="Diagram, schematic Description automatically generated"
+width="6.366666666666666in" height="7.272917760279965in"}
+
+### The decision requirements level
+
+The examples in this chapter were developed using a software that adds
+icons to the elements. Although adding these icons is allowable by this
+document it is not normative.
+
+#### Decision Requirements Diagrams
+
+[Figure 12‑2](#_Ref231381637) shows a DRD of all the decision-making in
+this business process. There are four sources of input data for the
+decision-making (Requested product, Applicant data, Bureau data and
+Supporting documents), and four decisions whose results are used in the
+business process (Strategy, Bureau call type, Routing and Adjudication).
+Between the two are intermediate decisions: evaluations of risk,
+affordability, and eligibility.
+
+Notable features of this DRD include:
+
+- It covers both automated and human decision-making.
+
+- Some decisions (e.g., Pre-bureau risk category) and input data (e.g.,
+  Applicant data) are required by multiple decisions, i.e., the
+  information requirements network is not a tree.
+
+- Business knowledge models (see Affordability calculation) may be
+  invoked by multiple decisions.
+
+- Business knowledge models (see Credit contingency factor) may be
+  invoked by other business knowledge models.
+
+- Some decisions do not have associated business knowledge models.
+
+Knowledge sources may provide authority for multiple decisions and/or
+business knowledge models.
+
+![](media/image115.svg){width="6.772181758530183in"
+height="5.103472222222222in"}
+
+[]{#_Ref231381637 .anchor}Figure 12‑2: DRD of all automated
+decision-making
+
+It might be considered more convenient to draw separate (but
+overlapping) DRDs for the three decision points:
+
+- [Figure 12‑3](#_Ref231381841) shows the DRD of the decisions required
+  for the Decide bureau strategy decision point, i.e., the requirements
+  subgraph of the Strategy and Bureau call type decisions. These are
+  decisions to be automated through encapsulation in a decision service
+  called at this point and therefore need their logic to be specified
+  completely.
+
+- [Figure 12‑4](#_Ref231381847) shows the DRD for the Decide routing
+  decision point, i.e., the requirements subgraph of the Routing
+  decision. These are also decisions automated with a decision service
+  and therefore need their logic to be specified completely. Note that
+  some elements appear in both [Figure 12‑3](#_Ref231381841) and [Figure
+  12‑4](#_Ref231381847).
+
+- [Figure 12‑5](#_Ref231381853) shows the DRD for the Review application
+  decision point, i.e., the requirements subgraph of the Adjudication
+  decision. This is a human decision and has no associated specification
+  of decision logic, but the DRD indicates that the Credit officer takes
+  into account the results of the automated Routing decision along with
+  the case data, including the Supporting documents. (The requirements
+  subgraph of the Routing decision has been hidden in this DRD as shown
+  by the ellipsis (\...) marker.)
+
+- [Figure 12‑6](#_Ref231381861) shows an additional DRD for the Credit
+  Risk Analytics Knowledge Source i.e., the requirements linking this
+  Knowledge Source to other elements. DRDs can be used to provide views
+  other than for a specific decision.
+
+All four DRDs -- [Figure 12‑2](#_Ref231381637), [Figure
+12‑3](#_Ref231381841), [Figure 12‑4](#_Ref231381847), [Figure
+12‑5](#_Ref231381853) and [Figure 12‑6](#_Ref231381861) -- are views of
+the same DRG.
+
+![](media/image117.svg){width="6.772222222222222in"
+height="6.496062992125984in"}
+
+[]{#_Ref231381841 .anchor}Figure 12‑3: DRD for Decide bureau strategy
+decision point
+
+![](media/image119.svg){width="6.772222222222222in"
+height="4.651281714785652in"}
+
+[]{#_Ref231381847 .anchor}Figure 12‑4: DRD for Decide routing decision
+point
+
+![](media/image121.svg){width="4.604166666666667in"
+height="3.0930216535433073in"}
+
+[]{#_Ref231381853 .anchor}Figure 12‑5: DRD for Review application
+decision point
+
+![](media/image123.svg){width="5.511811023622047in"
+height="2.7645833333333334in"}
+
+[]{#_Ref231381861 .anchor}Figure 12‑6: DRD for Credit Risk Analytics
+Knowledge Source
+
+#### DRG Elements
+
+##### Decisions
+
+The DRG depicted in these DRDs shows dependencies between the following
+decisions:
+
+- The **Strategy** decision, requiring the Bureau call type and
+  Pre-bureau eligibility decisions, invokes the Strategy table shown in
+  [Figure 12‑9](#_Ref231382848) (without that table being encapsulated
+  in a business knowledge model).
+
+- The **Bureau call type** decision, requiring the Pre-bureau risk
+  category decision, invokes the Bureau call type table shown in [Figure
+  12‑11](#_Ref231382874).
+
+- The **Eligibility** decision, requiring Applicant data and the
+  Pre-bureau risk category and Pre-bureau affordability decisions,
+  invokes the Eligibility rules shown in [Figure 12‑13](#_Ref231382901).
+
+- The **Pre-bureau affordability** decision, requiring Applicant data
+  and the Pre-bureau risk category and Required monthly installment
+  decisions, invokes the Affordability calculation boxed expression
+  shown in [Figure 12‑24](#_Ref231383050), which in turn invokes the
+  Credit contingency factor table shown in [Figure
+  12‑25](#_Ref231383061).
+
+- The **Pre-bureau risk category** decision, requiring Applicant data
+  and the Application risk score decision, invokes the Pre-bureau risk
+  category table shown in [Figure 12‑15](#_Ref231382932).
+
+- The **Application risk score** decision, requiring Applicant data,
+  invokes the Application risk score model shown in [Figure
+  12‑17](#_Ref231382955).
+
+- The **Routing** decision, requiring Bureau data and the Post-bureau
+  affordability and Post-bureau risk category decisions, invokes the
+  Routing rules shown in [Figure 12‑19](#_Ref231382978).
+
+- The **Post-bureau affordability** decision, requiring Applicant data
+  and the Post-bureau risk score and Required monthly installment
+  decisions, invokes the Affordability calculation boxed expression
+  shown in [Figure 12‑24](#_Ref231383050), which in turn invokes the
+  Credit contingency factor table shown in [Figure
+  12‑25](#_Ref231383061).
+
+- The **Post-bureau risk category** decision, requiring Applicant and
+  Bureau data and the Application risk score decision, invokes the
+  Post-bureau risk category table shown in [Figure
+  12‑21](#_Ref231383014).
+
+- The **Required monthly installment** decision, requiring Requested
+  product data, invokes the Installment calculation boxed expression
+  shown in [Figure 12‑27](#_Ref231383087).
+
+- The **Adjudication** decision, requiring Applicant data, Bureau data,
+  Supporting documents, and the Routing decision, has no associated
+  decision logic.
+
+Questions and allowed answers are specified for these decisions. These
+are typically used when modeling decisions for which no logic will be
+specified and for other decisions before it is appropriate to describe
+the decision logic in detail. The description and Question/Allowed
+Answers for each decision follow.
+
+#### Adjudication 
+
+Question: Should this application that has been referred for
+adjudication be accepted? Allowed Answers: Yes/No
+
+Description: Determine if an application requiring adjudication should
+be accepted or declined given the available application data and
+supporting documents.
+
+#### Application risk score 
+
+Question: What is the risk score for this applicant?
+
+Allowed Answers: A number greater than 70 and less than 150
+
+Description: The **Application Risk Score** decision logic invokes the
+Application risk score model business knowledge model, passing Applicant
+data.Age as the Age parameter, Applicant data.MaritalStatus as the
+Marital Status parameter and Applicant data.EmploymentStatus as the
+Employment Status parameter.
+
+#### Bureau call type 
+
+Question: How much data should be requested from the credit bureau for
+this application? Allowed Answers: A value from the explicit list
+\"Full\", \"Mini\", \"None\"
+
+Description: The **Bureau call type** decision logic invokes the Bureau
+call type table, passing the output of the Prebureau risk category
+decision as the Pre-Bureau Risk Category parameter.
+
+#### Eligibility 
+
+Question: Does this applicant appear eligible for the loan they applied
+for given only their application data? Allowed Answers: Value from the
+explicit list \"Eligible\", \"Not Eligible\"
+
+Description: The **Eligibility** decision logic invokes the Eligibility
+rules business knowledge model, passing
+
+Applicant data.Age as the Age parameter, the output of the Pre-bureau
+risk category decision as the Pre-Bureau Risk Category parameter, and
+the output of the Pre-bureau affordability decision as the Pre-Bureau
+Affordability parameter.
+
+#### Pre-bureau affordability 
+
+Question: Can the applicant afford the loan they applied for given only
+their application data?
+
+Allowed Answers: Yes/No
+
+Description: The **Pre-bureau affordability** decision logic invokes the
+Affordability calculation business knowledge model, passing Applicant
+data.Monthly.Income as the Monthly Income parameter, Applicant
+data.Monthly.Repayments as the Monthly Repayments parameter, Applicant
+data.Monthly.Expenses as the Monthly Expenses parameter, the output of
+the Pre-bureau risk category decision as the Risk Category parameter,
+and the output of the Required monthly installment decision as the
+Required Monthly Installment parameter.
+
+#### Post-bureau affordability 
+
+Question: Can the applicant afford the loan they applied for given all
+available data?
+
+Allowed Answers: Yes/No
+
+Description: The **Post-bureau affordability** decision logic invokes
+the Affordability calculation business knowledge model, passing
+Applicant data.Monthly.Income as the Monthly Income parameter, Applicant
+
+data.Monthly.Repayments as the Monthly Repayments parameter, Applicant
+data.Monthly.Expenses as the Monthly Expenses parameter, the output of
+the Post-bureau risk category decision as the Risk Category parameter,
+and the output of the Required monthly installment decision as the
+Required Monthly Installment parameter.
+
+#### Pre-bureau risk category 
+
+Question: Which risk category is most appropriate for this applicant
+given only their application data?
+
+Allowed Answers: Value from explicit list \"Decline\", \"High Risk\",
+\"Medium Risk\", \"Low Risk\", \"Very Low Risk\"
+
+Description: The Pre-Bureau Risk Category decision logic invokes the
+Pre-bureau risk category table business knowledge model, passing
+Applicant data.ExistingCustomer as the Existing Customer parameter and
+the output of the Application risk score decision as the Application
+Risk Score parameter.
+
+#### Post-bureau risk category 
+
+Question: Which risk category is most appropriate for this applicant
+given all available data?
+
+Allowed Answers: A value from the explicit list \"Decline\", \"High
+Risk\", \"Medium Risk\", \"Low Risk\", \"Very Low Risk\"
+
+Description: The **Post-bureau risk category** decision logic invokes
+the Post-bureau risk category business knowledge model, passing
+Applicant data.ExistingCustomer as the Existing Customer parameter,
+Bureau data.CreditScore as the Credit Score parameter, and the output of
+the Application risk score decision as the Application Risk Score
+parameter. Note that if Bureau data is null (due to the THROUGH strategy
+bypassing the Collect bureau data task) the Credit Score parameter will
+be null.
+
+#### Required monthly installment 
+
+Question: What is the minimum monthly installment payment required for
+this loan product? Allowed Answers: A dollar amount greater than zero
+
+Description: The **Required monthly installment** decision logic invokes
+the Installment calculation business knowledge model, passing Requested
+product.ProductType as the Product Type parameter, Requested
+product.Rate as the Rate parameter, Requested product.Term as the Term
+parameter, and Requested product.Amount as the Amount parameter.
+
+#### Routing 
+
+Question: How this should this applicant be routed given all available
+data?
+
+Allowed Answers: A value from the explicit list \"Decline\", \"Refer for
+Adjudication\", \"Accept without Review\"
+
+Description: The **Routing** decision logic invokes the Routing rules
+business knowledge model, passing Bureau data.
+
+Bankrupt as the Bankrupt parameter, Bureau data. Credit Score as the
+Credit Score parameter, the output of the Post- bureau risk category
+decision as the Post-Bureau Risk Category parameter, and the output of
+the Post-bureau affordability decision as the Post-Bureau Affordability
+parameter. Note that if Bureau data is null (due to the
+
+THROUGH strategy bypassing the Collect bureau data task) the Bankrupt
+and Credit Score parameters will be null.
+
+#### Strategy 
+
+Question: What is the appropriate handling strategy for this
+application?
+
+Allowed Answers: A value from the explicit list
+\"Decline\",\"Bureau","Through\"
+
+Description: The **Strategy** decision logic defines a complete,
+unique-hit decision table deriving Strategy from Eligibility and Bureau
+call type.
+
+##### Knowledge Sources
+
+The DRG contains the following Knowledge Sources:
+
+#### Affordability spreadsheet 
+
+Description: Internal spreadsheet showing the relationship of income,
+payments, expenses, risk, and affordability.
+
+Type: Policy
+
+#### Credit officer experience 
+
+Description: The collected wisdom of the credit officers as collected in
+their best practice wiki. Type: Expertise
+
+#### Credit risk analytics 
+
+Description: Credit risk scorecard analysis to determine the relevant
+factors for application risk scoring
+
+Type: Analytic Insight
+
+#### Product specification 
+
+Description: Definitions of the products, their cost structure and
+eligibility criteria.
+
+Type: Policy
+
+#### Risk management strategy 
+
+Description: Overall risk management approach for the financial
+institution including its approach to application risk, credit
+contingencies and credit risk scoring.
+
+Type: Policy
+
+##### Input Data
+
+The DRG contains the following Input Data:
+
+#### Applicant data 
+
+Description: Information about the applicant including personal
+information, marital status, and household income/expenses.
+
+**Bureau data**
+
+Description: External credit score and bankruptcy information provided
+by a bureau.
+
+**Loan default data**
+
+Description: Information about historical loan defaults.
+
+**Requested product**
+
+Description: Details of the loan the applicant has applied for.
+
+#### Supporting documents 
+
+Description: Documents associated with a loan that are not processed
+electronically but are available for manual adjudication.
+
+##### Business Knowledge Models
+
+Finally, the DRG contains the following Business Knowledge Models:
+
+#### Eligibility rules 
+
+Description: The Eligibility rules decision logic defines a complete,
+priority-ordered single hit decision table deriving Eligibility from
+Pre-Bureau Risk Category, Pre-Bureau Affordability and Age.
+
+#### Routing rules 
+
+Description: The Routing Rules decision logic defines a complete,
+priority-ordered single hit decision table deriving Routing from
+Post-Bureau Risk Category, Post-Bureau Affordability, Bankrupt and
+Credit Score.
+
+#### Bureau call type table 
+
+Description: The Bureau call type table decision logic defines a
+complete, unique-hit decision table deriving Bureau Call Type from
+Pre-Bureau Risk Category.
+
+#### Credit contingency factor table 
+
+Description: The Credit contingency factor table decision logic defines
+a complete, unique-hit decision table deriving Credit contingency factor
+from Risk Category.
+
+#### Affordability calculation 
+
+Description: The Affordability calculation decision logic defines a
+boxed function deriving Affordability from Monthly Income, Monthly
+Repayments, Monthly Expenses and Required Monthly Installment. One step
+in this calculation derives Credit contingency factor by invoking the
+Credit contingency factor table business.
+
+**Pre-bureau risk category table\**
+
+Description: The Pre-bureau risk category table decision logic defines a
+complete, unique-hit decision table deriving Pre- bureau risk category
+from Existing Customer and Application Risk Score.
+
+#### Post-bureau risk category table 
+
+Description: The Post-bureau risk category table decision logic defines
+a complete, unique-hit decision table deriving Post-Bureau Risk Category
+from Existing Customer, Application Risk Score and Credit Score.
+
+#### Application risk score model 
+
+Description: The Application risk score model decision logic defines a
+complete, no-order multiple-hit table with aggregation, deriving
+Application risk score from Age, Marital Status and Employment Status,
+as the sum of the Partial scores of all matching rows (this is therefore
+a predictive scorecard represented as a decision table).
+
+#### Installment calculation 
+
+Description: The Installment calculation decision logic defines a boxed
+function deriving monthly installment from Product Type, Rate, Term and
+Amount.
+
+#### Financial.PMT 
+
+Description: Standard calculation of monthly installment from Rate, Term
+and Amount.
+
+#### Business Context
+
+In addition to the information represented in the DRD, the business
+context of the decision-making can be specified. The Performance
+Indicators used to track the effectiveness of decision-making,
+Objectives the organization seeks to meet through its decision-making
+approach, and the Organizational Units that make decisions or own the
+decision making approach may all be specified. Decisions are
+cross-referenced to the performance indicators and objectives they
+impact and to the organizational units that either make the decision or
+own the definition of how the decision should be made.
+
+**Performance indicators**
+
++---------------------+------------------------------------------------+
+| > Monthly bureau    | The total cost charged by the bureau for all   |
+| > costs             | Bureau Data requested while originating Loans  |
+|                     | in a calendar month.                           |
++=====================+================================================+
+| > Monthly loan      | > The percentage of loans accepted in a        |
+| > accept rate       | > calendar month.                              |
++---------------------+------------------------------------------------+
+| > Monthly           | The percentage of loans that did not require a |
+| > auto-adjudication | credit officer to review the case in a         |
+| > rate              | calendar month.                                |
++---------------------+------------------------------------------------+
+| > Monthly value of  | The total value of Loans written in a calendar |
+| > loans written     | month                                          |
++---------------------+------------------------------------------------+
+| > Auto adjudication | By end of the current year, have an            |
+| > rate 90%          | auto-adjudication rate of at least 90 percent  |
++---------------------+------------------------------------------------+
+
+Decisions are mapped to the Performance Indicators and Goals that they
+impact as follows:
+
++--------------------+-----------+------------------+-------------+---------------------+----------------+
+|                    | **Monthly | > **Monthly      | > **Monthly | **Auto-adjudication | **Monthly      |
+|                    | Loan**    | > Value**        | > Bureau**  | rate 90%**          | Auto-          |
+|                    |           | >                |             |                     | adjudication** |
+|                    | **Accept  | > **of Loans     |             |                     |                |
+|                    | Rate**    | > WrittenCosts** |             |                     | **Rate**       |
++====================+===========+==================+=============+=====================+================+
+| > **Adjudication** | Yes       | > Yes            |             |                     |                |
++--------------------+-----------+------------------+-------------+---------------------+----------------+
+| > **Application    |           |                  | > Yes       |                     |                |
+| > risk score**     |           |                  |             |                     |                |
++--------------------+-----------+------------------+-------------+---------------------+----------------+
+| > **Bureau Call    |           |                  | > Yes       |                     |                |
+| > Type**           |           |                  |             |                     |                |
++--------------------+-----------+------------------+-------------+---------------------+----------------+
+| > **Routing**      | Yes       | > Yes            |             | Yes                 | Yes            |
++--------------------+-----------+------------------+-------------+---------------------+----------------+
+| > **Strategy**     | Yes       | > Yes            |             | Yes                 | Yes            |
++--------------------+-----------+------------------+-------------+---------------------+----------------+
+
+**Organizations**
+
++---------------+------------------------------------------------------+
+| > Credit      | > Individuals in the Retail Banking Organization     |
+| > officers    | > responsible for manual adjudication of loans.      |
++===============+======================================================+
+| > Product     | Organization responsible for defining loan and other |
+| > management  | banking products, how those products are priced,     |
+|               | sold and tracked for profitability.                  |
++---------------+------------------------------------------------------+
+| > Credit risk | Organization responsible for credit risk models and  |
+| > analytics   | the use of data to predict credit risk for customers |
+| > group       | and loan applicants.                                 |
++---------------+------------------------------------------------------+
+| > Retail      | > Overall Organization focused on banking products   |
+| > banking     | > for consumers.                                     |
++---------------+------------------------------------------------------+
+| > Credit risk | Organization within the bank responsible for         |
+|               | defining credit risk strategies and policies and     |
+|               | providing tools for managing against these.          |
++---------------+------------------------------------------------------+
+
+Credit officers are likely to be part of the Retail Banking
+organization, Credit risk analytic and Risk management are part of the
+Credit risk organization, although these relationships are not managed
+in DMN.
+
+These organizations own decisions, make decisions and own knowledge
+sources as follows:
+
++--------------+----------------+----------------+--------------------+
+|              | > **Owns       | > **Makes      | > **Knowledge      |
+|              | > Decisions**  | > Decisions**  | > Sources**        |
++==============+================+================+====================+
+| > **Credit   |                | > Adjudication | > Credit officer   |
+| > officers** |                |                | > experience       |
++--------------+----------------+----------------+--------------------+
+| > **Credit   | > Application  |                | > Credit risk      |
+| > risk       | > risk score   |                | > analytics        |
+| > analytics  |                |                |                    |
+| > group**    |                |                |                    |
++--------------+----------------+----------------+--------------------+
+| > **Credit   | > Adjudication |                | > Risk management  |
+| > risk**     | >              |                | > strategy         |
+|              | > Bureau call  |                |                    |
+|              | > type         |                |                    |
+|              | >              |                |                    |
+|              | > Eligibility  |                |                    |
+|              | >              |                |                    |
+|              | > Pre-bureau   |                |                    |
+|              | > risk         |                |                    |
+|              | > category     |                |                    |
+|              | > Post-bureau  |                |                    |
+|              | > risk         |                |                    |
+|              | > category     |                |                    |
+|              | >              |                |                    |
+|              | > Routing      |                |                    |
++--------------+----------------+----------------+--------------------+
+
+#### Decision Services
+
+The two decision services required by the business process model are
+defined against the decision model. The **Bureau Strategy Decision
+Service**, called by the **Decide bureau strategy** task, has output
+decisions {Bureau call type, Strategy}, and is shown in [Figure
+12‑7](#_Ref231382158). The **Routing Decision Service**, called by the
+**Decide routing** task, has output decisions {Routing}, and is shown in
+[Figure 12‑8](#_Ref231382172).
+
+![](media/image125.svg){width="5.0465277777777775in"
+height="5.993545494313211in"}
+
+[]{#_Ref231382158 .anchor}Figure 12‑7: Bureau Strategy Decision Service
+
+![](media/image127.svg){width="4.6296052055993in"
+height="4.607638888888889in"}
+
+[]{#_Ref231382172 .anchor}Figure 12‑8: Routing Decision Service
+
+### The decision logic level
+
+The DRG in [Figure 12‑2](#_Ref231381637) is defined in more detail in
+the following specifications of the value expressions associated with
+decisions and business knowledge models:
+
+- The **Strategy** decision logic ([Figure 12‑9](#_Ref231382848))
+  defines a complete, unique-hit decision table deriving Strategy from
+  Eligibility and Bureau call type.
+
+- The **Bureau call type** decision logic (shown as a boxed invocation
+  in [Figure 12‑10](#_Ref231382862)) invokes the Bureau call type table,
+  passing the output of the Pre-bureau risk category decision as the
+  Pre-Bureau Risk Category parameter.
+
+- The **Bureau call type table** decision logic ([Figure
+  12‑11](#_Ref231382874)) defines a complete, unique-hit decision table
+  deriving Bureau Call Type from Pre-Bureau Risk Category.
+
+- The **Eligibility** decision logic (shown as a boxed invocation in
+  [Figure 12‑12](#_Ref231382888)) invokes the Eligibility rules business
+  knowledge model, passing Applicant data. Age as the Age parameter, the
+  output of the Pre-bureau risk category decision as the Pre-Bureau Risk
+  Category parameter, and the output of the Pre-bureau affordability
+  decision as the Pre-Bureau Affordability parameter.
+
+- The **Eligibility rules** decision logic ([Figure
+  12‑13](#_Ref231382901)) defines a complete, priority-ordered single
+  hit decision table deriving Eligibility from Pre-Bureau Risk Category,
+  Pre-Bureau Affordability and Age.
+
+- The **Pre-bureau risk category** decision logic (shown as a boxed
+  invocation in [Figure 12‑14](#_Ref231382912)) invokes the Pre- bureau
+  risk category table business knowledge model, passing Applicant data.
+  ExistingCustomer as the Existing Customer parameter and the output of
+  the Application risk score decision as the Application Risk Score
+  parameter.
+
+- The **Pre-bureau risk category table** decision logic ([Figure
+  12‑15](#_Ref231382932)) defines a complete, unique-hit decision table
+  deriving Pre-Bureau Risk Category from Existing Customer and
+  Application Risk Score.
+
+- The **Application risk score** decision logic (shown as a boxed
+  invocation in [Figure 12‑16](#_Ref231382945)) invokes the Application
+  risk score model business knowledge model, passing Applicant data. Age
+  as the Age parameter, Applicant data. MaritalStatus as the Marital
+  Status parameter and Applicant data. EmploymentStatus as the
+  Employment Status parameter.
+
+- The **Application Risk Score Model** decision logic ([Figure
+  12‑17](#_Ref231382955)) defines a complete, no-order multiple-hit
+  table with aggregation, deriving Application risk score from Age,
+  Marital Status and Employment Status, as the sum of the Partial scores
+  of all matching rows (this is therefore a predictive scorecard
+  represented as a decision table).
+
+- The **Routing** decision logic (shown as a boxed invocation in [Figure
+  12‑18](#_Ref231382966)) invokes the Routing rules business knowledge
+  model, passing Bureau data. Bankrupt as the Bankrupt parameter, Bureau
+  data. CreditScore as the Credit Score parameter, the output of the
+  Post-bureau risk category decision as the Post-Bureau Risk Category
+  parameter, and the output of the Post-bureau affordability decision as
+  the Post-Bureau Affordability parameter. Note that if Bureau data is
+  null (due to the THROUGH strategy bypassing the Collect bureau data
+  task) the Bankrupt and Credit Score parameters will be null.
+
+- The **Routing rules** decision logic ([Figure 12‑19](#_Ref231382978))
+  defines a complete, priority-ordered single hit decision table
+  deriving Routing from Post-Bureau Risk Category, Post-Bureau
+  Affordability, Bankrupt and Credit Score.
+
+- The **Post-bureau risk category** decision logic (shown as a boxed
+  invocation in [Figure 12‑20](#_Ref231382990)) invokes the Post- bureau
+  risk category business knowledge model, passing Applicant data.
+  ExistingCustomer as the Existing Customer parameter, Bureau data.
+  CreditScore as the Credit Score parameter, and the output of the
+
+> Application risk score decision as the Application Risk Score
+> parameter. Note that if Bureau data is null (due to the THROUGH
+> strategy bypassing the Collect bureau data task) the Credit Score
+> parameter will be null.
+
+- The **Post-bureau risk category table** decision logic ([Figure
+  12‑21](#_Ref231383014)) defines a complete, unique-hit decision table
+  deriving Post-Bureau Risk Category from Existing Customer, Application
+  Risk Score and Credit Score.
+
+- The **Pre-bureau affordability** decision logic (shown as a boxed
+  invocation in [Figure 12‑22](#_Ref231383027)) invokes the
+  Affordability calculation business knowledge model, passing Applicant
+  data. Monthly. Income as the Monthly Income parameter, Applicant data.
+  Monthly. Repayments as the Monthly Repayments parameter, Applicant
+  data. Monthly. Expenses as the Monthly Expenses parameter, the output
+  of the Pre-bureau risk category decision as the Risk Category
+  parameter, and the output of the Required monthly installment decision
+  as the Required Monthly Installment parameter.
+
+- The **Post-bureau affordability** decision logic (shown as a boxed
+  invocation in [Figure 12‑23](#_Ref231383037)) invokes the
+  Affordability calculation business knowledge model, passing Applicant
+  data. Monthly. Income as the Monthly
+
+> Income parameter, Applicant data. Monthly. Repayments as the Monthly
+> Repayments parameter, Applicant data. Monthly. Expenses as the Monthly
+> Expenses parameter, the output of the Post-bureau risk category
+> decision as the Risk Category parameter, and the output of the
+> Required monthly installment decision as the Required Monthly
+> Installment parameter.
+
+- The **Affordability calculation** decision logic ([Figure
+  12‑24](#_Ref231383050)) defines a boxed function deriving
+  Affordability from Monthly Income, Monthly Repayments, Monthly
+  Expenses and Required Monthly Installment. One step in this
+  calculation derives Credit contingency factor by invoking the Credit
+  contingency factor table business knowledge model, passing the output
+  of the Risk category decision as the Risk Category parameter.
+
+- The **Credit contingency factor table** decision logic ([Figure
+  12‑25](#_Ref231383061)) defines a complete, unique-hit decision table
+  deriving Credit contingency factor from Risk Category.
+
+- The **Required monthly installment** decision logic (shown as a boxed
+  invocation in [Figure 12‑26](#_Ref231383072)) invokes the Installment
+  calculation business knowledge model, passing Requested product.
+  ProductType as the Product Type parameter, Requested product. Rate as
+  the Rate parameter, Requested product. Term as the Term parameter and
+  Requested product. Amount as the Amount parameter.
+
+- The **Installment calculation** decision logic ([Figure
+  12‑27](#_Ref231383087)) defines a boxed function deriving monthly
+  installment from Product Type, Rate, Term and Amount. One step in this
+  calculation invokes an external function PMT, imported from a DMN XML
+  file as "Financial". [Figure 12‑28](#_Ref231383111) shows the decision
+  logic of PMT function.
+
+- 
+
+![[]{#_Ref231382848 .anchor}Figure 12‑9: Strategy decision
+logic](media/image128.jpg){width="5.374305555555556in"
+height="3.051388888888889in"}
+
+![[]{#_Ref231382862 .anchor}Figure 12‑10: Bureau call type decision
+logic](media/image129.jpg){alt="Chart, treemap chart Description automatically generated"
+width="4.801388888888889in" height="1.5in"}
+
+![[]{#_Ref231382874 .anchor}Figure 12‑11: Bureau call type table
+decision
+logic](media/image130.jpg){alt="Table Description automatically generated"
+width="4.75in" height="2.901388888888889in"}
+
+![[]{#_Ref231382888 .anchor}Figure 12‑12: Eligibility decision
+logic](media/image131.jpg){alt="Table Description automatically generated"
+width="4.520833333333333in" height="2.3784722222222223in"}
+
+![[]{#_Ref231382901 .anchor}Figure 12‑13: Eligibility rules decision
+logic](media/image132.jpg){alt="Table Description automatically generated"
+width="6.055556649168854in" height="2.9256944444444444in"}
+
+![[]{#_Ref231382912 .anchor}Figure 12‑14: Pre-bureau risk category
+decision
+logic](media/image133.jpg){alt="Table, treemap chart Description automatically generated with medium confidence"
+width="4.541666666666667in" height="1.890278871391076in"}
+
+![[]{#_Ref231382932 .anchor}Figure 12‑15: Pre-bureau risk category table
+decision
+logic](media/image134.jpg){alt="Table Description automatically generated"
+width="5.770833333333333in" height="5.028472222222222in"}
+
+![[]{#_Ref231382945 .anchor}Figure 12‑16: Application risk score
+decision
+logic](media/image135.jpg){alt="Table Description automatically generated"
+width="4.874305555555556in" height="2.551388888888889in"}
+
+![[]{#_Ref231382955 .anchor}Figure 12‑17: Application risk score model
+decision
+logic](media/image136.jpg){alt="Table Description automatically generated"
+width="6.676388888888889in" height="7.405555555555556in"}
+
+![[]{#_Ref231382966 .anchor}Figure 12‑18: Routing decision
+logic](media/image137.jpg){alt="Table Description automatically generated"
+width="4.811805555555556in" height="3.0625in"}
+
+![[]{#_Ref231382978 .anchor}Figure 12‑19: Routing rules decision
+logic](media/image138.jpg){alt="Table Description automatically generated"
+width="6.383333333333334in" height="2.9555555555555557in"}
+
+![[]{#_Ref231382990 .anchor}Figure 12‑20: Post-bureau risk category
+decision
+logic](media/image139.jpg){alt="Table Description automatically generated"
+width="4.853472222222222in" height="2.53125in"}
+
+![[]{#_Ref231383014 .anchor}Figure 12‑21: Post-bureau risk category
+table decision
+logic](media/image140.jpg){alt="Table Description automatically generated"
+width="6.772222222222222in" height="7.855555555555555in"}
+
+![[]{#_Ref231383027 .anchor}Figure 12‑22: Pre-bureau affordability
+decision
+logic](media/image141.jpg){alt="Table Description automatically generated"
+width="4.957638888888889in" height="3.5416666666666665in"}
+
+![[]{#_Ref231383037 .anchor}Figure 12‑23: Post-bureau affordability
+decision
+logic](media/image142.jpg){alt="Table Description automatically generated"
+width="4.968055555555556in" height="3.551388888888889in"}
+
+![[]{#_Ref231383050 .anchor}Figure 12‑24: Affordability calculation
+decision
+logic](media/image143.jpg){alt="Graphical user interface, application, table Description automatically generated"
+width="6.772222222222222in" height="3.359722222222222in"}
+
+![[]{#_Ref231383061 .anchor}Figure 12‑25: Credit contingency factor
+table decision
+logic](media/image144.jpg){alt="Table Description automatically generated"
+width="5.551388888888889in" height="3.0722222222222224in"}
+
+![[]{#_Ref231383072 .anchor}Figure 12‑26: Required monthly installment
+decision
+logic](media/image145.jpg){alt="Table Description automatically generated"
+width="4.801388888888889in" height="3.051388888888889in"}
+
+![[]{#_Ref231383087 .anchor}Figure 12‑27: Installment calculation
+decision
+logic](media/image146.jpg){alt="Table Description automatically generated"
+width="5.249305555555556in" height="3.3430555555555554in"}
+
+![[]{#_Ref231383111 .anchor}Figure 12‑28: Financial.PMT decision
+logic](media/image147.jpg){alt="Graphical user interface, application Description automatically generated"
+width="4.822222222222222in" height="1.7083333333333333in"}
+
+### Executing the Decision Model 
+
+In order to execute a decision model (in this case, by calling two
+decision services), case data must be bound to the input data, much as
+an invocation binds arguments to function parameters. The binding of
+case data to input data, however, is not part of the decision model,
+unlike the invocation that specifies how a decision's requirement inputs
+bind to the parameters of that decision's required knowledge.
+
+FEEL allows contexts and other expressions to be used to represent case
+data (see also clauses [0](#_Ref123134081) and [10.6.1](#context-1)).
+Input data is associated with an item definition (clause
+[7.3.2](#_Ref123134115)) and the case data must have the same type and
+other constraints specified by the item definition. Case data must be
+mapped to the FEEL domain. For example, XML instance data is mapped to
+the FEEL domain as described in clause [10.3.3](#xml-data).
+
+For convenience, we will specify case data using boxed expressions
+instead of XML. [Figure 12‑29](#_Ref231383356), [Figure
+12‑30](#_Ref231383388), and [Figure 12‑31](#_Ref231383402) show boxed
+contexts defining case data for Applicant data, Requested product and
+Bureau data.
+
+![[]{#_Ref231383356 .anchor}Figure 12‑29: Applicant data input data
+sample](media/image148.jpg){alt="Table Description automatically generated"
+width="3.7844444444444445in" height="4.05625in"}
+
+**\**
+
+![[]{#_Ref231383388 .anchor}Figure 12‑30: Requested Product input data
+sample](media/image149.jpg){width="3.90625in"
+height="1.5104166666666667in"}
+
+![[]{#_Ref231383402 .anchor}Figure 12‑31: Bureau Data input data
+sample](media/image150.jpg){alt="Chart, treemap chart Description automatically generated"
+width="3.895138888888889in" height="0.9895833333333334in"}
+
+When the Bureau Strategy Decision Service is called with the Applicant
+data and Requested product case data, it returns the context shown in
+[Figure 12‑32](#_Ref231383419):
+
+![[]{#_Ref231383419 .anchor}Figure 12‑32: Output of the Bureau Strategy
+Decision Service](media/image151.jpg){width="3.895138888888889in"
+height="0.4791666666666667in"}
+
+When the Routing Decision Service is called with the Applicant data,
+Requested product and Bureau data case data, it returns the context
+shown in [Figure 12‑33](#_Ref231383433).
+
+![[]{#_Ref231383433 .anchor}Figure 12‑33: Output of the Routing decision
+Service](media/image152.jpg){alt="Table Description automatically generated"
+width="3.90625in" height="2.53125in"}
+
+## Example 2: Ranked Loan Products
+
+The second example considers eligibility for various mortgage loan
+products based on the Borrower's income, assets, liabilities, and credit
+score, and ranks them based on specified sort criteria. It illustrates
+the wide variety of DMN expression types, including context, invocation,
+relation, and function definition, as well as some of the newer FEEL
+functions and operators, including import, service invocation, enhanced
+iteration, generalized unary tests, and Java binding. The logic
+represented here is just one of many different ways to model the
+scenario.
+
+The DRD for the decision model is shown in [Figure
+12‑34](#_Ref231384069).
+
+![](media/image154.svg){width="6.811023622047244in"
+height="3.6409044181977253in"}
+
+[]{#_Ref231384069 .anchor}Figure 12‑34: DRD for Recommended Loan
+Products
+
+The input data elements include:
+
+- **Credit Score**, a number from 300 to 850 inclusive
+
+- **Down Payment**, a number
+
+- **Property**, a structure of type *tProperty* ([Figure
+  12‑35](#_Ref231384086))
+
+- **Borrower**, a structure of type *tBorrower* ([Figure
+  12‑37](#_Ref231384132)), and
+
+- **Lender Ratings,** a structure of type *tLenderRatings* ([Figure
+  12‑38](#_Ref231384143))
+
+The boxed expression format for the datatype definitions in [Figure
+12‑35](#_Ref231384086), [Figure 12‑37](#_Ref231384132), and [Figure
+12‑38](#_Ref231384143)is non- normative. [Figure 12‑35](#_Ref231384086),
+for example, is a visualization of the XML representation of [Figure
+12‑36](#_Ref231384096).
+
+![[]{#_Ref231384086 .anchor}Figure 12‑35: Type tProperty (non-normative
+representation)](media/image155.jpg){width="4.875694444444444in"
+height="3.229861111111111in"}
+
+![[]{#_Ref231384096 .anchor}Figure 12‑36: Type tProperty (XML
+representation)](media/image156.jpg){alt="Table Description automatically generated with medium confidence"
+width="6.772222222222222in" height="4.893055555555556in"}
+
+![[]{#_Ref231384132 .anchor}Figure 12‑37: Type
+tBorrower](media/image157.jpg){alt="Graphical user interface, application Description automatically generated"
+width="6.430555555555555in" height="4.479166666666667in"}
+
+![[]{#_Ref231384143 .anchor}Figure 12‑38: Type tLenderRatings, a
+collection of
+tLenderRating](media/image158.jpg){alt="Graphical user interface, application Description automatically generated"
+width="3.792361111111111in" height="0.78125in"}
+
+In addition, the zero-input decision Loan Products, a structure of type
+tLoanProducts, is a relation ([Figure 12‑39](#_Ref231384230)). Cells in
+a relation are FEEL expressions but often contain literal values as a
+way to embed static data tables inside a decision model. In this case it
+represents a list of mortgage loan products available from various
+lenders, specifying the best interest rate offered to lowest risk
+borrowers and loan origination costs specified as "points", a percentage
+of the loan amount, and "fees", a constant value.
+
+![](media/image159.png){width="6.772222222222222in"
+height="2.83459208223972in"}
+
+[]{#_Ref231384230 .anchor}Figure 12‑39: Loan Products
+
+![Figure 12‑40: Type tLoanProducts, a collection of
+tLoanProduct](media/image160.jpg){alt="Graphical user interface, text, application, email Description automatically generated"
+width="6.772222222222222in" height="2.8819444444444446in"}
+
+The **Recommended Loan Products** model imports another decision model
+**Loan Info**, with the DRD shown in [Figure 12‑41](#_Ref231384289),
+defining a decision service **Loan Info Service**. Imported models are
+assigned a modeler-chosen prefix, here *Services*, to distinguish its
+namespace from that of the importing model. In the importing DRD
+([Figure 12‑34](#_Ref231384069)), the imported service **Services.Loan
+Info Service** is depicted with the non-normative lock icon, indicating
+that its logic may not be edited within the importing model. The service
+parameters are the input data shown in [Figure 12‑41](#_Ref231384289):
+**Credit Score, Property, Loan Product,** and **Down Payment**, with
+types identical to those defined in the importing model.
+
+**Services**.**Loan Info Service** populates a row of the decision
+**Loan Info Table**, a collection of type **tLoanInfoRow** ([Figure
+12‑39](#_Ref231384230)), calculating the details of the selected loan
+product for the given property value (purchase price) and down payment.
+
+![](media/image162.svg){width="5.984251968503937in"
+height="3.2094860017497813in"}
+
+[]{#_Ref231384289 .anchor}Figure 12‑41: DRD of imported Loan Info
+Service
+
+![Figure 12‑42: Type tLoanInfoTable, a collection of
+tLoanInfoRow](media/image163.jpg){alt="Table Description automatically generated with medium confidence"
+width="6.499722222222222in" height="5.16875in"}
+
+![[]{#_Ref231384362 .anchor}Figure 12‑43: Loan
+Data](media/image164.jpg){alt="Table Description automatically generated"
+width="6.772222222222222in" height="7.648611111111111in"}
+
+Within the service, **Loan Data** performs calculations used in the
+presentation decision, **Loan Info**. It is modeled as a context with no
+final result box, meaning every context entry creates a component of the
+result. (The text "Result" in the final result box is a tool artifact
+not in the spec, overwritten by a literal expression if the context has
+a final result box value.) A few things to note about the logic shown in
+[Figure 12‑43](#_Ref231384362):
+
+- FEEL arithmetic can create values with many digits following the
+  decimal point. The function decimal(x, 2) rounds value x to 2 decimal
+  places.
+
+- Context entry Interest Rate Percent invokes the BKM **Rate
+  Adjustment** ([Figure 12‑44](#_Ref231384381)), a function of the
+  borrower's **Credit Score** and the loan-to-value ratio **LTV**. This
+  increments the Loan Product's interest rate by a small amount based on
+  the loan risk.
+
+- **Credit Score** values less than 620 are ineligible for a loan. In
+  that case, **Rate Adjustment** could return null, but then all
+  expressions using **Rate Adjustment** would also be null, complicating
+  the logic. To simplify the downstream logic, it is better in this case
+  to return a number, since ultimately the loan will not be approved if
+  the **Credit Score** is less than 620.
+
+- For loans with variable interest rate, the debt-to-income ratio uses a
+  *Qualifying Payment* amount based on an interest rate 2 percent higher
+  than the rate used in the initial *Monthly Payment*.
+
+- *Monthly Payment* and *Qualifying Payment* are modeled as boxed
+  invocations of the BKM **payment**, the amortization formula ([Figure
+  12‑45](#_Ref231384396)). The parameters of payment are the loan amount
+  *p*, the interest rate *r*, and the term in months, *n*.
+
+The decision **Loan Info** ([Figure 12‑46](#_Ref231384410)), the output
+of **Services.Loan Info**, returns a row of **Loan Info Table**. It is
+also modeled as a context with no final result box, meaning each context
+entry represents a column of **Loan Info Table.**
+
+![[]{#_Ref231384381 .anchor}Figure 12‑44: BKM Rate
+Adjustment](media/image165.jpg){alt="Table Description automatically generated"
+width="3.798611111111111in" height="7.263888888888889in"}
+
+![[]{#_Ref231384396 .anchor}Figure 12‑45: BKM
+payment](media/image166.jpg){alt="Graphical user interface, text, application Description automatically generated"
+width="3.0006944444444446in" height="1.5520833333333333in"}
+
+![[]{#_Ref231384410 .anchor}Figure 12‑46: Loan
+Info](media/image167.jpg){alt="Table Description automatically generated with medium confidence"
+width="4.590277777777778in" height="7.291666666666667in"}
+
+In the importing model, the decision **Loan Info Table** ([Figure
+12‑47](#_Ref231384432)) iterates invocation of **Loan Info** over rows
+of **Loan Products.** It is modeled as a literal expression using the
+FEEL *for. . in. .return* operator. Here *x* is a range variable meaning
+one item in a list -- one **Loan Product** in **Loan Products** --
+producing an argument of the function call.
+
+![[]{#_Ref231384432 .anchor}Figure 12‑47: Loan Info
+Table](media/image168.jpg){alt="Graphical user interface, text, application, email Description automatically generated"
+width="6.209027777777778in" height="1.25in"}
+
+**Loan Info Table** now provides values for each **Loan Product** used
+to determine whether the Borrower's income, assets, liabilities, and
+credit score qualify for loan approval.
+
+At the heart of the logic for determining eligibility for a particular
+loan is the BKM **Min Credit Score** ([Figure 12‑48](#_Ref231384445)), a
+decision table that calculates the minimum credit score required based
+on three parameters: *DTI*, the borrower's debt-toincome ratio; *LTV,*
+the loan-to-value ratio; and *Reserves*, a measure of the Borrower's
+liquid assets after closing in units of monthly *Housing Costs*. The
+table is modeled as hit policy *Collect* with aggregation *Minimum*,
+meaning when multiple rules match the lowest value output is returned.
+When *DTI* is greater than 95%, the loan is automatically ineligible. In
+that case, no rule matches and **Min Credit Score** returns the value
+null. Downstream logic referencing this variable must account for the
+possibility of null value.
+
+![[]{#_Ref231384445 .anchor}Figure 12‑48: Min Credit
+Score](media/image169.jpg){alt="Table Description automatically generated"
+width="3.7083333333333335in" height="5.180555555555555in"}
+
+**Min Credit Score** is called by the BKM **Eligibility,** which in turn
+calls the BKM **Eligibility Parameters** ([Figure
+12‑49](#_Ref231384461)). **Eligibility Parameters** calculates the two
+key parameters of **Min Credit Score**, the debt-to-income ratio *DTI
+Pct*, and the liquid assets after closing, called *Reserves*. Note that
+context entry *Housing Expense*, which sums the loan payment, tax and
+insurance payments, and homeowner association/condo fee, must account
+for the possibility that the latter is left blank, i.e., null, in the
+input data **Property**, since adding null to a number gives null. To
+prevent this, instead of the + operator we use the *sum()* function on a
+list filtered by the condition *item != null.* We use this technique
+also on context entry *Income*.
+
+![[]{#_Ref231384461 .anchor}Figure 12‑49: Eligibility
+Parameters](media/image170.jpg){alt="Table Description automatically generated"
+width="6.772222222222222in" height="5.752777777777778in"}
+
+For legibility, the BKM **Eligibility** is shown in two pieces ([Figure
+12‑50](#_Ref231384475)and [Figure 12‑51](#_Ref231384483)). This BKM
+creates a row of type *tTableRow* for the decision **Eligibility
+Table**. It is modeled as a context, where the first four context
+entries ([Figure 12‑51](#_Ref231384483)) call BKMs to determine values
+to populate the *Table Row* components.
+
+- *Params* calls the BKM **Eligibility Parameters** for a given **Loan
+  Product**.
+
+- *Required Credit Score* uses Params to call the BKM **Min Credit
+  Score**, returning the minimum credit score required by that **Loan
+  Product** for the Borrower to be eligible.
+
+- *Eligible* is a Boolean comparing the Borrower's credit score to **Min
+  Credit Score.** *Recommendation* uses the input data **Lender
+  Ratings** in combination with **Eligible** to return a recommendation
+  value for the **Loan Product**. *Recommendation* illustrates an
+  alternative decision table syntax introduced in DMN 1.2 called
+  generalized unary test. With generalized unary tests, a decision table
+  input entry may be any FEEL expression, substituting ? for the input
+  expression. For example, in the first column of this decision table
+  the rules filter the **Lender Ratings** table for an item with *Lender
+  Name* matching that of the **Loan Product** and *Customer Rating* in a
+  specified range, returning true if that filter returns any values.
+
+![[]{#_Ref231384475 .anchor}Figure 12‑50: Eligibility
+(top)](media/image171.jpg){alt="Graphical user interface, application Description automatically generated"
+width="6.772222222222222in" height="5.103472222222222in"}
+
+The rest of **Eligibility** is shown in[Figure 12‑51](#_Ref231384483).
+
+- *Table Row* is a nested context with no final result box value. Each
+  context entry represents a column in the row.
+
+- The DMN spec allows the final result box to be a context, but in this
+  example, we use a context entry to create the result value and return
+  it in the result box. Here context entry *Table Row* creates the row
+  structure, and the final result box simply selects this context entry.
+
+![[]{#_Ref231384483 .anchor}Figure 12‑51: Eligibility
+(bottom)](media/image172.jpg){alt="Chart Description automatically generated with low confidence"
+width="6.772222222222222in" height="5.504861111111111in"}
+
+The decision **Eligibility Table** ([Figure 12‑52](#_Ref231384550)) uses
+an alternative form of the *for. .in..return* operator to iterate over
+an index rather than iterate over list item values. This alterative
+format allows the returned expression to involve corresponding items in
+multiple lists, in this case **Loan Products** and **Loan Info Table**.
+
+![[]{#_Ref231384550 .anchor}Figure 12‑52: Eligibility
+Table](media/image173.jpg){width="6.772222222222222in"
+height="1.2305555555555556in"}
+
+The top-level decision **Recommended Loan Products** ([Figure
+12‑53](#_Ref231384564)) first sorts **Eligibility Table** based on
+*Recommendation* and *Monthly Payment* and then calls a Java method to
+format number values as strings for final presentation.
+
+![[]{#_Ref231384564 .anchor}Figure 12‑53: Recommended Loan
+Products](media/image174.jpg){alt="Graphical user interface, text, application Description automatically generated"
+width="6.553472222222222in" height="3.354861111111111in"}
+
+- The first context entry *precedes* is a function definition used by
+  the FEEL *sort()* function. The second parameter of *sort()*, called
+  the *precedes function*, is a Boolean function with two arguments
+  representing list items. It returns true if the first argument
+  precedes the second in the sorted list.
+
+- The context entry *Sorted Table* performs the sort. With simple sort
+  criteria, the precedes function is typically defined inline as an
+  anonymous function using the keyword *function*, as in
+
+> sort(myTable, function(x, y) x.Amount \< y.Amount)
+>
+> which sorts the rows of *myTable* in ascending order of the column
+> *Amount*. However, in **Recommended Loan Products** we instead use a
+> named precedes function, the context entry *precedes*. In that case,
+> the name of the function provides the second argument of *sort().*
+
+- The final result box iterates a call to the BKM **Format Row**, which
+  executes a static Java method to format number values in *Sorted
+  Table* as strings with a currency symbol and two digits following the
+  decimal point.
+
+**Format Row** ([Figure 12‑54](#_Ref231384593)) operates on a single row
+of *Sorted Table*. It is modeled as a context.
+
+- The first context entry *string format* is a Java function definition,
+  indicated by the code J. DMN specifies such a function definition as a
+  context with two context entries, *class,* and *method signature*.
+  This example applies a mask string to a number, returning a formatted
+  number string.
+
+- The second context entry *formatted row* generates a row of
+  **Recommended Loan Products** in final presentation format, calling
+  *string format* to format amount and percent values.
+
+- The final result box returns *formatted row*.
+
+![[]{#_Ref231384593 .anchor}Figure 12‑54: Format
+Row](media/image175.jpg){alt="Graphical user interface Description automatically generated with medium confidence"
+width="6.772222222222222in" height="6.277083333333334in"}
+
+[Figure 12‑55](#_Ref231384606) shows the output of **Recommended Loan
+Products** based on the Test Case input data of [Figure
+12‑56](#_Ref231384620).
+
+![[]{#_Ref231384606 .anchor}Figure 12‑55: Test Case output of
+Recommended Loan
+Products](media/image176.jpg){alt="Table Description automatically generated"
+width="5.531944444444444in" height="5.479861111111111in"}
+
+![](media/image179.jpeg)
+
+![[]{#_Ref231384620 .anchor}Figure 12‑56: Test Case Input Data
+(partial)](media/image179.jpg){alt="Table Description automatically generated"
+width="3.455224190726159in" height="2.768655949256343in"}
+
+This page intentionally left blank.
+
+# Exchange Formats
+
+## Interchanging Incomplete Models
+
+It is common for **DMN** models to be interchanged before they are
+complete. This occurs frequently when doing iterative modeling, where
+one user (such as a knowledge source expert or business user) first
+defines a high-level model and then passes it on to another person to
+complete or refine the model.
+
+Such \"incomplete\" models are ones in which not all of the mandatory
+model attributes have been filled in yet or the cardinality of the lower
+bound of attributes and associations has not been satisfied.
+
+XMI allows for the interchange of such incomplete models. In **DMN**, we
+extend this capability to interchange of XML files based on the **DMN**
+XML-Schema. In such XML files, implementers are expected to support this
+interchange by:
+
+- Disregarding missing attributes that are marked as \"required\" in the
+  **DMN** XML-Schema.
+
+- Reducing the lower bound of elements with \"minOccurs\" greater than
+  0.
+
+## Machine Readable Files
+
+All machine-readable files, including XSD, XMI and XML files, can be
+found at <https://www.omg.org/spec/DMN>.
+
+- For the **DMN** XMI Model, the main file is DMN.xmi.
+
+- For the **DMN** XSD Interchange (supporting Conformance Levels 1, 2
+  and 3), the main file is DMN.xsd.
+
+- XML serializations of the examples in clause [12](#dmn-examples) are
+  provided as a non-normative zip file.
+
+## XSD
+
+### Document Structure
+
+A domain-specific set of model elements is interchanged in one or more
+**DMN** files. The root element of each file SHALL be \<DMN**:**
+Definitions\>. The set of files SHALL be self-contained, i.e., all
+definitions that are used in a file SHALL be imported directly or
+indirectly using the \<DMN**:** Import\> element.
+
+Each file SHALL declare a "name space" that MAY differ between multiple
+files of one model.
+
+**DMN** files MAY import non-**DMN** files (such as XSDs and PMMLs) if
+the contained elements use external definitions.
+
+Starting from DMN 1.7, the XML namespace URIs for backwards-compatible
+1.x versions of DMN are fixed at:
+
+- <https://www.omg.org/spec/DMN/> for the semantic model
+
+- <https://www.omg.org/spec/DMN/DMNDI/> for the diagram interchange
+  model
+
+- <https://www.omg.org/spec/DMN/FEEL/> for the FEEL expression language
+
+- <https://www.omg.org/spec/DMN/B-FEEL/> for the B-FEEL expression
+  language
+
+The \<dmn:definitions\> root element of a DMN XML file MUST indicate the
+concrete DMN version that is used in the file by setting the dmnVersion
+attribute, e.g.:
+
+\<dmn:definitions dmnVersion=\"1.7\" \...
+
+In addition, the \<dmn:definitions\> root element SHOULD include an
+xsi:schemaLocation attribute that points to the XML schema files for all
+namespaces, i.e. the URLs of the XSDs that are publicly hosted by OMG
+without dated version stamps, e.g.
+
+\<dmn:definitions dmnVersion=\"1.7\" \...
+
+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+
+xsi:schemaLocation=\"
+
+https://www.omg.org/spec/DMN/
+
+https://www.omg.org/spec/DMN/DMN.xsd
+
+https://www.omg.org/spec/DMN/DMNDI/
+
+https://www.omg.org/spec/DMN/DMNDI.xsd
+
+https://www.omg.org/spec/SCE/DI/
+
+https://www.omg.org/spec/SCE/DI.xsd
+
+https://www.omg.org/spec/SCE/DC/
+
+https://www.omg.org/spec/SCE/DC.xsd
+
+\"\>
+
+### References within the DMN XSD
+
+Many **DMN** elements that may need to be referenced contain IDs and
+within the **BPMN** XSD, references to elements are expressed via these
+IDs. The XSD IDREF type is the traditional mechanism for referencing by
+IDs, however it can only reference an element within the same file.
+**DMN** elements of type DMNElementReference support referencing by ID,
+across files, by utilizing an href attribute whose value must be a valid
+URI reference \[RFC 3986\] where the path components may be absolute,
+the reference has no query component, and the fragment consists of the
+value of the id of the referenced **DMN** element.
+
+For example, consider the following Decision:
+
+\<decision name=\"Pre-Bureau Risk Category\"
+id=\"prebureauriskDec01\"\>\...\</decision\>
+
+When this Decision is referenced, e.g., by an InformationRequirement in
+a Decision that is defined in another file, the reference could take the
+following form:\
+\<requiredDecision
+href="[http://www.example.org/Definitions01#prebureauriskDec01"/\>\
+where "[http://www.example.org/Definitions01" is a URI representing the
+namespace of the model specified in the DMN file. When the Decision is
+referenced in the same file, the reference could take both of the
+following forms: \<requiredDecision
+href="http://www.example.org/Definitions01.xml#prebureauriskDec01"/\> or
+\<requiredDecision
+href="#prebureauriskDec01"/\>](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Notice that the **BPMN** processes and tasks that use a decision are
+referenced using the href attribute as
+well:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[indeed, it is compatible with the system to reference external Process
+and Task instances in **BPMN 2.0** Definitions, which is also based on
+IDs.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Attribute typeRef references ItemDefinitions and built-in types by
+name not ID. In order to support imported types, typeRef uses the
+namespace-qualified name syntax \[qualifer\].\[local-name\], where
+qualifier is specified by the name attribute of the Import element for
+the imported type. If the referenced type is not imported, the prefix
+SHALL be
+omitted.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[\
+](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[This page intentionally left
+blank](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[\
+](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+# [[[[]{#_Toc231385262 .anchor}]{#_Ref122593195 .anchor}DMN Diagram Interchange (DMN DI)](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+## [[[]{#_Toc231385263 .anchor}Scope](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[This chapter specifies the meta-model and schema for **DMN** Diagram
+Interchange (**DMN DI**). The **DMN DI** is meant to facilitate the
+interchange of **DMN** diagrams between tools rather than being used for
+internal diagram representation by the tools. The simplest interchange
+approach to ensure the unambiguous rendering of a **DMN** diagram was
+chosen for **DMN DI**. As such, **DMN DI** does not aim to preserve or
+interchange any "tool smarts" between the source and target tools (e.g.,
+layout smarts, efficient styling,
+etc.).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**DMN DI** does not ascertain that the **DMN** diagram is
+syntactically or semantically
+correct.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[This version of DMN DI focuses on the interchange of Decision
+Requirements Diagrams (DRDs). Diagram Interchange for boxed expressions
+and decision tables might be added in future
+versions.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+## [[[]{#_Toc231385264 .anchor}Diagram Definition and Interchange](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The **DMN DI** meta-model, similar to the DMN abstract syntax
+meta-model, is defined as a MOF-based meta-model. As such, its instances
+can be serialized and interchanged using XMI. DMN DI is also defined by
+an XML schema. Thus, its instances can also be serialized and
+interchanged using
+XML.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Both DMN DI meta-model and schema are harmonized with the OMG Diagram
+Definition (DD) standard version 1.1. The referenced DD contains two
+main parts: the Diagram Commons (DC) and the Diagram Interchange (DI).
+The DC defines common types like bounds and points, while the DI
+provides a framework for defining domain-specific diagram models. As a
+domain-specific DI, DMN DI defines a few new meta-model classes that
+derive from the abstract classes from
+DI.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The focus of DMN DI is the interchange of laid out shapes and edges
+that constitute a **DMN** diagram. Each shape and edge reference a
+particular **DMN** model element. The referenced **DMN** model elements
+are all part of the actual **DMN** model. As such, DMN DI is meant to
+only contain information that is neither present nor derivable, from the
+**DMN** model whenever possible. Simply put, to render a **DMN** diagram
+both the DMN DI instance(s) and the referenced **DMN** model are
+REQUIRED.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[From the DMN DI perspective, a DMN diagram is a particular snapshot of
+a **DMN** model at a certain point in time. Multiple **DMN** diagrams
+can be exchanged referencing model elements from the same **DMN** model.
+Each diagram may provide an incomplete or partial depiction of the
+content of the **DMN** model. As described in clause 12, a **DMN** model
+package consists of one or more files. Each file may contain any number
+of **DMN** diagrams. The exporting tool is free to decide how many
+diagrams are exported and the importing tool is free to decide if and
+how to present the contained diagrams to the
+user.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+## [[[]{#_Toc231385265 .anchor}How to read this chapter](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Clause [14.4](#_Ref123199460) describes in detail the meta-model used
+to keep the layout and the look of **DMN** Diagrams. Clause
+[14.5](#_Ref123199473) presents in tables a library of the **DMN**
+element depictions and an unambiguous resolution between a referenced
+**DMN** model element and its
+depiction.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+## [[[[]{#_Toc231385266 .anchor}]{#_Ref123199460 .anchor}DMN Diagram Interchange Meta-Model](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[]{#_Toc231385267 .anchor}Overview](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The DMN DI is an instance of the OMG DI meta-model. The basic concept
+of DMN DI, as with DI in general, is that serializing a diagram
+\[DMNDiagram\] for interchange requires the specification of a
+collection of shapes \[DMNShape\] and edges
+\[DMNEdge\].](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The DMN DI classes only define the visual properties used for
+depiction. All other properties that are REQUIRED for the unambiguous
+depiction of the **DMN** element are derived from the referenced **DMN**
+element
+\[dmnElementRef\].](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**DMN** diagrams may be an incomplete or partial depiction of the
+content of the **DMN** model. Some **DMN** elements from a **DMN** model
+may not be present in any of the diagram instances being
+interchanged.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMN DI does not directly provide for any containment concept. The
+DMNDiagram is an ordered collection of mixed DMNShape(s) and DMNEdge(s).
+The order of the DMNShape(s) and DMNEdge(s) inside a DMNDiagram
+determines their Z-order (i.e., what is in front of what). DMNShape(s)
+and DMNEdge(s) that are meant to be depicted "on top" of other
+DMNShape(s) and DMNEdge(s) MUST appear after them in the DMNDiagram.
+Thus, the exporting tool MUST order all DMNShape(s) and DMNEdge(s) such
+that the desired depiction can be rendered.Measurement UnitAs per OMG
+DD, all coordinates and lengths defined by DMN DI are assumed to be in
+user units, except when specified otherwise. A user unit is a value in
+the user coordinate system, which initially (before any transformation
+is applied) aligns with the device's coordinate system (for example, a
+pixel grid of a display). A user unit, therefore, represents a logical
+rather than physical measurement unit. Since some applications might
+specify a physical dimension for a diagram as well (mainly for printing
+purposes), a mapping from a user unit to a physical unit can be
+specified as a diagram's resolution. Inch is chosen in this
+specification to avoid variability, but tools can easily convert from/to
+other preferred physical units. Resolution specifies how many user units
+fit within one physical unit (for example, a resolution of 300 specifies
+that 300 user units fit within 1 inch on the
+device).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[]{#_Toc231385268 .anchor}DMNDI \[Class\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![Diagram Description automatically
+generated](media/image180.jpg){width="3.9307195975503064in"
+height="2.6389523184601926in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Figure 14‑1:
+DMNDI](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The class DMNDI is a container for the shared DMNStyle and all the
+DMNDiagram defined in a
+Definitions.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**Table 95: DMNDI
+attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**Attribute**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | > [[**Description**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++====================================================================================================================+======================================================================================================================+
+| > [[**styles**: DMNStyle                                                                                           | [[A list of shared DMNStyle that can be referenced by all DMNDiagram and                                             |
+| > \[0..\*\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | DMNDiagramElement.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  |
++--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**diagrams**: DMNDiagram                                                                                       | > [[A list of                                                                                                        |
+| > \[0..\*\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | > DMNDiagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       |
++--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
+### [[[]{#_Toc231385269 .anchor}DMNDiagram \[Class\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![](media/image182.svg){width="6.770833333333333in"
+height="4.322916666666667in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Figure 14‑2:
+DMNDiagram](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The class DMNDiagram specializes DI::Diagram. It is a kind of Diagram
+that represents a depiction of all or part of a **DMN**
+model.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagram is the container of DMNDiagramElement (DMNShape(s) and
+DMNEdge(s)). DMNDiagram cannot include other
+DMNDiagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[A DMNDiagram can define a DMNStyle locally and/or it can refer to a
+shared one defined in the DMNDI. Properties defined in the local style
+overrides the one in the referenced shared style. That combined style
+(shared and local) is the default style for all the DMNDiagramElement
+contained in this
+DMNDiagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The DMNDiagram class represents a two-dimensional surface with an
+origin of (0, 0) at the top left corner. This means that the x and y
+axes have increasing coordinates to the right and bottom. Only positive
+coordinates are allowed for diagram elements that are nested in a
+DMNDiagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The DMNDiagram has the following
+attributes.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**Attribute**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        | > [[**Description**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++===========================================================================================================================+======================================================================================================================+
+| > [[**name**: String](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     | > [[The name of the diagram. Default is empty                                                                        |
+|                                                                                                                           | > String.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**documentation**:                                                                                                    | > [[The documentation of the diagram. Default is empty                                                               |
+| > String](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                 | > String.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**resolution**: Real](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[The resolution of the diagram expressed in user units per inch. Default                                            |
+|                                                                                                                           | is](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                  |
+|                                                                                                                           |                                                                                                                      |
+|                                                                                                                           | [[300](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)               |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**diagramElements**:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[A list of DMNDiagramElement (DMNShape and DMNEdge) that are depicted in this                                       |
+| >                                                                                                                         | diagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
+| > [[DMNDiagramElement                                                                                                     |                                                                                                                      |
+| > \[0..\*\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              |                                                                                                                      |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**useAlternativeInputDataShape:** Boolean                                                                             | [[If the DMNShape depicts an Input Data element then it is represented either using the paper sheet symbol,          |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)               | harmonized with BPMN and CMMN notations (true) or using the backwards compatible oval symbol                         |
+|                                                                                                                           | (false).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**sharedStyle**: DMNStyle\[0..                                                                                        | [[A reference to a DMNStyle defined in the DMNDI that serves as the default styling of the DMNDiagramElement in this |
+| > 1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                    | DMNDiagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**localStyle**: DMNStyle                                                                                              | [[A DMNStyle that defines the default styling for this diagram. Properties defined in that style override the ones   |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)               | in the sharedStyle.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**size**: DC::Dimens ion                                                                                              | > [[The size of this diagram. If not specified, the DMNDiagram is                                                    |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)               | > unbounded.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        |
++---------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 96: DMNDiagram
+attributes](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[[]{#_Toc231385270 .anchor}]{#_Ref123199630 .anchor}DMNDiagramElement \[Class\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![](media/image184.svg){width="6.336382327209098in"
+height="2.928579396325459in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Figure 14‑3:
+DMNDiagramElement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The DMNDiagramElement class is contained by the DMNDiagram and is the
+base class for DMNShape and
+DMNEdge.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagramElement inherits its styling from its parent DMNDiagram. In
+addition, it can refer to one of the shared DMNStyle defined in the
+DMNDI and/or it can define a local style. See clause 13.4.9 for more
+details on
+styling.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagramElement MAY also contain a DMNLabel when it has a visible
+text label. If no DMNLabel is defined, the DMNDiagramElement should be
+depicted without a
+label.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagramElement has the following
+attributes:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[**Attribute**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**Description**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++====================================================================================================================+====================================================================================================================+
+| > [[**dmnElementRef**: DMNElement                                                                                  | [[A reference to the DMNElement that is being                                                                      |
+| > \[1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | depicted.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[**sharedStyle**: DMNStyle                                                                                      | [[A reference to a DMNStyle defined in the                                                                         |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        | DMNDI.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[**localStyle**: DMNStyle                                                                                       | [[A DMNStyle that defines the styling for this                                                                     |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        | element.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[**label**: DMNLabel \[0..                                                                                      | [[An optional label when this DMNElement has a visible text                                                        |
+| > 1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)             | label.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 97: DMNDiagramElement
+attributes](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[]{#_Toc231385271 .anchor}DMNShape \[Class\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![Diagram Description automatically
+generated](media/image185.jpg){width="6.713888888888889in"
+height="2.5305555555555554in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Figure 14‑4:
+DMNShape](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The DMNShape class specializes DI::Shape and DMNDiagramElement. It is
+a kind of Shape that depicts a DMNElement from the DMN
+model.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNShape represents a Decision, a Business Knowledge Model, an Input
+Data element, a Knowledge Source, a Decision Service or a Text
+Annotation that is depicted on the
+diagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNShape has three additional properties (isListedInputData,
+isCollapsed and decisionServiceDividerLine) that are used to further
+specify the appearance of some shapes that cannot be deduced from the
+DMN
+model.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNShape extends DI::Shape and DMNDiagramElement and has the following
+attributes:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**Table 98: DMNShape
+attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**Attribute**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                 | > [[**Description**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++====================================================================================================================================+======================================================================================================================+
+| > [[**bounds**: DC::Bounds \[1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | [[The Bounds of the shape relative to the origin of its parent DMNDiagram. The Bounds MUST be                        |
+|                                                                                                                                    | specified.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**dmnElementRef**: DMNElement                                                                                                  | [[A reference to a Decision, a Business Knowledge Model, an Input Data element, a Knowledge Source, a Decision       |
+| > \[1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                           | Service, a Group or a Text Annotation MUST be                                                                        |
+|                                                                                                                                    | specified.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**isListedInputData**: Boolean                                                                                                 | [[If the DMNShape depicts an Input Data element then this attribute is used to determine if the Input Data is listed |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                        | on the Decision element (true) or drawn as separate notational elements in the DRD                                   |
+|                                                                                                                                    | (false).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| [[**decisionServiceDividerLine**:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[If the DMNShape depicts a Decision Service, this attribute references a DMNDecisionServiceDividerLine which is a   |
+|                                                                                                                                    | DI::Edge that defines s where the DMNShape is divided into two parts by a straight solid line. This can be the case  |
+| [[DMNDecisionServiceDividerLine                                                                                                    | when a DMNShape depicts a Decision Service, where the set of output decisions is smaller than the set of             |
+| \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                          | encapsulated decisions. The start and end waypoints of the decisionServiceDividerLine MUST be on the border of the   |
+|                                                                                                                                    | DMNShape.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |
++------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**isCollapsed** Boolean \[0..1\] =                                                                                             | [[If the DMNShape depicts a DecisionService, this attribute indicates if it should be depicted expanded (false) or   |
+| > false](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                           | collapsed (true). Default is                                                                                         |
+|                                                                                                                                    | false.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              |
++------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
+### [[[[]{#_Toc231385272 .anchor}]{#_Ref123199610 .anchor}DMNEdge \[Class\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![](media/image187.svg){width="6.772222222222222in"
+height="1.8944444444444444in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Figure 14‑5:
+DMNEdge](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The DMNEdge class specializes DI::Edge and DMNDiagramElement. It is a
+kind of Edge that can depict a relationship between two **DMN** model
+elements.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNEdge are used to depict Requirements or Associations in the **DMN**
+model. Since DMNDiagramElement might be depicted more than once,
+sourceElement and targetElement attributes allow to determine to which
+depiction
+a](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNEdge is connected. When DMNEdge has a source, its
+sourceModelElement MUST refer to
+the](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagramElement it starts from. That DMNDiagramElement MUST resolved
+to the DMNElement that is the actual source of the Requirement or
+Association. For Requirement, this is the required DMNElement. When it
+has a target, its targetModelElement MUST refer to the DMNDiagramElement
+where it ends.
+That](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagramElement MUST resolved to the DMNElement that is the actual
+target of the Requirement or Association. For Requirement, this is the
+DMNElement holding
+it.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNEdge extends DI::Edge and has the following
+properties:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**Attribute**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | > [[**Description**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++=======================================================================================================================+======================================================================================================================+
+| > [[**wayPoints**: DC::Point                                                                                          | [[A list of points relative to the origin of its parent DMNDiagram that specifies the connected line segments of the |
+| > \[2..\*\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          | edge. At least two (2) waypoints MUST be                                                                             |
+|                                                                                                                       | specified.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**dmnElementRef**: DMNElement                                                                                     | [[A reference to an InformationRequirement, KnowledgeRequirement, AuthorityRequirement or                            |
+| > \[1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              | Association.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        |
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| [[**sourceElement**:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[The actual DMNDiagramElement this DMNEdge is connecting from. MUST be specified when the DMNEdge has a             |
+|                                                                                                                       | source.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)             |
+| [[DMNDiagramElement\[0..                                                                                              |                                                                                                                      |
+| 1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                  |                                                                                                                      |
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**targetElement**: DMNDiagramElement\[0..                                                                         | [[The actual DMNDiagramElement this DMNEdge is connecting to. MUST be specified when the DMNEdge has a               |
+| > 1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                | target.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)             |
++-----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 99: DMNEdge
+attributes](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[[]{#_Toc231385273 .anchor}]{#_Ref123199620 .anchor}DMNLabel \[Class\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![](media/image188.jpg){width="3.9569444444444444in"
+height="2.873611111111111in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Figure 14‑6:
+DMNLabel](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNLabel represents the depiction of some textual information about a
+DMN
+element.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[A DMN label is not a top-level element but is always nested inside
+either a DMNShape or a DMNEdge. It does not have its own reference to a
+**DMN** element but rather inherits that reference from its parent
+DMNShape or DMNEdge. The textual information depicted by the label is
+derived from the name attribute of the referenced
+DMNElement.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNLabel extends DI::Shape and has the following
+properties:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**Attribute**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | > [[**Description**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++====================================================================================================================+======================================================================================================================+
+| > [[**bounds**: Bounds                                                                                             | [[The bounds of the DMNLabel. When not specified, the label is positioned at its default position as determined in   |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        | clause 13.5](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| > [[**text**:                                                                                                      | [[An optional pretty printed text that MUST be displayed instead of the DMNElement's name if it is                   |
+| > String\[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | present.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 100: DMNLabel
+attributes](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[]{#_Toc231385274 .anchor}DMNStyle \[Class\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![](media/image190.svg){width="4.895833333333333in"
+height="3.25in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Figure 14‑7:
+DMNStyle](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNStyle specializes DC::Style. It is a kind of Style that provides
+appearance options for
+a](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagramElement.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNStyle is used to keep some non-normative visual attributes such as
+colors and font. DMN doesn't give any semantic to color and font
+styling, but tools can decide to use them and interchange
+them.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNDiagramElement style is calculated by percolating up DMNStyle
+attributes defined at a different level of the hierarchy. Each attribute
+is considered independently (meaning that a DMNStyle attribute can be
+individually overloaded). The precedence rules are as
+follow:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+- 
+- 
+- 
+- 
+
+> [[The DMNStyle defined by the localStyle attribute of the
+> DMNDiagramElement The DMNStyle referenced by the sharedStyle attribute
+> of the DMNDiagramElement The DMNStyle defined by the localStyle
+> attribute of the parent DMNDiagram The DMNStyle referenced by the
+> sharedStyle attribute of the parent
+> DMNDiagram](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The default attribute value defined in [Table 101](#_Ref114214842)
+(DMNStyle
+attributes).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[For example, let's say we have the
+following:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+- 
+- 
+
+[[DMNDiagramElement has a local DMNStyle that specifies the fillColor
+and strokeColor Its parent DMNDiagram defines a local DMNStyle that
+specifies the fillColor and
+fontColor](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Then the resulting DMNDiagramElement should
+use:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+- 
+- 
+- 
+
+> [[The fillColor and strokeColor defined at the DMNDiagramElement level
+> (as they are defined locally). The fontColor defined at the DMNDiagram
+> level (as the fillColor was overloaded locally). All other DMNStyle
+> attributes would have their default
+> values.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNStyle extends DC::Style and has the following
+properties:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**Attribute**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)               | > [[**Description**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        |
++==================================================================================================================================+=============================================================================================================================+
+| > [[**id**: String \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     | > [[A unique id for this style so it can be referenced. Only styles defined in the DMNDI can be referenced                  |
+|                                                                                                                                  | > by](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                       |
+|                                                                                                                                  | >                                                                                                                           |
+|                                                                                                                                  | > [[DMNDiagramElement and                                                                                                   |
+|                                                                                                                                  | > DMNDiagram.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fillColor**: DC::Color                                                                                                     | > [[The color use to fill the shape. Doesn't apply to                                                                       |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > DMNEdge.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                 |
+|                                                                                                                                  | >                                                                                                                           |
+|                                                                                                                                  | > [[Default is white.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**strokeColor**: DC::Color                                                                                                   | > [[The color use to draw the shape borders. Default is                                                                     |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > black.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fontColor**: DC::Color                                                                                                     | > [[The color use to write the label. Default is                                                                            |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > black.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fontFamily**: String                                                                                                       | > [[A comma-separated list of Font Name that can be used to display the text. Default is                                    |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > Arial.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fontSize**: Real \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | > [[The size in points of the font to use to display the text. Default is                                                   |
+|                                                                                                                                  | > 8.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                       |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fontItalic**: Boolean                                                                                                      | > [[If the text should be displayed in Italic. Default is                                                                   |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > false.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fontBold**: Boolean                                                                                                        | > [[If the text should be displayed in Bold. Default is                                                                     |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > false.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fontUnderline**: Boolean                                                                                                   | > [[If the text should be underlined. Default is                                                                            |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > false.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**fontStrikeThrough**: Boolean                                                                                               | > [[If the text should be stroke through. Default is                                                                        |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > false.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| [[**labelHorizontalAlignment**:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | > [[How text should be positioned horizontally within the Label bounds. Default depends of the DMNDiagramElement the label  |
+|                                                                                                                                  | > is attached to (see                                                                                                       |
+| [[AlignmentKind \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        | > [14.5](#_Ref123199587)).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+| > [[**label VerticalAlignment**: AlignmentKind                                                                                   | > [[How the text should be positioned vertically inside the Label bounds. Default depends of the DMNDiagramElement the      |
+| > \[0..1\]](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                      | > label is attached to (see [14.5](#_Ref123199597)). Start means "top" and end means                                        |
+|                                                                                                                                  | > "bottom".](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                |
++----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+
+: [[[]{#_Ref114214842 .anchor}Table 101: DMNStyle
+attributes](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+## [[[[[[]{#_Toc231385275 .anchor}]{#_Ref123199597 .anchor}]{#_Ref123199587 .anchor}]{#_Ref123199473 .anchor}Notation Depiction Library and Abstract Element Resolutions](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[As a notation, **DMN** specifies the depiction for each of the **DMN**
+elements.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Serializing a **DMN** diagram for interchange requires the
+specification of a collection of DMNShape(s) (see
+[14.4.6](#_Ref123199610)) and DMNEdge(s) (see [14.4.7](#_Ref123199620))
+in the DMNDiagram (see [14.4.4](#_Ref123199630)). The DMNShape(s) and
+DMNEdge(s) attributes must be populated in such a way as to allow the
+unambiguous rendering of the DMN diagram by the receiving party. More
+specifically, the DMNShape(s) and DMNEdge(s) MUST reference **DMN**
+model elements. If no DMNElement is referenced or if the reference is
+invalid, it is expected that this shape or edge should not be
+depicted.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[When rendering a **DMN** diagram, the correct depiction of a DMNShape
+or DMNEdge depends mainly on the referenced **DMN** model element and
+its particular attributes and/or references. The purpose of this clause
+is to: provide a library of the **DMN** element depictions, and to
+provide an unambiguous resolution between the referenced **DMN** model
+element \[DMNElement\] and their depiction. Depiction resolution tables
+are provided below for both DMNShape (see [14.5.2](#_Ref123199654)) and
+DMNEdge (see
+[14.5.3](#_Ref123199667)).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[]{#_Toc231385276 .anchor}Labels](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Both DMNShape and DMNEdge may have labels (its name attribute) placed
+on the shape/edge, or above or below the shape/edge, in any direction or
+location, depending on the preference of the modeler or modeling tool
+vendor.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Labels are optional for DMNShape and DMNEdge. When there is a label,
+the position of the label is specified by the bounds of the DMNLabel of
+the DMNShape or DMNEdge. Simply put, label visibility is defined by the
+presence of the DMNLabel
+element.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The bounds of the DMNLabel are optional and always relative to the
+containing DMNDiagram\'s origin point. The depiction resolution tables
+provided below exemplify default label positions if no bounds are
+provided for the DMNLabel (for DMNShape kinds (see
+[14.5.2](#_Ref123199683)) and DMNEdge kinds (see
+[14.5.3](#_Ref123199695))).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[When the DMNLabel is contained in a DMNShape, the text to display is
+the name of the
+DMNElement.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[[[]{#_Toc231385277 .anchor}]{#_Ref123199683 .anchor}]{#_Ref123199654 .anchor}DMNShape Resolution](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[DMNShape can be used to represent a Decision, a Business Knowledge
+Model, an Input Data element, a Knowledge Source, a Text Annotation, a
+Group, and a Decision
+Service.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+#### [[Decision](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[A Decision is represented in a DRD as a rectangle, normally drawn with
+solid lines. If the Listed Input Data option is exercised, all the
+Decisions requirements for Input Data shall be listed beneath the
+Decisions label and separated from it by a horizontal line. The listed
+Input Data names shall be clearly inside the shape of the DRD
+element.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**DMNShape                                                                                                            | [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                  |
+|                                                                                                                   | attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |                                                                                                                                   |
++===================================================================================================================+=========================================================================================================================+:=================================================================================================================================:+
+| [[Decision](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | [[None](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                 | > [[![Text, whiteboard Description automatically generated](media/image191.jpg){width="1.3726027996500438in"                      |
+|                                                                                                                   |                                                                                                                         | > height="0.5395964566929133in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| [[Decision and two Input                                                                                          | [[Shapes of Input Data have                                                                                             | > [[![Diagram, table Description automatically generated](media/image192.jpg){width="1.2639545056867891in"                        |
+| Data](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)             | inListedInputData=true](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | > height="0.8409787839020122in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 102: Depiction Resolution for
+Decision](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+#### [[Business Knowledge Model](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**DMNShape                                                                                                  | [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                  |
+|                                                                                                                   | attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |                                                                                                                                   |
++===================================================================================================================+===============================================================================================================+:=================================================================================================================================:+
+| [[Business Knowledge                                                                                              | [[None](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | > [[![Text Description automatically generated](media/image193.jpg){width="1.2229166666666667in"                                  |
+| Model](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |                                                                                                               | > height="0.4270833333333333in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 103: Depiction Resolution for Business Knowledge
+Model](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+#### [[Input Data Element](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[An Input Data element is represented in a DRD as a shape with two
+parallel straight sides and two semi-circular ends, normally drawn with
+solid
+lines.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**Table 104: Depiction Resolution for Input
+Data**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**DMN Diagram                                                                                               | > [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                 |
+|                                                                                                                   | attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |                                                                                                                                    |
++===================================================================================================================+===============================================================================================================+:==================================================================================================================================:+
+| [[Input Data](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     | [[None](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | > [[![Text Description automatically generated](media/image194.jpg){width="1.2229166666666667in"                                   |
+|                                                                                                                   |                                                                                                               | > height="0.42986111111111114in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
+|                                                                                                                   | [[or](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |                                                                                                                                    |
+|                                                                                                                   |                                                                                                               |                                                                                                                                    |
+|                                                                                                                   | [[useAlternativeInputDataShape =                                                                              |                                                                                                                                    |
+|                                                                                                                   | false](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        |                                                                                                                                    |
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| [[Input Data](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     | [[useAlternativeInputDataShape =                                                                              | > [[![Shape Description automatically generated with medium confidence](media/image16.png){width="0.84375in"                       |
+|                                                                                                                   | true](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | > height="0.9375in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              |
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+#### [[Knowledge Source](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[A Knowledge Source is represented as a shape with three straight sides
+and one wavy one, normally drawn with solid
+lines.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**DMNShape                                                                                                  | > [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                |
+|                                                                                                                   | attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |                                                                                                                                   |
++===================================================================================================================+===============================================================================================================+:=================================================================================================================================:+
+| [[Knowledge                                                                                                       | [[None](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | > [[![Diagram Description automatically generated with medium confidence](media/image195.jpg){width="1.1243821084864392in"        |
+| Source](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |                                                                                                               | > height="0.7034678477690288in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 105: Depiction Resolution for Knowledge
+Source](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+#### [[Artifacts](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**DMNShape                                                                                                  | > [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                |
+|                                                                                                                   | Attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |                                                                                                                                   |
++===================================================================================================================+===============================================================================================================+===================================================================================================================================+
+| [[TextAnnotation](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[None](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | > [[![Graphical user interface, text Description automatically generated](media/image196.jpg){width="1.3734142607174102in"        |
+|                                                                                                                   |                                                                                                               | > height="0.5867869641294838in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| [[Group](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          | [[None](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | [[![Shape Description automatically generated](media/image197.jpg){width="1.6221970691163605in"                                   |
+|                                                                                                                   |                                                                                                               | height="0.955559930008749in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    |
++-------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 106: Depiction Resolution of
+Artifacts](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+#### [[Decision Service](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[If the set of output decisions is smaller than the set of encapsulated
+decisions, the Decision Service shall be divided into two parts with a
+straight solid
+line.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| > [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**DMNShape                                                                                                        | [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                  |
+|                                                                                                                     | attributes**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       |                                                                                                                                   |
++=====================================================================================================================+=====================================================================================================================+==================================================================================================================================:+
+| > [[Decision                                                                                                        | [[None or                                                                                                           | [[![Text Description automatically generated](media/image198.jpg){width="2.195207786526684in"                                     |
+| > Service](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          | isCollapsed=false](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | height="1.1354002624671915in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   |
++---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| > [[Decision                                                                                                        | [[DecisionServiceDividerLine                                                                                        | [[![Table Description automatically generated with medium confidence](media/image199.jpg){width="1.9630697725284338in"            |
+| > Service](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          | isCollapsed=false](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | height="0.9159765966754155in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   |
++---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+| > [[Decision                                                                                                        | [[isCollapsed=true](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | > [[![Text Description automatically generated](media/image200.jpg){width="1.3244674103237095in"                                  |
+| > Service](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |                                                                                                                     | > height="0.5867979002624671in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 107: Depiction Resolution of Decision
+Service](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### [[[[[]{#_Toc231385278 .anchor}]{#_Ref123199695 .anchor}]{#_Ref123199667 .anchor}DMNEdge Resolution](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+#### [[Information Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**Table 108: Depiction Resolution of Information
+Requirement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+| [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                    |
++===================================================================================================================+:===================================================================================================================================:+
+| [[Information                                                                                                     | > [[![](media/image201.jpg){width="1.1908847331583552in"                                                                            |
+| Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | > height="7.638779527559054e-2in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++-------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
+
+#### [[Knowledge Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++-------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                   |
++===================================================================================================================+:==================================================================================================================================:+
+| [[Knowledge                                                                                                       | > [[![](media/image202.jpg){width="1.2034722222222223in"                                                                           |
+| Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | > height="0.10694444444444444in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++-------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+: [[Table 109: Depiction Resolution of Knowledge
+Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+#### [[Authority Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**Table 110: Depiction Resolution of Authority
+Requirement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+  ------------------------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------------------------------------
+  [[Authority                                                                                                                                              [[![](media/image203.jpg){width="1.5068503937007873in"
+  Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         height="0.1847211286089239in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#### [[Association](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[When the DMNEdge depicts an Association, its DMNElement MUST be
+specified.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| > [[**DMNElement**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | > [[**Depiction**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                 |
++=====================================================================================================================+:==================================================================================================================================:+
+| [[Association where associationDirection is                                                                         | > [[![](media/image204.jpg){width="1.2225732720909885in"                                                                           |
+| none.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              | > height="0.22221784776902886in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| [[Association where associationDirection is                                                                         | > [[![](media/image205.jpg){width="1.2225732720909885in"                                                                           |
+| one.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)               | > height="0.24306430446194227in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| [[Association where associationDirection is                                                                         | > [[![](media/image206.jpg){width="1.2225732720909885in"                                                                           |
+| both.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              | > height="0.2916754155730534in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  |
++---------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+: [[[]{#_Ref193287379 .anchor}Table 111: Depiction Resolution of
+Association](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[This page intentionally left
+blank.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+# 
+
+[[[]{#_Toc231385279 .anchor}ANNEXES All the Annexes are
+informative.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Annex A. discuss issues around the application of **DMN** in
+combination with **BPMN**. This section is intended to provide some
+direction to practitioners but is
+non-normative.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Annex B. provides a non-normative glossary to aid comprehension of the
+specification.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[This page intentionally left
+blank.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+A.  1.  [[\
+        [[]{#_Toc231385280 .anchor}]{#_Ref194300604 .anchor}Relation to
+        BPMN\
+        \
+        (informative)[]{#_Toc231385281 .anchor}Goals of BPMN and
+        DMN](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[The OMG Business Process Model and Notation Standard provides a
+standard notation for describing business processes as orchestrations of
+tasks. The success of **BPMN** has provided a major motivation for
+**DMN,** and business decisions described using **DMN** are expected to
+be commonly deployed in business processes described using
+**BPMN**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[All statements pertaining to **BPMN** below are from the OMG document
+reference 11-01-03 unless otherwise
+stated.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**BPMN**'s goals are stated in the specification and provide easy
+comparisons to
+**DMN**:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+- 
+
+- 
+
+- 1.  [[Goal 1: "*The primary goal of* **BPMN** *is to provide a
+      notation that is readily understandable by all business users,
+      from the business analysts that create the initial drafts of the
+      processes, to the technical developers responsible for
+      implementing the technology that will perform those processes, and
+      finally, to the businesspeople who will manage and monitor those
+      processes. Thus,* **BPMN** *creates a standardized bridge for the
+      gap between the business process design and process
+      implementation.*". **DMN** users will also be business analysts
+      (designing decisions) and then business users (populating decision
+      models such as decision tables). Technical developers may be
+      responsible for mapping business terms to appropriate data
+      technologies. Therefore, **DMN** can also be said to bridge the
+      decision design by a business analyst, and the decision
+      implementation, typically using some decision execution
+      technology, Goal 2: *"\... To ensure that XML languages designed
+      for the execution of business processes, such as WSBPEL (Web
+      Services Business Process Execution Language), can be visualized
+      with a businessoriented notation."* It is not a stated goal of
+      **DMN** to be able to visualize other XML languages (such as W3C
+      RIF or OMG PRR); indeed, it is expected that **DMN** would provide
+      the MDA specification layer for such languages. It does not
+      preclude however the use of **DMN** (such as decision tables) to
+      represent executable forms (such as production rules). Goal 3:
+      *"The intent of* **BPMN** *is to standardize a business process
+      model and notation in the face of many different modeling
+      notations and viewpoints. In doing so,* **BPMN** *will provide a
+      simple means of communicating process information to other
+      business users, process implementers, customers, and suppliers."*
+      Similarly, the intent of **DMN** is to standardize the decision
+      model and notation across the many different implementations of
+      broadly semantically similar models. In so doing, **DMN** will
+      also facilitate the communication of decision information across
+      business communities and tools. []{#_Toc231385282 .anchor}BPMN
+      Tasks and DMN
+      Decisions](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Most **BPMN** diagrams contain some tasks which involve
+decision-making which can be modeled in **DMN**. These tasks take input
+data acquired or generated earlier in the process and produce decision
+outputs which are used later in the process. Decision outputs may be
+used in two principal
+ways:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+- 
+- 
+
+> [[They may be consumed in another process task. They may influence the
+> choice of sequence flows out of a
+> gateway.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[In the latter case, decisions are used to determine which subprocesses
+or tasks are to be executed (in the process sense). As such, **DMN**
+complements **BPMN** as decision modeling complements process modeling
+(in the sense of defining orchestrations or work
+tasks).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[For example, [Figure A.1](#_Ref123199803) shows an example^1^ of a
+**BPMN**-defined
+process.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![Diagram Description automatically
+generated](media/image207.jpg){width="6.749660979877516in"
+height="3.502736220472441in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[[]{#_Ref123199803 .anchor}Figure A.1: Decision-making in
+BPMN](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Analyzing this we
+see:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+- 
+- 
+- 
+
+> [[A task whose title starts with "Decide\..." which makes a decision
+> on (whether to use) normal post or special shipment, and which
+> precedes an exclusive gateway using that decision result. A task whose
+> title starts with "Check\..." which makes a decision on whether extra
+> insurance is necessary, which precedes an inclusive gateway for which
+> an additional process path may be executed based on the decision
+> result. A task whose title starts with "Assign\..." which implies a
+> decision to select a carrier based on some selection criteria. The
+> previous task is effectively collecting data for this decision. In an
+> automated system this would probably be a subprocess embedding a
+> decision and some other activities (such as "prepare
+> paperwork").](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[From this example we can see that even a simple business process in
+**BPMN** may have several decision-making
+tasks.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+1.  [[[]{#_Toc231385283 .anchor}Types of BPMN Tasks relevant to
+    DMN](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**BPMN** defines^2^ different types of tasks that can be considered
+for decision-making roles. The relevant tasks are as shown in [Table
+111](#_Ref193287379):](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[1.Shipment Process in a Hardware Retailer example, Ch5.1, BPMN 2.0 By
+Example, June 2010, OMG reference
+10-06-02](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[2.See ch 10.2.3 in the BPMN
+Specification.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**Table 111: BPMN tasks relevant to
+DMN**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[![A picture containing table Description automatically
+generated](media/image208.jpg){width="6.40625in"
+height="4.606944444444444in"}](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[A future version of **BPMN** may choose to clarify and extend the
+definitions of task to better match decision modeling requirements and
+**DMN** -- to wit, to define a **BPMN** Decision Task as some task used
+to make a decision modeled with **DMN**. In the meantime, the Business
+Rule Task is the most natural way to express this functionality.
+However, as noted in clauses [5.2.2](#_Ref123200289) and
+[6.3.6](#_Ref123200306), a Decision in **DMN** can be associated with
+any Task, allowing for flexibility in
+implementation.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+2.  [[[]{#_Toc231385284 .anchor}Process gateways and
+    Decisions](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Process gateways can be considered of 2
+types:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+1.  
+2.  
+
+> [[A gateway that determines a process route or routes based on
+> existing data A gateway that determines a process route or routes
+> based on the outcome of one or more decisions that are determined by
+> some previous task within the
+> process.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[In the latter case, a Decision Task (task used to make a decision
+using **DMN**) may need an extended notation to clarify the relationship
+of the decision task to the gateway(s) that use
+it.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+1.  [[[]{#_Toc231385285 .anchor}Linking BPMN and DMN
+    Models](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[**DMN** offers two approaches to linking business process models in
+**BPMN** with decision models: one normative and the other
+non-normative:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### 
+
+> [[[]{#_Toc231385286 .anchor}a) Associating Decisions with Tasks and
+> Processes](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[As described in clause [6.3.6](#_Ref123200345), in **DMN**, the
+process context for an instance of Decision is defined by its
+association with any number of usingProcesses, which are instances of
+Process as defined in OMG **BPMN 2**, and any number of usingTasks,
+which are instances of Task as defined in OMG **BPMN 2**. Each decision
+may therefore be associated with one or more business processes (to
+indicate that the decision is taken during those processes), and/or with
+one or more specific tasks (to indicate that the tasks involve making
+the decision). An implementation SHALL allow these associations to be
+defined for each
+decision.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[An implementation MAY perform validation over the two (**BPMN** and
+**DMN**) models, to check, for example,
+that:](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+- 
+- 
+
+> [[A Decision is not associated with Tasks that are part of Processes
+> not also associated with the Decision. A Decision is not associated
+> with Tasks that are not part of any Process associated with the
+> Decision.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[During development it may be appropriate to associate a Decision only
+with a Process, but inconsistency between Task and Process associations
+is not
+allowed.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[Note that this approach allows the relationships between business
+process models and decision models to be defined and validated but does
+not of itself permit the decisions modeled in **DMN** to be executed
+automatically by processes modeled in
+**BPMN**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+### 
+
+[[[]{#_Toc231385287 .anchor}b) Decision Services One approach to
+decision automation is described non-normatively in Annex A: the
+encapsulation of **DMN** Decisions in a "decision service" called from a
+**BPMN** Task (e.g., a Service Task or Business Rule Task, as discussed
+in Annex A..3 above). The usingProcesses and usingTasks properties allow
+definition and validation of associations between **BPMN** and **DMN**;
+the definition of decision services then provides a detailed
+specification of the required
+interface.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+A.  [[\
+    [[]{#_Toc231385288 .anchor}]{#_Ref194300629
+    .anchor}Glossary](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
+[[(informative)](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| > [[**A**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                            |
++==================================================================================================================+====================================================================================================================+
+| [[Aggregation](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   | [[The production of a single result from multiple **hits**\                                                        |
+|                                                                                                                  | on a **decision table**. DMN specifies four\                                                                       |
+|                                                                                                                  | aggregation operators on the Collect hit policy,\                                                                  |
+|                                                                                                                  | namely: + (sum), \< (min), \> (max), \# (count). If no\                                                            |
+|                                                                                                                  | operator is specified, the results of the Collect hit\                                                             |
+|                                                                                                                  | policy are returned without being                                                                                  |
+|                                                                                                                  | aggregated.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Any](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | [[A **hit policy** for **single hit decision tables** with\                                                        |
+|                                                                                                                  | overlapping **decision rules**: under this policy any\                                                             |
+|                                                                                                                  | match may be                                                                                                       |
+|                                                                                                                  | used.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)             |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Authority                                                                                                    | [[The dependency of one element of a Decision\                                                                     |
+| > Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   | Requirements Graph on another element which\                                                                       |
+|                                                                                                                  | provides guidance to it or acts as a source of\                                                                    |
+|                                                                                                                  | knowledge for it.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[**B**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       |                                                                                                                    |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Binding](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     | [[In an **invocation**, the association of the parameters\                                                         |
+|                                                                                                                  | of the invoked expression with the input variables\                                                                |
+|                                                                                                                  | of the invoking expression, using a binding\                                                                       |
+|                                                                                                                  | formula.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Boxed                                                                                                        | [[A form of **boxed expression** showing a collection\                                                             |
+| > Context](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | of *n* (name, value) pairs with an optional result\                                                                |
+|                                                                                                                  | value.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Boxed                                                                                                        | [[A notation serving to decompose **decision\                                                                      |
+| > Expression](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | logic** into small pieces which may be associated\                                                                 |
+|                                                                                                                  | graphically with elements of a                                                                                     |
+|                                                                                                                  | **DRD**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Boxed                                                                                                        | [[A form of **boxed expression** showing the kind,\                                                                |
+| > Function](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | parameters, and body of a                                                                                          |
+|                                                                                                                  | function.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Boxed                                                                                                        | [[A form of **boxed expression** showing the\                                                                      |
+| > Invocation](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | parameter bindings that provide the context for the\                                                               |
+|                                                                                                                  | evaluation of the body of a **business knowledge\                                                                  |
+|                                                                                                                  | model**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Boxed List](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | [[A form of **boxed expression** showing a list of *n*                                                             |
+|                                                                                                                  | items.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Boxed Literal                                                                                                | [[A form of **boxed expression** showing a **literal\                                                              |
+| > Expression](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | expression**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Business Context                                                                                               | [[An element representing the business context of a\                                                               |
+| Element](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | decision: either an **organisational unit** or a\                                                                  |
+|                                                                                                                  | **performance                                                                                                      |
+|                                                                                                                  | indicator**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Business Knowledge                                                                                             | [[Some **decision logic** (e.g., a **decision table**)\                                                            |
+| Model](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | encapsulated as a reusable function, which may be\                                                                 |
+|                                                                                                                  | invoked by **decisions** or by other **business\                                                                   |
+|                                                                                                                  | knowledge                                                                                                          |
+|                                                                                                                  | models**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**C**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |                                                                                                                    |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Clause](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        | [[In a **decision table**, a clause specifies a subject,\                                                          |
+|                                                                                                                  | which is defined by an input expression or an\                                                                     |
+|                                                                                                                  | output domain, and the finite set of the subdomains\                                                               |
+|                                                                                                                  | of the subject's domain that are relevant for the piece of\                                                        |
+|                                                                                                                  | **decision logic** that is described by the decision                                                               |
+|                                                                                                                  | table.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Collect](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | [[A hit policy for multiple hit decision tables with\                                                              |
+|                                                                                                                  | overlapping decision rules: under this policy all\                                                                 |
+|                                                                                                                  | matches will be returned as a list in an arbitrary order.\                                                         |
+|                                                                                                                  | An operator can be added to specify a function\                                                                    |
+|                                                                                                                  | to be applied to the outputs: see                                                                                  |
+|                                                                                                                  | Aggregation.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Context](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       | > [[In **FEEL**, a map of key-value pairs called **context                                                         |
+|                                                                                                                  | > entries**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Crosstab                                                                                                       | > [[An **orientation** for **decision tables** in which two\                                                       |
+| Table](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | > **input expressions** form the two dimensions of the\                                                            |
+|                                                                                                                  | > table, and the **output entries** form a\                                                                        |
+|                                                                                                                  | > twodimensional                                                                                                   |
+|                                                                                                                  | > grid.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**D**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |                                                                                                                    |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | > [[The act of determining an **output value** from a number of\                                                   |
+|                                                                                                                  | > **input values**, using **decision logic** defining how the\                                                     |
+|                                                                                                                  | > output is determined from the                                                                                    |
+|                                                                                                                  | > inputs.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision                                                                                                       | [[The logic used to make decisions, defined in DMN as the\                                                         |
+| Logic](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | **value expressions** of **decisions** and **business knowledge**\                                                 |
+|                                                                                                                  | **models** and represented visually as **boxed                                                                     |
+|                                                                                                                  | expressions**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision Logic                                                                                                 | [[The detailed level of modeling in DMN, consisting of the **value**\                                              |
+| Level](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | **expressions** associated with **decisions** and **business\                                                      |
+|                                                                                                                  | knowledge                                                                                                          |
+|                                                                                                                  | models**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision                                                                                                       | [[A formal model of an area of decision-making, expressed in\                                                      |
+| Model](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | DMN as **decision requirements** and **decision                                                                    |
+|                                                                                                                  | logic**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision                                                                                                       | [[A point in a business process at which decisionmaking occurs,\                                                   |
+| Point](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | modeled in BPMN 2.0 as a business rule task and possibly\                                                          |
+|                                                                                                                  | implemented as a call to a **decision                                                                              |
+|                                                                                                                  | service.**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision Requirements                                                                                          | [[A diagram presenting a (possibly filtered) view of a **DRG**.\                                                   |
+| Diagram](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | \                                                                                                                  |
+|                                                                                                                  | ](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                  |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision Requirements                                                                                          | [[A graph of **DRG elements** (**decisions**, **business knowledge\                                                |
+| Graph](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | models** and **input data**) connected by                                                                          |
+|                                                                                                                  | **requirements**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision Requirements\                                                                                         | [[The more abstract level of modelling in DMN, consisting of a\                                                    |
+| Level](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | **DRG** represented in one or more                                                                                 |
+|                                                                                                                  | **DRDs**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision Rule](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[In a **decision table**, a decision rule specifies associates a set of\                                          |
+|                                                                                                                  | conclusions or results (**output entries**) with a set of conditions\                                              |
+|                                                                                                                  | (**input                                                                                                           |
+|                                                                                                                  | entries**).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision                                                                                                       | [[A software component encapsulating a **decision model** and exposing\                                            |
+| Service](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | it as a service, which might be consumed (for example) by a task\                                                  |
+|                                                                                                                  | in a BPMN process                                                                                                  |
+|                                                                                                                  | model.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Decision                                                                                                       | [[A tabular representation of a set of related input and output expressions,\                                      |
+| Table](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | organized into **decision rules** indicating which **output entry** applies\                                       |
+|                                                                                                                  | to a specific set of **input                                                                                       |
+|                                                                                                                  | entries**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Definitions](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   | [[A container for all elements of a DMN **decision model**. The interchange\                                       |
+|                                                                                                                  | of DMN files will always be through one or more                                                                    |
+|                                                                                                                  | Definitions.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[DMN Element](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   | [[Any element of a DMN **decision model**: a **DRG Element**,**Business\                                           |
+|                                                                                                                  | Context Element**, **Expression**, **Definitions**, **Element Collection**,\                                       |
+|                                                                                                                  | **Information Item** or **Item                                                                                     |
+|                                                                                                                  | Definition**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[DRD](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | [[See **Decision Requirements                                                                                      |
+|                                                                                                                  | Diagram**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[DRG](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | [[See **Decision Requirements                                                                                      |
+|                                                                                                                  | Graph**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[DRG Element](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[Any component of a **DRG**: a **decision**, **business knowledge model**,\                                       |
+|                                                                                                                  | **input data** or **knowledge                                                                                      |
+|                                                                                                                  | source**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**E**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Element                                                                                                      | [[Used to define named groups of **DRG elements** within a                                                         |
+| > Collection](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | **Definitions**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Expression](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | [[A **literal expression**, **decision table, invocation**, list, **context**, function\                           |
+|                                                                                                                  | definition, or **relation** used to define part of the **decision logic** for a\                                   |
+|                                                                                                                  | **decision** **model** in **DMN**. Returns a single value when                                                     |
+|                                                                                                                  | interpreted.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**F**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[FEEL](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          | [[The "Friendly Enough Expression Language" which is the default\                                                  |
+|                                                                                                                  | expression language for                                                                                            |
+|                                                                                                                  | DMN.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[First](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | [[A **hit policy** for **single hit decision tables** with overlapping\                                            |
+|                                                                                                                  | **decision rules**: under this policy the first match is used, based\                                              |
+|                                                                                                                  | on the order of the **decision                                                                                     |
+|                                                                                                                  | rules**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Formal                                                                                                       | [[A named, typed value used in the invocation of a function to\                                                    |
+| > Parameter](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     | provide an **information item** for use in the body of the                                                         |
+|                                                                                                                  | function.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**H**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Hit](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | [[In a **decision table**, the successful matching of all **input\                                                 |
+|                                                                                                                  | expressions** of a **decision rule**, making the conclusion eligible\                                              |
+|                                                                                                                  | for inclusion in the                                                                                               |
+|                                                                                                                  | results.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Horizontal](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | [[An orientation for **decision tables** in which **decision rules\**                                              |
+|                                                                                                                  | are presented as rows, **clauses** as                                                                              |
+|                                                                                                                  | columns.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**I**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Information                                                                                                  | [[A **DMN element** used to model either a **variable** or a **parameter\**                                        |
+| > Item](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          | at the **decision logic level** in DMN **decision                                                                  |
+|                                                                                                                  | models**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Information                                                                                                  | [[The dependency of a **decision** on an **input data** element or another\                                        |
+| > Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   | **decision** to provide a **variable** used in its **decision                                                      |
+|                                                                                                                  | logic**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Input Data](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | [[Denotes information used as an input by one or more **decisions**,\                                              |
+|                                                                                                                  | whose value is defined outside of the **decision                                                                   |
+|                                                                                                                  | model**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Input Entry](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[An **expression** defining a condition cell in a **decision table\**                                             |
+|                                                                                                                  | (i.e., the intersection of a **decision rule** and an input                                                        |
+|                                                                                                                  | **clause**).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Input                                                                                                        | [[An **expression** defining the item to be compared with the\                                                     |
+| > Expression](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | **input entries** of an input **clause** in a **decision                                                           |
+|                                                                                                                  | table**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Input Value](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[An **expression** defining a limited range of expected values for an\                                            |
+|                                                                                                                  | input **clause** in a **decision                                                                                   |
+|                                                                                                                  | table**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Invocation](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | [[A mechanism that permits the evaluation of one value expression another,\                                        |
+|                                                                                                                  | using a number of                                                                                                  |
+|                                                                                                                  | **bindings**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Item                                                                                                         | [[Used to model the structure and the range of values of **input data** and\                                       |
+| > Definition](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | the outcome of **decisions**, using a type language such as **FEEL** or XML\                                       |
+|                                                                                                                  | Schema.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**K**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Knowledge                                                                                                    | [[The dependency of a **decision** or **business knowledge model**\                                                |
+| > Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   | on a **business knowledge model** which must be invoked in the evaluation\                                         |
+|                                                                                                                  | of its **decision                                                                                                  |
+|                                                                                                                  | logic**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Knowledge                                                                                                    | [[An authority defined for **decisions** or **business knowledge\                                                  |
+| > Source](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)        | models**, e.g., domain experts responsible for defining or maintaining\                                            |
+|                                                                                                                  | them, or source documents from which business knowledge models are\                                                |
+|                                                                                                                  | derived or sets of test cases with which the decisions must be                                                     |
+|                                                                                                                  | consistent.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)       |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**L**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Literal                                                                                                      | [[Text that represents **decision logic** by describing how an output value is\                                    |
+| > Expression](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | derived from its input values, e.g. in                                                                             |
+|                                                                                                                  | plain](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)             |
+|                                                                                                                  |                                                                                                                    |
+|                                                                                                                  | [[English or using the default expression language                                                                 |
+|                                                                                                                  | **FEEL**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**M**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Multiple                                                                                                     | [[A type of **decision table** which may return **output entries** from multiple\                                  |
+| > Hit](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           | **decision                                                                                                         |
+|                                                                                                                  | rules**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**O**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Organisational                                                                                               | [[A **business context element** representing the unit of an organization\                                         |
+| > Unit](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          | which makes or owns a                                                                                              |
+|                                                                                                                  | **decision**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Orientation](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   | [[The style of presentation of a **decision table**: horizontal (decision rules\                                   |
+|                                                                                                                  | as rows; clauses as columns), vertical (rules as columns; clauses as rows), or\                                    |
+|                                                                                                                  | crosstab (rules composed from two input                                                                            |
+|                                                                                                                  | dimensions).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Output                                                                                                       | [[An **expression** defining a conclusion cell in a **decision table** (i.e., the\                                 |
+| > Entry](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | intersection of a **decision rule** and an output                                                                  |
+|                                                                                                                  | **clause**).](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Output                                                                                                       | [[A **hit policy** for **multiple hit decision tables** with overlapping\                                          |
+| > Order](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | **decision rules**: under this policy all matches will be returned as a list in\                                   |
+|                                                                                                                  | decreasing priority order. Output priorities are specified in an ordered\                                          |
+|                                                                                                                  | list of values.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)   |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Output                                                                                                       | [[An **expression** defining a limited range of domain values for an output\                                       |
+| > Value](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         | **clause** in a **decision                                                                                         |
+|                                                                                                                  | table**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[**P**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                            |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Performance                                                                                                  | [[A **business context element** representing a measure of business\                                               |
+| > Indicator](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     | performance impacted by a                                                                                          |
+|                                                                                                                  | **decision**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)     |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Priority](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    | [[A **hit policy** for **single hit decision tables** with overlapping **decision\                                 |
+|                                                                                                                  | rules**: under this policy the match is used that has the highest\                                                 |
+|                                                                                                                  | output priority.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  |
+|                                                                                                                  |                                                                                                                    |
+|                                                                                                                  | [[Output priorities are specified in an ordered list of                                                            |
+|                                                                                                                  | values.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**R**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Relation](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | [[A form of **boxed expression** showing a vertical list of homogeneous\                                           |
+|                                                                                                                  | horizontal **contexts** (with no result cells) with the names appearing\                                           |
+|                                                                                                                  | just once at the top of the list, like a relational                                                                |
+|                                                                                                                  | table.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)            |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Requirement](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[The dependency of one **DRG element** on another: either an\                                                     |
+|                                                                                                                  | **information requirement**, **knowledge requirement** or **authority\                                             |
+|                                                                                                                  | requirement.**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)    |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Requirement                                                                                                  | [[The directed graph resulting from the transitive closure of the\                                                 |
+| > Subgraph](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | **requirements** of a **DRG element**; i.e., the sub-graph of the **DRG\**                                         |
+|                                                                                                                  | representing all the decision-making required by a particular                                                      |
+|                                                                                                                  | element.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Rule Order](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | [[A **hit policy** for **multiple hit decision tables** with overlapping **decision\                               |
+|                                                                                                                  | rules**: under this policy all matches will be returned as a list in the order\                                    |
+|                                                                                                                  | of definition of the **decision                                                                                    |
+|                                                                                                                  | rules**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[**S**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                            |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[S-FEEL](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | [[A simple subset of **FEEL**, for **decision models** that use only simple\                                       |
+|                                                                                                                  | **expressions**: in particular, **decision models** where the **decision**\                                        |
+|                                                                                                                  | **logic** is modeled mostly or only using **decision                                                               |
+|                                                                                                                  | tables**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Single Hit](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)  | [[A type of **decision table** which may return the **output entry** of only a single\                             |
+|                                                                                                                  | **decision                                                                                                         |
+|                                                                                                                  | rule**.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)           |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**U**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Unique](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | [[A **hit policy** for **single hit decision tables** in which no overlap is possible\                             |
+|                                                                                                                  | and all **decision rules** are exclusive. Only a single rule can be                                                |
+|                                                                                                                  | matched.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)          |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**V**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Variable](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | [[Represents a value that is input to a **decision**, in the description of its\                                   |
+|                                                                                                                  | **decision logic**, or a value that is passed as a **parameter** to a                                              |
+|                                                                                                                  | function.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)         |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[Vertical](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)      | [[An **orientation** for **decision tables** in which decision rules are\                                          |
+|                                                                                                                  | presented as columns; clauses as                                                                                   |
+|                                                                                                                  | rows.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)             |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| [[**W**](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)                                                                                                                              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+| > [[Well-Formed](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01) | [[Used of a **DRG element** or **requirement** to indicate that it conforms\                                       |
+|                                                                                                                  | to constraints on referential integrity, acyclicity                                                                |
+|                                                                                                                  | etc.](http://www.example.org/Definitions01)](http://www.example.org/Definitions01#prebureauriskDec01)              |
++------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
