@@ -88,20 +88,6 @@
 \usepackage{multirow}
 \usepackage{amssymb}
 
-%%% SVG images: inkscape is not available; instead, build/media/*.svg are pre-rasterised
-%%% to PNG by rsvg-convert in the Makefile. Redefine \includesvg to call \includegraphics
-%%% with the PNG version (same path, .png extension) via \filename@parse.
-%%% \makeatletter must wrap the \renewcommand definition so \filename@parse is tokenised
-%%% as a single control sequence while @ is a letter.
-\makeatletter
-\AtBeginDocument{%
-  \renewcommand{\includesvg}[2][]{%
-    \filename@parse{#2}%
-    \includegraphics[#1]{\filename@area\filename@base.png}%
-  }%
-}
-\makeatother
-
 %%% pandoc wraps section headings and table captions in \href{url}{text}.
 %%% These URLs are cross-reference artifacts from the Word→pandoc conversion and
 %%% serve no purpose in the produced PDF.  They cause "Illegal parameter number in
