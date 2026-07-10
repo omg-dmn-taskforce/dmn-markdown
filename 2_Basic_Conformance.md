@@ -29,24 +29,26 @@ with the semantics of expressions as specified in clause 7.
 
 An implementation claiming conformance to **Conformance Level 2** SHALL
 comply with all of the specifications set forth in clauses
-[6](#_Ref152655601) (Decision Requirements), [7](#_Ref194300068)
-(Decision Logic) and [8](#_Ref122607333) (Decision Table) of this
-document. In addition, it is required to interpret expressions in the
-simple expression language (S-FEEL) specified in clause
-[9](#_Ref194300096).
+[6](#requirements-drg-and-drd) (Decision Requirements),
+[7](#relating-decision-logic-to-decision-requirements) (Decision Logic)
+and [8](#decision-table) (Decision Table) of this document. In addition,
+it is required to interpret expressions in the simple expression
+language (S-FEEL) specified in clause
+[9](#simple-expression-language-s-feel).
 
 An implementation claiming conformance to **Conformance Level 3** SHALL
 comply with all of the specifications set forth in clauses
-[6](#_Ref152655601) (Decision Requirements), [7](#_Ref194300129)
-(Decision Logic), [8](#_Ref122607333) (Decision Table) and
-[10](#_Ref122607316) (Expression language) of this document. An
-implementation does NOT need to support any Function Kind other than
+[6](#requirements-drg-and-drd) (Decision Requirements),
+[7](#relating-decision-logic-to-decision-requirements) (Decision Logic),
+[8](#decision-table) (Decision Table) and
+[10](#expression-language-feel) (Expression language) of this document.
+An implementation does NOT need to support any Function Kind other than
 FEEL to claim conformance to Level 3, i.e. support for Java, PMML, and
 ONNX is optional. Notice that the simple expression language that is
-specified in clause [9](#_Ref194300194) is a subset of FEEL, and that,
-therefore, an implementation claiming conformance to Conformance Level 3
-can also claim conformance to Conformance Level 2 (and to Conformance
-Level 1).
+specified in clause [9](#simple-expression-language-s-feel) is a subset
+of FEEL, and that, therefore, an implementation claiming conformance to
+Conformance Level 3 can also claim conformance to Conformance Level 2
+(and to Conformance Level 1).
 
 In addition, an implementation claiming conformance to any of the three
 **DMN** conformance levels SHALL comply with all of the requirements set
