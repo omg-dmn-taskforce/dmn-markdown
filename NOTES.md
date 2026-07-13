@@ -1,5 +1,3 @@
-1. The markdown file produced from docx is broken (e.g. includes links to SCE everywhere).
-
 Goal:
 We have an **e2e pipeline** which takes a provided docx file, produces markdown files (chapters) out of it, and then outputs the PDF with the specification.
 
