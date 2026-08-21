@@ -1,0 +1,15 @@
+---
+# pandoc-crossref configuration for the DMN specification.
+# Chapter-relative numbering ("Figure 8-5", "Table 8-2") matching the source.
+figureTitle: "Figure"
+tableTitle: "Table"
+figPrefix: "Figure"
+tblPrefix: "Table"
+# Number within clauses (level-1 headings) and join with a dash: 8-5.
+# NB: `chapters` is global, so tables are numbered chapter-relative too
+# ("Table 6-1"), whereas the source numbered tables flat ("Table 1"). Set
+# `chapters: false` for flat numbering of BOTH figures and tables instead.
+chapters: true
+chapDelim: "-"
+numberSections: false
+...

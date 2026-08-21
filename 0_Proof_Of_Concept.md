@@ -1,3 +1,0 @@
-```{=latex}
-\REPLACEME{OPTIONAL: If there is an existing proof of concept, discuss it here.  Otherwise, delete the file 0\_Proof\_Of\_Concept.tex}
-```

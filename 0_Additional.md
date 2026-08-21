@@ -1,5 +1,0 @@
-# Additional
-
-```{=latex}
-\REPLACEME{OPTIONAL: In file 0\_Additional.tex, add any additional sections you would like to Section 0.  If none are needed, make the file empty, or delete it.}
-```
