@@ -14,3 +14,7 @@ Steps:
 ### Found problems
 
 Figures (images) are added further in the text, not where placed in the markdown.
+
+### To check
+
+Try out https://github.com/jasonmccsmith/containerized-spec
