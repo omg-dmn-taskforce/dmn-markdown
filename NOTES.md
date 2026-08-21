@@ -9,3 +9,8 @@ Steps:
 2. Test:
     1. MD (chapters) + SVG (images) -> PDF // scripted with Makefile; Makefile should not be edited because it is only a test of whether we did a good job
     2. Compare PDF with DMN_1.7.pdf
+
+
+### Found problems
+
+Figures (images) are added further in the text, not where placed in the markdown.
